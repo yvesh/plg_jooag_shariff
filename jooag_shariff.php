@@ -26,7 +26,11 @@ class PlgContentJooag_shariff extends JPlugin
     }
 	
 	public function onContentBeforeDisplay($context, &$article, &$params, $page = 0){
-		if($this->params->get('position') == 0){
+	
+	$setCatId = $this->params->get('showbycategory');
+	$currentCatId = JFactory::getApplication()->input->getInt('catid');
+
+		if($this->params->get('position') == 0 and (in_array($currentCatId,$setCatId) or empty($setCatId))){
 			$doc = JFactory::getDocument();
 			$lang = JFactory::getLanguage();
 			JHtml::_('jquery.framework');
@@ -44,7 +48,10 @@ class PlgContentJooag_shariff extends JPlugin
 	}
 	
 	public function onContentAfterDisplay($context, &$article, &$params, $page = 0){
-		if($this->params->get('position') == 1){
+	$setCatId = $this->params->get('showbycategory');
+	$currentCatId = JFactory::getApplication()->input->getInt('catid');
+
+		if($this->params->get('position') == 1 and (in_array($currentCatId,$setCatId) or empty($setCatId))){
 			$doc = JFactory::getDocument();
 			$lang = JFactory::getLanguage();
 			JHtml::_('jquery.framework');

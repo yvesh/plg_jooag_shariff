@@ -24,24 +24,25 @@
 				<field name="position" label="Position" type="list" default="0">
 					<option value="0">Top</option>
 					<option value="1">Bottom</option>
-				</field>
+					</field>
 				<field name="orientation" label="Orienation" type="list" default="default">
 					<option value="default">Horizontal</option>
 					<option value="vertical">Vertical</option>
-				</field>
+					</field>
 				<field name="theme" label="Orienation" type="list" default="default">
 					<option value="default">Standard</option>
 					<option value="grey">Grey</option>
-				</field>
+					</field>
 				<field name="services" label="Services" multiple="true" type="list" default="twitter,facebook,googleplus,info">
 					<option value="twitter">Twitter</option>
 					<option value="facebook">Facebook</option>
 					<option value="googleplus">Google+</option>
 					<option value="mail">Mail - not working</option>
 					<option value="info">Info</option>
-				</field>
+					</field>
 				<field name="mail" type="text" label="Mail" />
-				<field name="info" type="text" label="Info Page Url" />	
+				<field name="info" type="text" label="Info Page Url" />
+				<field name="showbycategory" showon="restrict:2" type="category" multiple="true" extension="com_content" label="Restrict to a category" description="" />
 			</fieldset>
 		</fields>
 	</config>
