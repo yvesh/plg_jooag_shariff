@@ -29,7 +29,7 @@
 					<option value="default">Horizontal</option>
 					<option value="vertical">Vertical</option>
 					</field>
-				<field name="theme" label="Orienation" type="list" default="default">
+				<field name="theme" label="Theme" type="list" default="default">
 					<option value="default">Standard</option>
 					<option value="grey">Grey</option>
 					</field>
