@@ -1,6 +1,6 @@
 <?php
 /**
- * @package 	JooAg Countdown
+ * @package 	JooAg Shariff
  * @version 	3.x.0 Alpha
  * @for 	Joomla 3.3+ 
  * @author 	Joomla Agentur - http://www.joomla-agentur.de
