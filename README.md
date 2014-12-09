@@ -3,6 +3,8 @@
 A Joomla 3 Plugin for Social Media Icons as shariff integration
 
 Comming soon:
-Shariff Backend integration
+<ul>
+<li>Shariff Backend integration</li>
+</ul>
 
 Developed by http://joomla-agentur.de
