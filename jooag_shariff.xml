@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" type="plugin" method="upgrade" group="content">
+	<name>JooAg Shariff</name>
+	<author>Ufuk Avcu</author>
+	<creationDate>13.11.2014</creationDate>
+	<copyright>Copyright (C) 2009 - 2015 Joomla Agency. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>info@joomla-agentur.de</authorEmail>
+	<authorUrl>www.joomla-agentur.de</authorUrl>
+	<version>3.x.0 Alpha</version>
+	<description>
+	A small Plugin to share Social Links!
+	</description>
+	
+	<files>
+		<filename plugin="jooag_shariff">jooag_shariff.php</filename>
+		<filename plugin="jooag_shariff">shariff.min.js</filename>
+		<filename plugin="jooag_shariff">shariff.min.css</filename>
+	</files>
+
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="position" label="Position" type="list" default="0">
+					<option value="0">Top</option>
+					<option value="1">Bottom</option>
+				</field>
+				<field name="orientation" label="Orienation" type="list" default="default">
+					<option value="default">Horizontal</option>
+					<option value="vertical">Vertical</option>
+				</field>
+				<field name="theme" label="Orienation" type="list" default="default">
+					<option value="default">Standard</option>
+					<option value="grey">Grey</option>
+				</field>
+				<field name="services" label="Services" multiple="true" type="list" default="twitter,facebook,googleplus,info">
+					<option value="twitter">Twitter</option>
+					<option value="facebook">Facebook</option>
+					<option value="googleplus">Google+</option>
+					<option value="mail">Mail - not working</option>
+					<option value="info">Info</option>
+				</field>
+				<field name="mail" type="text" label="Mail" />
+				<field name="info" type="text" label="Info Page Url" />	
+			</fieldset>
+		</fields>
+	</config>
+</extension>
