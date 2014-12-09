@@ -37,7 +37,8 @@ class PlgContentJooag_shariff extends JPlugin
 	public function getOutput($position){
 		$setCatId = $this->params->get('showbycategory');
 		$currentCatId = JFactory::getApplication()->input->getInt('catid');
-		if($this->params->get('position') == $position and (in_array($currentCatId,$setCatId) or empty($setCatId))){
+		$output = '';
+		if($this->params->get('position') == $position and ((is_array($setCatId) && in_array($currentCatId,$setCatId)) or empty($setCatId))){
 			$doc = JFactory::getDocument();
 			$lang = JFactory::getLanguage();
 			JHtml::_('jquery.framework');
