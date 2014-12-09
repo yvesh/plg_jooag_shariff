@@ -6,7 +6,7 @@
  * @author 	Joomla Agentur - http://www.joomla-agentur.de
  * @copyright 	Copyright (c) 2009 - 2015 Joomla-Agentur All rights reserved.
  * @license 	GNU General Public License version 2 or later;
- * @description A small Plugin to Calculate the Days for a specific Date
+ * @description A small Plugin to share Social Links!
  */
 defined('_JEXEC') or die;
 
