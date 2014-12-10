@@ -32,6 +32,7 @@
 				<field name="theme" label="Theme" type="list" default="default">
 					<option value="default">Standard</option>
 					<option value="grey">Grey</option>
+					<option value="white">White</option>
 					</field>
 				<field name="services" label="Services" multiple="true" type="list" default="twitter,facebook,googleplus,info">
 					<option value="twitter">Twitter</option>
