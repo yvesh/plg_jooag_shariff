@@ -37,12 +37,13 @@ class PlgContentJooag_shariff extends JPlugin
 		if($this->params->get('position') == $position and ((is_array($setCatId) && in_array($currentCatId,$setCatId)) or empty($setCatId))){
 			$doc = JFactory::getDocument();
 			$lang = JFactory::getLanguage();
+			$lang = explode("-", $lang->getTag());
 			JHtml::_('jquery.framework');
 			$doc->addScript(JURI::root().'plugins/content/jooag_shariff/shariff.min.js');
 			$doc->addStyleSheet(JURI::root().'plugins/content/jooag_shariff/shariff.min.css');
 			$services = implode("&quot;,&quot;", $this->params->get('services'));
 			$services = '&quot;'.$services.'&quot;';
-			$output = '<div data-theme="'.$this->params->get('theme').'" data-lang="'.$lang->getLocale()[7].'"  data-orientation="'.$this->params->get('orientation').'" data-url="'.JURI::current().'" data-referrer-track="null" data-info-url="'.$this->params->get('info').'" data-services="['.$services.']" data-backend-url="/plugins/content/jooag_shariff/backend" class="shariff"></div>';
+			$output = '<div data-theme="'.$this->params->get('theme').'" data-lang="'.$lang[0].'"  data-orientation="'.$this->params->get('orientation').'" data-url="'.JURI::current().'" data-referrer-track="null" data-info-url="'.$this->params->get('info').'" data-services="['.$services.']" data-backend-url="/plugins/content/jooag_shariff/backend" class="shariff"></div>';
 			$output .= '<script src="plugins/content/jooag_shariff/shariff.min.js"></script>';
 		}
 		return $output;
