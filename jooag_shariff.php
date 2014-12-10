@@ -13,13 +13,10 @@ defined('_JEXEC') or die;
 class PlgContentJooag_shariff extends JPlugin
 {	
 	public function __construct(&$subject, $config){
-
 		$view = JFactory::getApplication()->input->getWord('view');
-
 		if($view != 'article'){
 			return;
 		}
-
 		parent::__construct($subject, $config);
 	}
 	
