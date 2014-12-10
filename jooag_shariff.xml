@@ -22,15 +22,19 @@
 	<config>
 		<fields name="params">
 			<fieldset name="basic">
-				<field name="position" label="Position" type="list" default="0">
-					<option value="0">Top</option>
-					<option value="1">Bottom</option>
+				<field name="www" label="Domain Setting" type="list" default="0" description="This is a very essential setting for the shariff backend function to show the number of shares. Please select your desired domain setting: e.g. www.example.com or example.com">
+					<option value="0">without www</option>
+					<option value="1">with www</option>
 					</field>
-				<field name="orientation" label="Orienation" type="list" default="default">
+				<field name="position" label="Position" type="list" default="0" description="Select the position from the social buttons.">
+					<option value="0">Content Top</option>
+					<option value="1">Content Bottom</option>
+					</field>
+				<field name="orientation" label="Orienation" type="list" default="default" description="Select the orienatation!">
 					<option value="default">Horizontal</option>
 					<option value="vertical">Vertical</option>
 					</field>
-				<field name="theme" label="Theme" type="list" default="default">
+				<field name="theme" label="Theme" type="list" default="default" description="Select a theme!">
 					<option value="default">Standard</option>
 					<option value="grey">Grey</option>
 					<option value="white">White</option>
@@ -42,9 +46,9 @@
 					<option value="mail">Mail - not working</option>
 					<option value="info">Info</option>
 					</field>
-				<field name="mail" type="text" label="Mail" />
-				<field name="info" type="text" label="Info Page Url" />
-				<field name="showbycategory" showon="restrict:2" type="category" multiple="true" extension="com_content" label="Restrict to a category" description="" />
+				<field name="mail" type="text" label="Mail" placeholder="info@example.com" />
+				<field name="info" type="text" label="Info Page Url" placeholder="http://example.com/shariff.html" />
+				<field name="showbycategory" showon="restrict:2" type="category" multiple="true" extension="com_content" label="Restrict to a category" description="If no category selected, the buttons appear in every category. If one or more categories are selected, the buttons appear only in this categories!" />
 			</fieldset>
 		</fields>
 	</config>
