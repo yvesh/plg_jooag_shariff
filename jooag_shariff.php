@@ -12,17 +12,16 @@ defined('_JEXEC') or die;
 
 class PlgContentJooag_shariff extends JPlugin
 {	
+	public function __construct(&$subject, $config){
 
-    public function __construct(&$subject, $config){
+		$view = JFactory::getApplication()->input->getWord('view');
 
-        $view = JFactory::getApplication()->input->getWord('view');
+		if($view != 'article'){
+			return;
+		}
 
-        if($view != 'article'){
-            return;
-        }
-
-        parent::__construct($subject, $config);
-    }
+		parent::__construct($subject, $config);
+	}
 	
 	public function onContentBeforeDisplay($context, &$article, &$params, $page = 0){
 		$output = $this->getOutput('0');
