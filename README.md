@@ -19,6 +19,7 @@ Joomla 3.3+
 <li>Add the Buttons in Modules and Articles via this shortcode {shariff}</li>
 <li>Better JS handling</li>
 <li>Remove the constructor and use the $context</li>
+<li>JSON handling overhaul</li>
 </ul>
 
 Developed by http://joomla-agentur.de
