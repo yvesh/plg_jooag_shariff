@@ -8,9 +8,6 @@
 <b>Description:</b>
 A Joomla 3 Plugin for Social Media Icons as shariff integration
 
-<b>Featurs:</b>
-soon...
-
 <b>Required:</b>
 PHP 5.4+ and Joomla 3.3+
 
