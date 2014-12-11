@@ -15,6 +15,8 @@ Don't use this on large and production Sites. First of all it's a beta and secon
 <ul>
 <li>Global Position for the Buttons</li>
 <li>Add the Buttons in Modules and Articles via this shortcode {shariff}</li>
+<li>Better JS handling</li>
+<li>Remove the constructor and use the $context</li>
 </ul>
 
 Developed by http://joomla-agentur.de
