@@ -2,16 +2,16 @@
 
 A Joomla 3 Plugin for Social Media Icons as shariff integration
 
-Featurs:
+<b>Featurs:</b>
 soon...
 
-Required:
+<b>Required:</b>
 PHP 5.4+
 
-Attention:
+<b>Attention:</b>
 Don't use this on large and production Sites. First of all it's a beta and second i must find a better way with the json handling. Now every Plugin call generates a new json File, with possible performance impact.
 
-Comming soon:
+<b>Comming soon:</b>
 <ul>
 <li>Global Position for the Buttons</li>
 <li>Add the Buttons in Modules and Articles via this shortcode {shariff}</li>
