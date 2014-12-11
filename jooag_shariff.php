@@ -66,8 +66,10 @@ class PlgContentJooag_Shariff extends JPlugin
 		if ($this->params->get('position') == $position AND ((is_array($setCatId) && in_array($currentCatId, $setCatId)) OR empty($setCatId)))
 		{
 			$doc = JFactory::getDocument();
-			$lang = JFactory::getLanguage();
+			$lang = explode("-", JFactory::getLanguage()->getTag());
 			JHtml::_('jquery.framework');
+
+			$this->generateJSON();
 
 			$doc->addScript(JURI::root() . 'plugins/content/jooag_shariff/shariff.min.js');
 			$doc->addStyleSheet(JURI::root() . 'plugins/content/jooag_shariff/shariff.min.css');
@@ -76,13 +78,40 @@ class PlgContentJooag_Shariff extends JPlugin
 			$services = '&quot;' . $services . '&quot;';
 
 			$output = '<div data-theme="' . $this->params->get('theme')
-				. '" data-lang="' . $lang->getLocale()[7]
+				. '" data-lang="' . $lang[0]
 				. '" data-orientation="' . $this->params->get('orientation')
 				. '" data-url="' . JURI::current()
 				. '" data-info-url="' . $this->params->get('info')
-				. '" data-services="[' . $services . ']" data-backend-url="/plugins/content/jooag_shariff/backend" data-referrer-track="null" class="shariff"></div>';
+				. '" data-services="[' . $services . ']" data-backend-url="/plugins/content/jooag_shariff/backend/" class="shariff"></div>';
 		}
 
 		return $output;
+	}
+
+	/**
+	 * writes a file for shariff backend
+	 *
+	 * @return void
+	 */
+	public function generateJSON()
+	{
+		$jsonString = file_get_contents(JPATH_ROOT . '/plugins/content/jooag_shariff/backend/shariff.json');
+		$data = json_decode($jsonString);
+
+		$domain = str_ireplace("www.", "", JURI::getInstance()->getHost());
+
+		if ($this->params->get('www') == 0)
+		{
+			$www = '';
+		}
+		else
+		{
+			$www = 'www.';
+		}
+
+		$data->domain = $www . $domain;
+		$data = json_encode($data);
+
+		JFile::write(JPATH_ROOT . '/plugins/content/jooag_shariff/backend/shariff.json', $data);
 	}
 }
