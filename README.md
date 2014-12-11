@@ -10,10 +10,7 @@ A Joomla 3 Plugin for Social Media Icons as shariff integration
 soon...
 
 <b>Required:</b>
-
-PHP 5.4+
-
-Joomla 3.3+
+PHP 5.4+ and Joomla 3.3+
 
 <b>Comming soon:</b>
 <ul>
