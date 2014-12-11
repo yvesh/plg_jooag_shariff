@@ -34,25 +34,9 @@ class PlgContentJooag_shariff extends JPlugin
 		$setCatId = $this->params->get('showbycategory');
 		$currentCatId = JFactory::getApplication()->input->getInt('catid');
 		$output = '';
-			
+		$this->generateJSON();
+		
 		if($this->params->get('position') == $position and ((is_array($setCatId) && in_array($currentCatId,$setCatId)) or empty($setCatId))){
-			
-			//Json generation
-			$jsonString = file_get_contents('plugins/content/jooag_shariff/backend/shariff.json');
-			$data = json_decode($jsonString);
-			$domain = explode("//",JURI::base());
-			$domain = str_replace("/", "", $domain);
-			$www = $this->params->get('www');
-			if($this->params->get('www') == 0){
-				$www = '';
-			}else{
-				$www = 'www.';
-			}
-			$data->domain = $www.$domain[1];
-			echo $data->domain;
-			$data = json_encode($data);
-			file_put_contents('plugins/content/jooag_shariff/backend/shariff.json', $data);
-			
 			$doc = JFactory::getDocument();
 			$lang = JFactory::getLanguage();
 			$lang = explode("-", $lang->getTag());
@@ -65,5 +49,21 @@ class PlgContentJooag_shariff extends JPlugin
 			$output .= '<script src="plugins/content/jooag_shariff/shariff.min.js"></script>';
 		}
 		return $output;
+	}
+	
+	public function generateJSON(){
+		$jsonString = file_get_contents('plugins/content/jooag_shariff/backend/shariff.json');
+		$data = json_decode($jsonString);
+		$domain = explode("//",JURI::base());
+		$domain = str_replace("/", "", $domain);
+		$www = $this->params->get('www');
+		if($this->params->get('www') == 0){
+			$www = '';
+		}else{
+			$www = 'www.';
+		}
+		$data->domain = $www.$domain[1];
+		$data = json_encode($data);
+		file_put_contents('plugins/content/jooag_shariff/backend/shariff.json', $data);
 	}
 }
