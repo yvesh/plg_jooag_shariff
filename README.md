@@ -19,9 +19,7 @@ PHP 5.4+ and Joomla 3.3+
 <li>Global Position for the Buttons</li>
 <li>Add the Buttons in Modules and Articles via this shortcode {shariff}</li>
 <li>Better JS handling</li>
-<li>Remove the constructor and use the $context</li>
 <li>JSON handling overhaul</li>
-<li>JURI::current() problem - shariff backend works only with activated sef in j3</li>
 </ul>
 
 Developed by http://joomla-agentur.de
