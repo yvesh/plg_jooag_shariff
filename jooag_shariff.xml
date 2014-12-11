@@ -21,7 +21,7 @@
 
 	<config>
 		<fields name="params">
-			<fieldset name="basic">
+			<fieldset name="basic" addfieldpath="/plugins/content/jooag_shariff/fields">
 				<field name="www" label="Domain Setting" type="list" default="0" description="This is a very essential setting for the shariff backend function to show the number of shares. Please select your desired domain setting: e.g. www.example.com or example.com">
 					<option value="0">without www</option>
 					<option value="1">with www</option>
@@ -43,12 +43,10 @@
 					<option value="twitter">Twitter</option>
 					<option value="facebook">Facebook</option>
 					<option value="googleplus">Google+</option>
-					<option value="mail">Mail - not working</option>
-					<option value="info">Info</option>
 					</field>
-				<field name="mail" type="text" label="Mail" placeholder="info@example.com" />
-				<field name="info" type="text" label="Info Page Url" placeholder="http://example.com/shariff.html" />
+				<field name="info" type="modal_article" default="" label="Select an article" description="You can choose a info page for your visitors" />
 				<field name="showbycategory" showon="restrict:2" type="category" multiple="true" extension="com_content" label="Restrict to a category" description="If no category selected, the buttons appear in every category. If one or more categories are selected, the buttons appear only in this categories!" />
+				
 			</fieldset>
 		</fields>
 	</config>

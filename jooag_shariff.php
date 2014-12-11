@@ -17,20 +17,6 @@ defined('_JEXEC') or die;
 class PlgContentJooag_Shariff extends JPlugin
 {
 	/**
-	 * renders the buttons only in article view
-	 **/
-	public function __construct(&$subject, $config)
-	{
-		$view = JFactory::getApplication()->input->getWord('view');
-		
-		if($view != 'article'){
-			return;
-		}
-		
-		parent::__construct($subject, $config);
-	}
-	
-	/**
 	 * renders the buttons before the article
 	 *
 	 * @param   string   $context   The context of the content being passed to the plugin.
@@ -42,9 +28,12 @@ class PlgContentJooag_Shariff extends JPlugin
 	 */
 	public function onContentBeforeDisplay($context, &$article, &$params, $page = 0)
 	{
-		$output = $this->getOutput('0');
-
-		return $output;
+		if($context == 'com_content.article')
+		{
+			$output = $this->getOutput('0');
+			
+			return $output;
+		}
 	}
 
 	/**
@@ -59,9 +48,12 @@ class PlgContentJooag_Shariff extends JPlugin
 	 */
 	public function onContentAfterDisplay($context, &$article, &$params, $page = 0)
 	{
-		$output = $this->getOutput('1');
-
-		return $output;
+		if($context == 'com_content.article')
+		{
+			$output = $this->getOutput('1');
+			
+			return $output;
+		}
 	}
 
 	/**
@@ -86,22 +78,29 @@ class PlgContentJooag_Shariff extends JPlugin
 			JHtml::_('jquery.framework');
 
 			$this->generateJSON();
-
-			$services = implode("&quot;,&quot;", $this->params->get('services'));
+			
+			$services = $this->params->get('services');
+			if($this->params->get('info'))
+			{
+				array_push($services, "info" );
+			}
+			
+			
+			$services = implode("&quot;,&quot;", $services );
 			$services = '&quot;' . $services . '&quot;';
 
 			$output = '<div data-theme="' . $this->params->get('theme')
 				. '" data-lang="' . $lang[0]
 				. '" data-orientation="' . $this->params->get('orientation')
-				. '" data-url="' . JURI::current()
-				. '" data-info-url="' . $this->params->get('info')
+				. '" data-url="' . JURI::getInstance()->toString()
+				. '" data-info-url="/index.php?option=com_content&view=article&id='.$this->params->get('info')
 				. '" data-services="[' . $services . ']" data-backend-url="/plugins/content/jooag_shariff/backend/" class="shariff"></div>'
 				. '<script src="plugins/content/jooag_shariff/shariff.min.js"></script>';
 		}
 
 		return $output;
 	}
-
+	
 	/**
 	 * writes a file for shariff backend
 	 *
