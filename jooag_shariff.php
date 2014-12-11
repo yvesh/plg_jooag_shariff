@@ -17,6 +17,20 @@ defined('_JEXEC') or die;
 class PlgContentJooag_Shariff extends JPlugin
 {
 	/**
+	 * renders the buttons only in article view
+	 **/
+	public function __construct(&$subject, $config)
+	{
+		$view = JFactory::getApplication()->input->getWord('view');
+		
+		if($view != 'article'){
+			return;
+		}
+		
+		parent::__construct($subject, $config);
+	}
+	
+	/**
 	 * renders the buttons before the article
 	 *
 	 * @param   string   $context   The context of the content being passed to the plugin.
@@ -66,13 +80,12 @@ class PlgContentJooag_Shariff extends JPlugin
 		if ($this->params->get('position') == $position AND ((is_array($setCatId) && in_array($currentCatId, $setCatId)) OR empty($setCatId)))
 		{
 			$doc = JFactory::getDocument();
+			$doc->addStyleSheet(JURI::root() . 'plugins/content/jooag_shariff/shariff.min.css');
+			
 			$lang = explode("-", JFactory::getLanguage()->getTag());
 			JHtml::_('jquery.framework');
 
 			$this->generateJSON();
-
-			$doc->addScript(JURI::root() . 'plugins/content/jooag_shariff/shariff.min.js');
-			$doc->addStyleSheet(JURI::root() . 'plugins/content/jooag_shariff/shariff.min.css');
 
 			$services = implode("&quot;,&quot;", $this->params->get('services'));
 			$services = '&quot;' . $services . '&quot;';
@@ -82,7 +95,8 @@ class PlgContentJooag_Shariff extends JPlugin
 				. '" data-orientation="' . $this->params->get('orientation')
 				. '" data-url="' . JURI::current()
 				. '" data-info-url="' . $this->params->get('info')
-				. '" data-services="[' . $services . ']" data-backend-url="/plugins/content/jooag_shariff/backend/" class="shariff"></div>';
+				. '" data-services="[' . $services . ']" data-backend-url="/plugins/content/jooag_shariff/backend/" class="shariff"></div>'
+				. '<script src="plugins/content/jooag_shariff/shariff.min.js"></script>';
 		}
 
 		return $output;
