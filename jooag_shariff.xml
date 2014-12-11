@@ -13,10 +13,10 @@
 	</description>
 	
 	<files>
-		<folder plugin="jooag_shariff">backend</folder>
+		<folder>backend</folder>
 		<filename plugin="jooag_shariff">jooag_shariff.php</filename>
-		<filename plugin="jooag_shariff">shariff.min.js</filename>
-		<filename plugin="jooag_shariff">shariff.min.css</filename>
+		<filename>shariff.min.js</filename>
+		<filename>shariff.min.css</filename>
 	</files>
 
 	<config>
