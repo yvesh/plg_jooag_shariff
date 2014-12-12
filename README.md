@@ -1,9 +1,10 @@
-<h3>Shariff integration for Joomla 3.3+</h3>
+<h2>Shariff integration for Joomla 3.3+</h2>
 
-<h4>Attention:</h4>
-<p><b>Share Counter:</b><br/>
+<h3>Attention:</h3>
+<hr/>
+<h6>Share Counter:</h6>
 It's really important for the counter to use the url only with www or non-www. We advice to use non-www! The following explanation is to redirect www to non-www</p>
-<p><b>To redirect www to non-www do the following steps:</b></p>
+<h6>To redirect www to non-www do the following steps:</h6>
 <ol>
 <li>Rename the htaccess.txt in your joomla root folder to .htaccess</li>
 <li>Add following lines in the end of the .htaccess file</li>
