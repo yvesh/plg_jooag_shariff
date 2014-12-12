@@ -7,11 +7,11 @@ It's really important for the counter to use the url only with www or non-www. W
 <ol>
 <li>Rename the htaccess.txt in your joomla root folder to .htaccess</li>
 <li>Add following lines in the end of the .htaccess file</li>
-        ```
+<pre>
 RewriteBase /
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
-        ```
+</pre>
 <li>At least you need to open this plugin and save it again!</li>
 </code>
 </ol>
