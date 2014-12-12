@@ -77,7 +77,7 @@ class PlgContentJooag_Shariff extends JPlugin
 			$lang = explode("-", JFactory::getLanguage()->getTag());
 			JHtml::_('jquery.framework');
 
-			$this->generateJSON();
+			//$this->generateJSON();
 			
 			$services = $this->params->get('services');
 			if($this->params->get('info'))
@@ -97,8 +97,9 @@ class PlgContentJooag_Shariff extends JPlugin
 				. '" data-services="[' . $services . ']" data-backend-url="/plugins/content/jooag_shariff/backend/" class="shariff"></div>'
 				. '<script src="plugins/content/jooag_shariff/shariff.min.js"></script>';
 		}
-
+		echo JURI::getInstance()->getHost();
 		return $output;
+
 	}
 	
 	/**
@@ -106,25 +107,15 @@ class PlgContentJooag_Shariff extends JPlugin
 	 *
 	 * @return void
 	 */
-	public function generateJSON()
+	public function onExtensionAfterSave()
 	{
+		
 		$jsonString = file_get_contents(JPATH_ROOT . '/plugins/content/jooag_shariff/backend/shariff.json');
 		$data = json_decode($jsonString);
-
-		$domain = str_ireplace("www.", "", JURI::getInstance()->getHost());
-
-		if ($this->params->get('www') == 0)
-		{
-			$www = '';
-		}
-		else
-		{
-			$www = 'www.';
-		}
-
-		$data->domain = $www . $domain;
+		$data->domain = JURI::getInstance()->getHost();
 		$data = json_encode($data);
 
 		JFile::write(JPATH_ROOT . '/plugins/content/jooag_shariff/backend/shariff.json', $data);
+
 	}
 }

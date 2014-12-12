@@ -10,6 +10,22 @@
 	<version>3.x.0 Alpha</version>
 	<description>
 	A small Plugin to share Social Links!
+	<![CDATA[
+	<h4>Attention:</h4>
+	<p><b>Share Counter:</b><br/>
+	It's really important for the counter to use the url only with www or non-www. We advice to use non-www! The following explanation is to redirect www to non-www</p>
+	<p><b>To redirect www to non-www do the following steps:</b></p>
+	<ol>
+	<li>Rename the htaccess.txt in your joomla root folder to .htaccess</li>
+	<li>Add following lines in the end of the .htaccess file</li>
+	<code>RewriteBase /</code></br>
+	<code>RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]</code></br>
+	<code>RewriteRule ^(.*)$ http://%1/$1 [R=301,L]</code>
+	<li>At least you need to open this plugin and save it again!</li>
+	</code>
+	</ol>
+	</p>
+	]]>
 	</description>
 	
 	<files>
@@ -23,10 +39,6 @@
 	<config>
 		<fields name="params">
 			<fieldset name="basic" addfieldpath="/plugins/content/jooag_shariff/fields">
-				<field name="www" label="Domain Setting" type="list" default="0" description="This is a very essential setting for the shariff backend function to show the number of shares. Please select your desired domain setting: e.g. www.example.com or example.com">
-					<option value="0">without www</option>
-					<option value="1">with www</option>
-					</field>
 				<field name="position" label="Position" type="list" default="0" description="Select the position from the social buttons.">
 					<option value="0">Content Top</option>
 					<option value="1">Content Bottom</option>
