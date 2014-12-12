@@ -8,9 +8,13 @@ It's really important for the counter to use the url only with www or non-www. W
 <li>Rename the htaccess.txt in your joomla root folder to .htaccess</li>
 <li>Add following lines in the end of the .htaccess file</li>
 <code>
-RewriteBase /</br>
-RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]</br>
+
+RewriteBase /
+
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+
 RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
 </code>
 <li>At least you need to open this plugin and save it again!</li>
 </code>
