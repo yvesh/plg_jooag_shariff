@@ -97,7 +97,6 @@ class PlgContentJooag_Shariff extends JPlugin
 				. '" data-services="[' . $services . ']" data-backend-url="/plugins/content/jooag_shariff/backend/" class="shariff"></div>'
 				. '<script src="plugins/content/jooag_shariff/shariff.min.js"></script>';
 		}
-		echo JURI::getInstance()->getHost();
 		return $output;
 
 	}
