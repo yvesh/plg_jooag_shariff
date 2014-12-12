@@ -7,14 +7,16 @@ It's really important for the counter to use the url only with www or non-www. W
 <ol>
 <li>Rename the htaccess.txt in your joomla root folder to .htaccess</li>
 <li>Add following lines in the end of the .htaccess file</li>
-<code>RewriteBase /</code></br>
-<code>RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]</code></br>
-<code>RewriteRule ^(.*)$ http://%1/$1 [R=301,L]</code>
+<code>
+RewriteBase /
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+</code>
 <li>At least you need to open this plugin and save it again!</li>
 </code>
 </ol>
 </p>
-
+<hr/>
 <b>Description:</b>
 A Joomla 3 Plugin for Social Media Icons as shariff integration
 
