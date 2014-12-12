@@ -109,13 +109,10 @@ class PlgContentJooag_Shariff extends JPlugin
 	 */
 	public function onExtensionAfterSave()
 	{
-		
 		$jsonString = file_get_contents(JPATH_ROOT . '/plugins/content/jooag_shariff/backend/shariff.json');
 		$data = json_decode($jsonString);
 		$data->domain = JURI::getInstance()->getHost();
 		$data = json_encode($data);
-
 		JFile::write(JPATH_ROOT . '/plugins/content/jooag_shariff/backend/shariff.json', $data);
-
 	}
 }
