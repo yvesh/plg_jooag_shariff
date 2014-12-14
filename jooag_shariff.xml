@@ -44,6 +44,13 @@
 				<field name="position" label="Position" type="list" default="0" description="Select the position from the social buttons.">
 					<option value="0">Content Top</option>
 					<option value="1">Content Bottom</option>
+					<option value="2">Only in Module</option>
+					</field>
+				<field type="spacer" name="myspacer" showon="position:2" label="Add a new Custom Module and use {shariff} in the Editor field!" />
+				<field name="classPosition" label="Position mode" type="list" default="" description="">
+					<option value="">Default</option>
+					<option value="posfixed">Fixed</option>
+					<option value="posabsolute">Absolute</option>
 					</field>
 				<field name="orientation" label="Orienation" type="list" default="default" description="Select the orienatation!">
 					<option value="default">Horizontal</option>

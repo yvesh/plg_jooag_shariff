@@ -25,12 +25,12 @@ class PlgContentJooag_Shariff extends JPlugin
 	 * @param   integer  $page      Optional page number. Unused. Defaults to zero.
 	 *
 	 * @return  string
-	 */
+	 */	
 	public function onContentBeforeDisplay($context, &$article, &$params, $page = 0)
 	{
 		if($context == 'com_content.article')
 		{
-			$output = $this->getOutput('0');
+			$output = $this->getOutputPosition('0');
 			
 			return $output;
 		}
@@ -50,12 +50,22 @@ class PlgContentJooag_Shariff extends JPlugin
 	{
 		if($context == 'com_content.article')
 		{
-			$output = $this->getOutput('1');
+			$output = $this->getOutputPosition('1');
 			
 			return $output;
 		}
 	}
-
+	
+	/**
+	 * place shariff in your aticles and modules via {shariff} experimental
+	*/
+	public function onContentPrepare($context, &$article, &$params, $page = 0)
+	{	
+		if($context == 'mod_custom.content'){
+			$article->text = preg_replace( "#{shariff}#s", $this->getOutputPosition('2'), $article->text );
+		}
+	} 
+	
 	/**
 	 * appends the required scripts to the documents and returns the markup
 	 *
@@ -63,42 +73,51 @@ class PlgContentJooag_Shariff extends JPlugin
 	 *
 	 * @return string
 	 */
-	public function getOutput($position)
+	public function getOutputPosition($position)
 	{
 		$setCatId = $this->params->get('showbycategory');
 		$currentCatId = JFactory::getApplication()->input->getInt('catid');
-		$output = '';
-
-		if ($this->params->get('position') == $position AND ((is_array($setCatId) && in_array($currentCatId, $setCatId)) OR empty($setCatId)))
+		
+		if (($this->params->get('position') == $position) AND ((is_array($setCatId) && in_array($currentCatId, $setCatId)) OR empty($setCatId)))
 		{
-			$doc = JFactory::getDocument();
-			$doc->addStyleSheet(JURI::root() . 'plugins/content/jooag_shariff/shariff.min.css');
+			$output = $this->getOutput();
 			
-			$lang = explode("-", JFactory::getLanguage()->getTag());
-			JHtml::_('jquery.framework');
-
-			//$this->generateJSON();
-			
-			$services = $this->params->get('services');
-			if($this->params->get('info'))
-			{
-				array_push($services, "info" );
-			}
-			
-			
-			$services = implode("&quot;,&quot;", $services );
-			$services = '&quot;' . $services . '&quot;';
-
-			$output = '<div data-theme="' . $this->params->get('theme')
-				. '" data-lang="' . $lang[0]
-				. '" data-orientation="' . $this->params->get('orientation')
-				. '" data-url="' . JURI::getInstance()->toString()
-				. '" data-info-url="/index.php?option=com_content&view=article&id='.$this->params->get('info')
-				. '" data-services="[' . $services . ']" data-backend-url="/plugins/content/jooag_shariff/backend/" class="shariff"></div>'
-				. '<script src="plugins/content/jooag_shariff/shariff.min.js"></script>';
+			return $output;
 		}
-		return $output;
+		
+	}
 
+	/**
+	* Shariff output generation
+	**/
+	public function getOutput()
+	{
+		$output = '';
+		
+		$doc = JFactory::getDocument();
+		$doc->addStyleSheet(JURI::root() . 'plugins/content/jooag_shariff/shariff.min.css');
+		
+		$lang = explode("-", JFactory::getLanguage()->getTag());
+		JHtml::_('jquery.framework');
+		
+		$services = $this->params->get('services');
+		if($this->params->get('info'))
+		{
+			array_push($services, "info" );
+		}
+				
+		$services = implode("&quot;,&quot;", $services );
+		$services = '&quot;' . $services . '&quot;';
+
+		$output = '<div data-theme="' . $this->params->get('theme')
+			. '" data-lang="' . $lang[0]
+			. '" data-orientation="' . $this->params->get('orientation')
+			. '" data-url="' . JURI::getInstance()->toString()
+			. '" data-info-url="/index.php?option=com_content&view=article&id='.$this->params->get('info')
+			. '" data-services="[' . $services . ']" data-backend-url="/plugins/content/jooag_shariff/backend/" class="shariff"></div>'
+			. '<script src="plugins/content/jooag_shariff/shariff.min.js"></script>';
+			
+		return $output;
 	}
 	
 	/**
