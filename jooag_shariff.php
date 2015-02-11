@@ -28,7 +28,7 @@ class PlgContentJooag_Shariff extends JPlugin
 	 */	
 	public function onContentBeforeDisplay($context, &$article, &$params, $page = 0)
 	{
-		if($context == 'com_content.article')
+		if($context == 'com_content.article' and JString::strpos( $article->text, '{shariff}' ) == true)
 		{
 			$output = $this->getOutputPosition('0');
 			
@@ -48,7 +48,7 @@ class PlgContentJooag_Shariff extends JPlugin
 	 */
 	public function onContentAfterDisplay($context, &$article, &$params, $page = 0)
 	{
-		if($context == 'com_content.article')
+		if($context == 'com_content.article' and JString::strpos( $article->text, '{shariff}' ) == true)
 		{
 			$output = $this->getOutputPosition('1');
 			
@@ -61,7 +61,7 @@ class PlgContentJooag_Shariff extends JPlugin
 	*/
 	public function onContentPrepare($context, &$article, &$params, $page = 0)
 	{	
-		if($context == 'mod_custom.content'){
+		if($context == 'mod_custom.content' and JString::strpos( $article->text, '{shariff}' ) == true){
 			$article->text = preg_replace( "#{shariff}#s", $this->getOutputPosition('2'), $article->text );
 		}
 	} 
@@ -109,13 +109,13 @@ class PlgContentJooag_Shariff extends JPlugin
 		$services = implode("&quot;,&quot;", $services );
 		$services = '&quot;' . $services . '&quot;';
 
-		$output = '<div data-theme="' . $this->params->get('theme')
+		$output = '<div class="shariff" data-theme="' . $this->params->get('theme')
 			. '" data-lang="' . $lang[0]
 			. '" data-orientation="' . $this->params->get('orientation')
 			. '" data-url="' . JURI::getInstance()->toString()
 			. '" data-info-url="/index.php?option=com_content&view=article&id='.$this->params->get('info')
 			. '" data-services="[' . $services . ']" data-backend-url="/plugins/content/jooag_shariff/backend/" class="shariff"></div>'
-			. '<script src="plugins/content/jooag_shariff/shariff.min.js"></script>';
+			. '<script src="plugins/content/jooag_shariff/shariff.complete.js"></script>';
 			
 		return $output;
 	}
