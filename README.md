@@ -33,8 +33,6 @@ PHP 5.4+ and Joomla 3.3+
 
 <b>Comming soon & Problems:</b>
 <ul>
-<li>Global Position for the Buttons</li>
-<li>Add the Buttons in Modules and Articles via this shortcode {shariff}</li>
 <li>Better JS handling</li>
 </ul>
 
@@ -45,3 +43,6 @@ Thanks to Heise.de for this development https://github.com/heiseonline/shariff
 Dedicated for Joomla! Deutschland Facebook Group https://www.facebook.com/groups/joomla.deutschland/
 
 and for Joomla User Group Hamburg http://jug-hamburg.de/ (the main reason for this plugin :-)
+
+<h3>Usage as Shortcode</h3>
+You can put into your content or custom_html module the following shortcode: <code>{shariff}</code> . If you use a custom_html Module, please set the Option "Prepare Content" to Yes.
