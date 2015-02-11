@@ -46,7 +46,7 @@
 					<option value="1">Content Bottom</option>
 					<option value="2">Only in Module</option>
 					</field>
-				<field type="spacer" name="myspacer" showon="position:2" label="Add a new Custom Module and use {shariff} in the Editor field!" />
+				<field type="spacer" name="myspacer" showon="position:2" label="Add a new Custom Module and use {shariff} in the Editor field ans set the Modul Option 'Content Prepare' to yes!" />
 				<field name="classPosition" label="Position mode" type="list" default="" description="">
 					<option value="">Default</option>
 					<option value="posfixed">Fixed</option>
