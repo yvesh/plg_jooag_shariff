@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="3.0" type="plugin" method="upgrade" group="content">
+<extension version="3.3" type="plugin" method="upgrade" group="content">
 	<name>JooAg Shariff</name>
 	<author>Ufuk Avcu</author>
 	<creationDate>13.11.2014</creationDate>
