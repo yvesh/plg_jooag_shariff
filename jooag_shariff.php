@@ -115,7 +115,7 @@ class PlgContentJooag_Shariff extends JPlugin
 			. '" data-url="' . JURI::getInstance()->toString()
 			. '" data-info-url="/index.php?option=com_content&view=article&id='.$this->params->get('info')
 			. '" data-services="[' . $services . ']" data-backend-url="/plugins/content/jooag_shariff/backend/" class="shariff"></div>'
-			. '<script src="plugins/content/jooag_shariff/shariff.complete.js"></script>';
+			. '<script src="plugins/content/jooag_shariff/shariff.min.js"></script>';
 			
 		return $output;
 	}
