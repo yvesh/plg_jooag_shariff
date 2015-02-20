@@ -28,7 +28,7 @@ class PlgContentJooag_Shariff extends JPlugin
 	 */	
 	public function onContentBeforeDisplay($context, &$article, &$params, $page = 0)
 	{
-		if($context == 'com_content.article' and JString::strpos( $article->text, '{shariff}' ) == true)
+		if($context == 'com_content.article' and $this->params->get('position') == '0')
 		{
 			$output = $this->getOutputPosition('0');
 			
@@ -47,8 +47,8 @@ class PlgContentJooag_Shariff extends JPlugin
 	 * @return  string
 	 */
 	public function onContentAfterDisplay($context, &$article, &$params, $page = 0)
-	{
-		if($context == 'com_content.article' and JString::strpos( $article->text, '{shariff}' ) == true)
+	{		
+		if($context == 'com_content.article' and $this->params->get('position') == '1')
 		{
 			$output = $this->getOutputPosition('1');
 			
@@ -61,8 +61,9 @@ class PlgContentJooag_Shariff extends JPlugin
 	*/
 	public function onContentPrepare($context, &$article, &$params, $page = 0)
 	{	
-		if($context == 'mod_custom.content' and JString::strpos( $article->text, '{shariff}' ) == true){
-			$article->text = preg_replace( "#{shariff}#s", $this->getOutputPosition('2'), $article->text );
+		if($context == 'mod_custom.content' and JString::strpos( $article->text, '{shariff}' )  !== false and $this->params->get('position') == '2')
+		{
+			$article->text = preg_replace( "#{shariff}#s", $this->getOutputPosition('2'), $article->text );	
 		}
 	} 
 	
@@ -77,7 +78,7 @@ class PlgContentJooag_Shariff extends JPlugin
 	{
 		$setCatId = $this->params->get('showbycategory');
 		$currentCatId = JFactory::getApplication()->input->getInt('catid');
-		
+
 		if (($this->params->get('position') == $position) AND ((is_array($setCatId) && in_array($currentCatId, $setCatId)) OR empty($setCatId)))
 		{
 			$output = $this->getOutput();
@@ -95,10 +96,12 @@ class PlgContentJooag_Shariff extends JPlugin
 		$output = '';
 		
 		$doc = JFactory::getDocument();
-		$doc->addStyleSheet(JURI::root() . 'plugins/content/jooag_shariff/shariff.min.css');
+		$doc->addStyleSheet(JURI::root() . 'plugins/content/jooag_shariff/assets/shariff.min.css');
 		
 		$lang = explode("-", JFactory::getLanguage()->getTag());
 		JHtml::_('jquery.framework');
+		
+		//$this->generateJSON();
 		
 		$services = $this->params->get('services');
 		if($this->params->get('info'))
@@ -115,7 +118,7 @@ class PlgContentJooag_Shariff extends JPlugin
 			. '" data-url="' . JURI::getInstance()->toString()
 			. '" data-info-url="/index.php?option=com_content&view=article&id='.$this->params->get('info')
 			. '" data-services="[' . $services . ']" data-backend-url="/plugins/content/jooag_shariff/backend/" class="shariff"></div>'
-			. '<script src="plugins/content/jooag_shariff/shariff.complete.js"></script>';
+			. '<script src="plugins/content/jooag_shariff/assets/shariff.min.js"></script>';
 			
 		return $output;
 	}
@@ -125,7 +128,7 @@ class PlgContentJooag_Shariff extends JPlugin
 	 *
 	 * @return void
 	 */
-	public function onExtensionAfterSave()
+	public function onExtensionAfterUpdate()
 	{
 		$jsonString = file_get_contents(JPATH_ROOT . '/plugins/content/jooag_shariff/backend/shariff.json');
 		$data = json_decode($jsonString);
