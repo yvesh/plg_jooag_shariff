@@ -35,6 +35,7 @@
 		<folder>fields</folder>
 		<filename plugin="jooag_shariff">jooag_shariff.php</filename>
 		<filename>shariff.min.js</filename>
+		<filename>shariff.complete.js</filename>
 		<filename>shariff.min.css</filename>
 	</files>
 
