@@ -35,6 +35,7 @@
 		<folder>fields</folder>
 		<folder>assets</folder>
 		<filename plugin="jooag_shariff">jooag_shariff.php</filename>
+		<filename plugin="jooag_shariff">README.md</filename>
 	</files>
 
 	<config>
