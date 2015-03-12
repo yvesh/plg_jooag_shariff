@@ -9,7 +9,7 @@
 	<authorUrl>www.joomla-agentur.de</authorUrl>
 	<version>3.x.0 Alpha</version>
 	<description>
-	A small Plugin to share Social Links!
+	A small Plugin to share Social Links without compromising their privacy!
 	<![CDATA[
 	<h4>Attention:</h4>
 	<p><b>Share Counter:</b><br/>
@@ -68,6 +68,10 @@
 				<field name="cache" type="text" default="60" label="Caching Time in seconds" description="" filter="integer" />
 				<field name="shariffcss" type="filelist" default="shariff.complete.css" label="Shariff CSS" description="" directory="plugins/system/jooag_shariff/assets/css" filter="css" />
 				<field name="shariffjs" type="filelist" default="shariff.complete.js" label="Shariff JS" description="" directory="plugins/system/jooag_shariff/assets/js" filter="js" />
+				<field name="shariffbackend" label="Share Counter" type="list" default="1" description="">
+					<option value="0">Disabled</option>
+					<option value="1">Enabled</option>
+					</field>
 			</fieldset>
 		</fields>
 	</config>

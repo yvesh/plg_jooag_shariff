@@ -5,15 +5,15 @@
  * @author     Joomla Agentur <info@joomla-agentur.de>
  * @copyright  Copyright (c) 2009 - 2015 Joomla-Agentur All rights reserved.
  * @license    GNU General Public License version 2 or later;
- * @description A small Plugin to share Social Links!
- */
+ * @description A small Plugin to share Social Links without compromising their privacy!
+ **/
 defined('_JEXEC') or die;
 
 /**
  * Class PlgContentJooag_Shariff
  *
  * @since  1.0.0
- */
+ **/
 class plgSystemJooag_Shariff extends JPlugin
 {	
 	/**
@@ -25,7 +25,7 @@ class plgSystemJooag_Shariff extends JPlugin
 	 * @param   integer  $page      Optional page number. Unused. Defaults to zero.
 	 *
 	 * @return  string
-	 */	
+	 **/	
 	public function onContentBeforeDisplay($context, &$article, &$params, $page = 0)
 	{
 		if($context == 'com_content.article' and $this->params->get('position') == '0')
@@ -45,7 +45,7 @@ class plgSystemJooag_Shariff extends JPlugin
 	 * @param   integer  $page      Optional page number. Unused. Defaults to zero.
 	 *
 	 * @return  string
-	 */
+	 **/
 	public function onContentAfterDisplay($context, &$article, &$params, $page = 0)
 	{		
 		if($context == 'com_content.article' and $this->params->get('position') == '1')
@@ -58,7 +58,7 @@ class plgSystemJooag_Shariff extends JPlugin
 	
 	/**
 	 * place shariff in your aticles and modules via {shariff} experimental
-	*/
+	 **/
 	public function onContentPrepare($context, &$article, &$params, $page = 0)
 	{	
 		if($context == 'mod_custom.content' and JString::strpos( $article->text, '{shariff}' )  !== false and $this->params->get('position') == '2')
@@ -73,7 +73,7 @@ class plgSystemJooag_Shariff extends JPlugin
 	 * @param   integer  $position  current position
 	 *
 	 * @return string
-	 */
+	 **/
 	public function getOutputPosition($position)
 	{
 		$setCatId = $this->params->get('showbycategory');
@@ -89,8 +89,8 @@ class plgSystemJooag_Shariff extends JPlugin
 	}
 
 	/**
-	* Shariff output generation
-	**/
+	 * Shariff output generation
+	 **/
 	public function getOutput()
 	{
 		$doc = JFactory::getDocument();
@@ -100,32 +100,34 @@ class plgSystemJooag_Shariff extends JPlugin
 		JHtml::_('jquery.framework');
 				
 		$services = $this->params->get('services');
+		
 		if($this->params->get('info'))
 		{
 			array_push($services, "info" );
 		}
-				
+		
 		$services = implode("&quot;,&quot;", $services );
 		$services = '&quot;' . $services . '&quot;';
 
-		$output = '<div class="shariff" data-theme="' . $this->params->get('theme')
-					. '" data-lang="' . $lang[0]
-					. '" data-orientation="' . $this->params->get('orientation')
-					. '" data-url="' . JURI::getInstance()->toString()
-					. '" data-info-url="/index.php?option=com_content&view=article&id='.$this->params->get('info')
-					. '" data-services="[' . $services . ']"'
-					. '" data-backend-url="/plugins/system/jooag_shariff/backend/"></div>'
-					. '<script src="plugins/system/jooag_shariff/assets/js/'.$this->params->get('shariffjs').'"></script>';
-			
-		return $output;
+		$html  = '<div class="shariff"';
+		$html .= ' data-theme="'.$this->params->get('theme').'"';
+		$html .= ' data-lang="'.$lang[0].'"';
+		$html .= ' data-orientation="'.$this->params->get('orientation').'"';
+		$html .= ' data-url="'.JURI::getInstance()->toString().'"';
+		$html .= ($this->params->get('info')) ? ' data-info-url="/index.php?option=com_content&view=article&id='.$this->params->get('info').'"' : '';
+		$html .= ' data-services="[' . $services . ']"';
+		$html .= ($this->params->get('shariffbackend')) ? ' data-backend-url="/plugins/system/jooag_shariff/backend/"' : '';
+		$html .= '></div>';
+		$html .= '<script src="plugins/system/jooag_shariff/assets/js/'.$this->params->get('shariffjs').'"></script>';
+
+		return $html;
 	}
 	
 	/**
 	 * writes a file for shariff backend
 	 *
 	 * @return void
-	 */
-	 
+	 **/
 	public function onExtensionAfterSave()
 	{
 		$jsonString = file_get_contents(JPATH_PLUGINS . '/system/jooag_shariff/backend/shariff.json');
