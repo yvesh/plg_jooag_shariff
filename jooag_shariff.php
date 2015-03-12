@@ -14,8 +14,8 @@ defined('_JEXEC') or die;
  *
  * @since  1.0.0
  */
-class PlgContentJooag_Shariff extends JPlugin
-{
+class plgSystemJooag_Shariff extends JPlugin
+{	
 	/**
 	 * renders the buttons before the article
 	 *
@@ -93,16 +93,12 @@ class PlgContentJooag_Shariff extends JPlugin
 	**/
 	public function getOutput()
 	{
-		$output = '';
-		
 		$doc = JFactory::getDocument();
-		$doc->addStyleSheet(JURI::root() . 'plugins/content/jooag_shariff/assets/shariff.min.css');
+		$doc->addStyleSheet(JURI::root() . 'plugins/system/jooag_shariff/assets/css/'.$this->params->get('shariffcss'));
 		
 		$lang = explode("-", JFactory::getLanguage()->getTag());
 		JHtml::_('jquery.framework');
-		
-		//$this->generateJSON();
-		
+				
 		$services = $this->params->get('services');
 		if($this->params->get('info'))
 		{
@@ -113,12 +109,13 @@ class PlgContentJooag_Shariff extends JPlugin
 		$services = '&quot;' . $services . '&quot;';
 
 		$output = '<div class="shariff" data-theme="' . $this->params->get('theme')
-			. '" data-lang="' . $lang[0]
-			. '" data-orientation="' . $this->params->get('orientation')
-			. '" data-url="' . JURI::getInstance()->toString()
-			. '" data-info-url="/index.php?option=com_content&view=article&id='.$this->params->get('info')
-			. '" data-services="[' . $services . ']" data-backend-url="/plugins/content/jooag_shariff/backend/" class="shariff"></div>'
-			. '<script src="plugins/content/jooag_shariff/assets/shariff.min.js"></script>';
+					. '" data-lang="' . $lang[0]
+					. '" data-orientation="' . $this->params->get('orientation')
+					. '" data-url="' . JURI::getInstance()->toString()
+					. '" data-info-url="/index.php?option=com_content&view=article&id='.$this->params->get('info')
+					. '" data-services="[' . $services . ']"'
+					. '" data-backend-url="/plugins/system/jooag_shariff/backend/"></div>'
+					. '<script src="plugins/system/jooag_shariff/assets/js/'.$this->params->get('shariffjs').'"></script>';
 			
 		return $output;
 	}
@@ -128,12 +125,14 @@ class PlgContentJooag_Shariff extends JPlugin
 	 *
 	 * @return void
 	 */
-	public function onExtensionAfterUpdate()
+	 
+	public function onExtensionAfterSave()
 	{
-		$jsonString = file_get_contents(JPATH_ROOT . '/plugins/content/jooag_shariff/backend/shariff.json');
-		$data = json_decode($jsonString);
-		$data->domain = JURI::getInstance()->getHost();
-		$data = json_encode($data);
-		JFile::write(JPATH_ROOT . '/plugins/content/jooag_shariff/backend/shariff.json', $data);
+			$jsonString = file_get_contents(JPATH_PLUGINS . '/system/jooag_shariff/backend/shariff.json');
+			$data = json_decode($jsonString);
+			$data->domain = JURI::getInstance()->getHost();
+			$data->cache->ttl = $this->params->get('cache');
+			$data = json_encode($data);
+			JFile::write(JPATH_PLUGINS . '/system/jooag_shariff/backend/shariff.json', $data);
 	}
 }

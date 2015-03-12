@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="3.3" type="plugin" method="upgrade" group="content">
+<extension version="3.3" type="plugin" method="upgrade" group="system">
 	<name>JooAg Shariff</name>
 	<author>Ufuk Avcu</author>
 	<creationDate>13.11.2014</creationDate>
@@ -39,7 +39,7 @@
 
 	<config>
 		<fields name="params">
-			<fieldset name="basic" addfieldpath="/plugins/content/jooag_shariff/fields">
+			<fieldset name="basic" addfieldpath="/plugins/system/jooag_shariff/fields">
 				<field name="position" label="Position" type="list" default="0" description="Select the position from the social buttons.">
 					<option value="0">Content Top</option>
 					<option value="1">Content Bottom</option>
@@ -59,10 +59,14 @@
 					<option value="twitter">Twitter</option>
 					<option value="facebook">Facebook</option>
 					<option value="googleplus">Google+</option>
+					<option value="whatsapp">Whatsapp</option>
+					<option value="mail">Mail</option>
 					</field>
-				<field name="info" type="modal_article" default="" label="Select an article" description="You can choose a info page for your visitors" />
-				<field name="showbycategory" showon="restrict:2" type="category" multiple="true" extension="com_content" label="Restrict to a category" description="If no category selected, the buttons appear in every category. If one or more categories are selected, the buttons appear only in this categories!" />
-				
+				<field name="info" type="modal_article" default="" label="Info Button Article" description="You can choose a info page for your visitors" />
+				<field name="showbycategory" type="category" multiple="true" extension="com_content" label="Show by categories" description="If no category selected, the buttons appear in every category. If one or more categories are selected, the buttons appear only in this categories!" />
+				<field name="cache" type="text" default="60" label="Caching Time in seconds" description="" filter="integer" />
+				<field name="shariffcss" type="filelist" default="shariff.complete.css" label="Shariff CSS" description="" directory="plugins/system/jooag_shariff/assets/css" filter="css" />
+				<field name="shariffjs" type="filelist" default="shariff.complete.js" label="Shariff JS" description="" directory="plugins/system/jooag_shariff/assets/js" filter="js" />
 			</fieldset>
 		</fields>
 	</config>
