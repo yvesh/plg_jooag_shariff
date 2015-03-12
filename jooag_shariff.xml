@@ -61,7 +61,7 @@
 					<option value="facebook">Facebook</option>
 					<option value="googleplus">Google+</option>
 					<option value="whatsapp">Whatsapp</option>
-					<option value="mail">Mail</option>
+					<option value="mail">Mail - Beta</option>
 					</field>
 				<field name="info" type="modal_article" default="" label="Info Button Article" description="You can choose a info page for your visitors" />
 				<field name="showbycategory" type="category" multiple="true" extension="com_content" label="Show by categories" description="If no category selected, the buttons appear in every category. If one or more categories are selected, the buttons appear only in this categories!" />
