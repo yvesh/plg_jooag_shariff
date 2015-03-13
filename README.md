@@ -3,7 +3,7 @@
 <h3>Attention:</h3>
 <hr/>
 <h6>Uninstall the Plugin before 3.0.13RC:</h6>
-It's really to delete the old Plugin, because of the new Plugin is a System Plugin, the old one was a Content Plugin.
+It's important to delete the old Plugin, because of the new Plugin is a System Plugin, the old one was a Content Plugin.
 <h6>Share Counter:</h6>
 It's really important for the counter to use the url only with www or non-www.
 <h6>To redirect www to non-www do the following steps:</h6>
