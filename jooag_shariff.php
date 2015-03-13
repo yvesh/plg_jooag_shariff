@@ -100,6 +100,7 @@ class plgSystemJooag_Shariff extends JPlugin
 		JHtml::_('jquery.framework');
 				
 		$services = $this->params->get('services');
+		print_r (json_encode($services));
 		
 		if($this->params->get('info'))
 		{

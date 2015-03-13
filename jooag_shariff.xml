@@ -56,7 +56,7 @@
 					<option value="grey">Grey</option>
 					<option value="white">White</option>
 					</field>
-				<field name="services" label="Services" multiple="true" type="list" default="twitter,facebook,googleplus,info">
+				<field name="services" label="Services" multiple="true" type="list" default="['twitter','facebook','googleplus'] ">
 					<option value="twitter">Twitter</option>
 					<option value="facebook">Facebook</option>
 					<option value="googleplus">Google+</option>
