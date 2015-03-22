@@ -30,7 +30,7 @@ class plgSystemJooag_Shariff extends JPlugin
 	{
 		if($context == 'com_content.article' and $this->params->get('position') == '0')
 		{
-			$output = $this->getOutputPosition('0');
+			$output = $this->getOutputPosition('0', $article);
 			
 			return $output;
 		}
@@ -48,12 +48,14 @@ class plgSystemJooag_Shariff extends JPlugin
 	 **/
 	public function onContentAfterDisplay($context, &$article, &$params, $page = 0)
 	{		
+
 		if($context == 'com_content.article' and $this->params->get('position') == '1')
 		{
-			$output = $this->getOutputPosition('1');
+			$output = $this->getOutputPosition('1', $article);
 			
 			return $output;
 		}
+
 	}
 	
 	/**
@@ -63,8 +65,9 @@ class plgSystemJooag_Shariff extends JPlugin
 	{	
 		if($context == 'mod_custom.content' and JString::strpos( $article->text, '{shariff}' )  !== false and $this->params->get('position') == '2')
 		{
-			$article->text = preg_replace( "#{shariff}#s", $this->getOutputPosition('2'), $article->text );	
+			$article->text = preg_replace( "#{shariff}#s", $this->getOutputPosition('2', $article), $article->text );	
 		}
+
 	} 
 	
 	/**
@@ -74,12 +77,11 @@ class plgSystemJooag_Shariff extends JPlugin
 	 *
 	 * @return string
 	 **/
-	public function getOutputPosition($position)
+	public function getOutputPosition($position, $article)
 	{
 		$setCatId = $this->params->get('showbycategory');
-		$currentCatId = JFactory::getApplication()->input->getInt('catid');
 
-		if (($this->params->get('position') == $position) AND ((is_array($setCatId) && in_array($currentCatId, $setCatId)) OR empty($setCatId)))
+		if (($this->params->get('position') == $position) AND ((is_array($setCatId) && in_array($article->catid, $setCatId)) OR empty($setCatId)))
 		{
 			$output = $this->getOutput();
 			
