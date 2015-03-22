@@ -80,8 +80,8 @@ class plgSystemJooag_Shariff extends JPlugin
 	public function getOutputPosition($position, $article)
 	{
 		$setCatId = $this->params->get('showbycategory');
-
-		if (($this->params->get('position') == $position) AND ((is_array($setCatId) && in_array($article->catid, $setCatId)) OR empty($setCatId)))
+		
+		if ((is_array($setCatId) && in_array($article->catid, $setCatId)) OR empty($setCatId))
 		{
 			$output = $this->getOutput();
 			
