@@ -28,7 +28,7 @@ class plgSystemJooag_Shariff extends JPlugin
 	 **/	
 	public function onContentBeforeDisplay($context, &$article, &$params, $page = 0)
 	{
-		if($context == 'com_content.article' and $this->params->get('position') == '0')
+		if($context == 'com_content.article' and $this->params->get('position') == '1')
 		{
 			$output = $this->getOutputPosition($article);
 			
@@ -49,7 +49,7 @@ class plgSystemJooag_Shariff extends JPlugin
 	public function onContentAfterDisplay($context, &$article, &$params, $page = 0)
 	{		
 
-		if($context == 'com_content.article' and $this->params->get('position') == '1')
+		if($context == 'com_content.article' and $this->params->get('position') == '2')
 		{
 			$output = $this->getOutputPosition($article);
 			
@@ -63,7 +63,7 @@ class plgSystemJooag_Shariff extends JPlugin
 	 **/
 	public function onContentPrepare($context, &$article, &$params, $page = 0)
 	{	
-		if($context == 'mod_custom.content' and JString::strpos( $article->text, '{shariff}' )  !== false and $this->params->get('position') == '2')
+		if($context == 'mod_custom.content' and JString::strpos( $article->text, '{shariff}' )  !== false and $this->params->get('position') == '3')
 		{
 			$article->text = preg_replace( "#{shariff}#s", $this->getOutputPosition($article), $article->text );	
 		}
@@ -98,30 +98,19 @@ class plgSystemJooag_Shariff extends JPlugin
 		$doc = JFactory::getDocument();
 		$doc->addStyleSheet(JURI::root() . 'plugins/system/jooag_shariff/assets/css/'.$this->params->get('shariffcss'));
 		
-		$lang = explode("-", JFactory::getLanguage()->getTag());
 		JHtml::_('jquery.framework');
 				
-		$services = $this->params->get('services');
-		
-		if($this->params->get('info'))
-		{
-			array_push($services, "info" );
-		}
-		
-		$services = implode("&quot;,&quot;", $services );
-		$services = '&quot;' . $services . '&quot;';
-
 		$html  = '<div class="shariff"';
-		$html .= ' data-theme="'.$this->params->get('theme').'"';
-		$html .= ' data-lang="'.$lang[0].'"';
-		$html .= ' data-orientation="'.$this->params->get('orientation').'"';
+		$html .= ($this->params->get('data-backend-url')) ? ' data-backend-url="/plugins/system/jooag_shariff/backend/"' : '';
+		$html .= ' data-lang="'.explode("-", JFactory::getLanguage()->getTag())[0].'"';
+		$html .= ($this->params->get('data-mail-url')) ? ' data-mail-url="mailto:'.$this->params->get('data-mail-url').'"' : '';
+		$html .= ' data-orientation="'.$this->params->get('data-orientation').'"';
+		$html .= ' data-services='.json_encode(array_map('strtolower', $this->params->get('data-services')));
+		$html .= ' data-theme="'.$this->params->get('data-theme').'"';
 		$html .= ' data-url="'.JURI::getInstance()->toString().'"';
-		$html .= ($this->params->get('info')) ? ' data-info-url="/index.php?option=com_content&view=article&id='.$this->params->get('info').'"' : '';
-		$html .= ' data-services="[' . $services . ']"';
-		$html .= ($this->params->get('shariffbackend')) ? ' data-backend-url="/plugins/system/jooag_shariff/backend/"' : '';
+		$html .= ($this->params->get('data-info-url')) ? ' data-info-url="/index.php?option=com_content&view=article&id='.$this->params->get('data-info-url').'"' : '';
 		$html .= '></div>';
 		$html .= '<script src="plugins/system/jooag_shariff/assets/js/'.$this->params->get('shariffjs').'"></script>';
-
 		return $html;
 	}
 	
@@ -135,6 +124,8 @@ class plgSystemJooag_Shariff extends JPlugin
 		$jsonString = file_get_contents(JPATH_PLUGINS . '/system/jooag_shariff/backend/shariff.json');
 		$data = json_decode($jsonString);
 		$data->domain = JURI::getInstance()->getHost();
+		$services = $this->params->get('data-services');
+		$data->services = array_diff($this->params->get('data-services'), array('mail', 'info'));
 		$data->cache->ttl = $this->params->get('cache');
 		$data = json_encode($data);
 		JFile::write(JPATH_PLUGINS . '/system/jooag_shariff/backend/shariff.json', $data);

@@ -41,34 +41,44 @@
 	<config>
 		<fields name="params">
 			<fieldset name="basic" addfieldpath="/plugins/system/jooag_shariff/fields">
-				<field name="position" label="Position" type="list" default="0" description="Select the position from the social buttons.">
-					<option value="0">Content Top</option>
-					<option value="1">Content Bottom</option>
-					<option value="2">Only in Module</option>
+				<field type="spacer" name="icons" label="&lt;h2&gt;Service Settings&lt;/h2&gt;" />
+				<field name="data-services" label="Services" multiple="true" type="list" default="">
+					<option value="Twitter">Twitter</option>
+					<option value="Facebook">Facebook</option>
+					<option value="GooglePlus">Google+</option>
+					<option value="LinkedIn">LinkedIn</option>
+					<option value="Pinterest">Pinterest</option>
+					<option value="Xing">Xing</option>
+					<option value="whatsapp">Whatsapp</option>
+					<option value="mail">Mail</option>
+					<option value="info">Info</option>
 					</field>
-				<field type="spacer" name="myspacer" showon="position:2" label="Add a new Custom Module and use {shariff} in the Editor field ans set the Modul Option 'Content Prepare' to yes!" />
-				<field name="orientation" label="Orienation" type="list" default="default" description="Select the orienatation!">
-					<option value="default">Horizontal</option>
+					
+
+				<field name="data-info-url" type="modal_article" default="" label="Info Button Article" description="You can choose a info page for your visitors" />
+				<field name="data-mail-url" type="input" default="" label="Mail" description="You can choose a info page for your visitors" />
+				<field type="spacer" name="style" label="&lt;h2&gt;Style and Position&lt;/h2&gt;" />
+				<field name="position" label="Position" type="radio" class="btn-group" default="1" description="Select the position from the social buttons.">
+					<option value="1">Content Top</option>
+					<option value="2">Content Bottom</option>
+					<option value="3">Only in Module</option>
+					</field>
+				<field type="spacer" name="myspacer" showon="position:3" label="Add a new Custom Module and use {shariff} in the Editor field ans set the Modul Option 'Content Prepare' to yes!" />
+				<field name="data-orientation" label="Orienation" type="radio" class="btn-group" default="default" description="Select the orienatation!">
+					<option value="horizontal">Horizontal</option>
 					<option value="vertical">Vertical</option>
 					</field>
-				<field name="theme" label="Theme" type="list" default="default" description="Select a theme!">
-					<option value="default">Standard</option>
+				<field name="data-theme" label="Theme" type="radio" class="btn-group" default="standard" description="Select a theme!">
+					<option value="color">Color</option>
 					<option value="grey">Grey</option>
 					<option value="white">White</option>
 					</field>
-				<field name="services" label="Services" multiple="true" type="list" default="twitter,facebook,googleplus,info">
-					<option value="twitter">Twitter</option>
-					<option value="facebook">Facebook</option>
-					<option value="googleplus">Google+</option>
-					<option value="whatsapp">Whatsapp</option>
-					<option value="mail">Mail - Beta</option>
-					</field>
-				<field name="info" type="modal_article" default="" label="Info Button Article" description="You can choose a info page for your visitors" />
 				<field name="showbycategory" type="category" multiple="true" extension="com_content" label="Show by categories" description="If no category selected, the buttons appear in every category. If one or more categories are selected, the buttons appear only in this categories!" />
+				<field type="spacer" name="forexperts" label="&lt;h2&gt;For Experts&lt;/h2&gt;" />
 				<field name="cache" type="text" default="60" label="Caching Time in seconds" description="" filter="integer" />
 				<field name="shariffcss" type="filelist" default="shariff.complete.css" label="Shariff CSS" description="" directory="plugins/system/jooag_shariff/assets/css" filter="css" />
 				<field name="shariffjs" type="filelist" default="shariff.complete.js" label="Shariff JS" description="" directory="plugins/system/jooag_shariff/assets/js" filter="js" />
-				<field name="shariffbackend" label="Share Counter" type="list" default="1" description="">
+				<field name="data-backend-url" label="Share Counter" type="radio" class="btn-group" default="1" description="">
 					<option value="0">Disabled</option>
 					<option value="1">Enabled</option>
 					</field>
