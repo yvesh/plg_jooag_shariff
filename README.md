@@ -1,7 +1,7 @@
 <h2>Shariff integration for Joomla 3.3+</h2>
 
 <h3>Attention:</h3>
-<h4>Settings need to be revisited</h4>
+<h5>Settings need to be revisited</h5>
 After the Update from a previos Version before V3.0.0-RC5, please open the Plugin in "Joomla Administrator -> Extensions -> Plugin -> JooAg Shariff" and set the settings again. This is needed because some of the xml definitions are now more consistent to the shariff definitions and need to be changed.
 <hr/>
 <h6>Uninstall the Plugin before 3.0.13RC:</h6>
