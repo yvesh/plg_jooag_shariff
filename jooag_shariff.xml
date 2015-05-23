@@ -20,8 +20,8 @@
 	</files>
 	
 	<languages>
-		<language tag="en-GB">en-GB.plg_jooag_shariff.ini</language>
-		<language tag="en-GB">en-GB.plg_jooag_shariff.sys.ini</language>
+		<language tag="en-GB">language/en-GB.plg_jooag_shariff.ini</language>
+		<language tag="en-GB">language/en-GB.plg_jooag_shariff.sys.ini</language>
 	</languages>
 
 	<config>
