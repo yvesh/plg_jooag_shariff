@@ -41,7 +41,7 @@
 				<field name="data-info-url" type="modal_article" label="PLG_JOOAG_SHARIFF_INFO_BUTTON_ARTICLE"/>
 				<field name="data-mail-url" type="input" label="PLG_JOOAG_SHARIFF_MAIL" />
 			</fieldset>
-			<fieldset name="PLG_JOOAG_SHARIFF_STYLE" addfieldpath="/plugins/system/jooag_shariff/fields">
+			<fieldset name="PLG_JOOAG_SHARIFF_STYLE" >
 				<field name="position" label="PLG_JOOAG_SHARIFF_POSITION" type="radio" class="btn-group" default="1" >
 					<option value="1">PLG_JOOAG_SHARIFF_CONTENT_TOP</option>
 					<option value="2">PLG_JOOAG_SHARIFF_CONTENT_BOTTOM</option>
@@ -58,7 +58,7 @@
 					<option value="white">PLG_JOOAG_SHARIFF_WHITE</option>
 					</field>
 			</fieldset>
-			<fieldset name="PLG_JOOAG_SHARIFF_RESTRICTION" addfieldpath="/plugins/system/jooag_shariff/fields">
+			<fieldset name="PLG_JOOAG_SHARIFF_RESTRICTION">
 				<field name="wheretoshow" label="PLG_JOOAG_SHARIFF_SHOW" type="list" class="btn-group" default="1" >
 					<option value="1">PLG_JOOAG_SHARIFF_SHOW_EVERYWHERE</option>
 					<option value="2">PLG_JOOAG_SHARIFF_SHOW_CAT_MENU</option>
@@ -67,7 +67,7 @@
 				<field name="showbycategory" type="category" multiple="true" extension="com_content" label="PLG_JOOAG_SHARIFF_CATEGORIES" />
 				<field name="showbymenu" type="menuitem" multiple="true" label="PLG_JOOAG_SHARIFF_MENU_ITEMS" />
 			</fieldset>	
-			<fieldset name="PLG_JOOAG_SHARIFF_EXPERTS" addfieldpath="/plugins/system/jooag_shariff/fields">
+			<fieldset name="PLG_JOOAG_SHARIFF_EXPERTS">
 				<field name="cache" type="text" default="60" label="PLG_JOOAG_SHARIFF_CACHE_TIME" filter="integer" />
 				<field name="shariffcss" type="filelist" default="shariff.complete.css" label="PLG_JOOAG_SHARIFF_CSS" directory="plugins/system/jooag_shariff/assets/css" filter="css" />
 				<field name="shariffjs" type="filelist" default="shariff.complete.js" label="PLG_JOOAG_SHARIFF_JS" directory="plugins/system/jooag_shariff/assets/js" filter="js" />
