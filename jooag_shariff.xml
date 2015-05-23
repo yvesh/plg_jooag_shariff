@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.3" type="plugin" method="upgrade" group="system">
-	<name>plg_jooag_shariff</name>
+	<name>PLG_JOOAG_SHARIFF</name>
 	<author>Ufuk Avcu</author>
 	<creationDate>13.11.2014</creationDate>
 	<copyright>Copyright (C) 2009 - 2015 Joomla Agency. All rights reserved.</copyright>
