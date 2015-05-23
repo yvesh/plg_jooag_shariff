@@ -41,7 +41,7 @@
 					</field>
 				<field name="data-info-url" type="modal_article" default="" label="Info Button Article" description="You can choose a info page for your visitors" />
 				<field name="data-mail-url" type="input" default="" label="Mail" description="You can choose a info page for your visitors" />
-				<field type="spacer" name="style" label="&lt;h2&gt;Style&lt;/h2&gt;" />
+				<field type="spacer" name="style" label="&lt;h2&gt; Style &lt;/h2&gt;" />
 				<field name="position" label="Position" type="radio" class="btn-group" default="1" description="Select the position from the social buttons.">
 					<option value="1">Content Top</option>
 					<option value="2">Content Bottom</option>
