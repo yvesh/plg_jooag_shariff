@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.3" type="plugin" method="upgrade" group="system">
-	<name>JooAg Shariff</name>
+	<name>plg_jooag_shariff</name>
 	<author>Ufuk Avcu</author>
 	<creationDate>13.11.2014</creationDate>
 	<copyright>Copyright (C) 2009 - 2015 Joomla Agency. All rights reserved.</copyright>
@@ -8,40 +8,26 @@
 	<authorEmail>info@joomla-agentur.de</authorEmail>
 	<authorUrl>www.joomla-agentur.de</authorUrl>
 	<version>3.x.0 Alpha</version>
-	<description>
-	A small Plugin to share Social Links without compromising their privacy!
-	<![CDATA[
-	<h4>Attention:</h4>
-	<p><b>Share Counter:</b><br/>
-	It's really important for the counter to use the url only with www or non-www.</p>
-	<ol>
-	<li>Rename the htaccess.txt in your joomla root folder to .htaccess</li>
-	<li>Add following lines in the end of the .htaccess file</li>
-	<code>RewriteBase /</code></br>
-	<code>RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]</code></br>
-	<code>RewriteRule ^(.*)$ http://%1/$1 [R=301,L]</code>
-	or
-	<code>RewriteCond %{HTTP_HOST} !^www\.</code></br>
-	<code>RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]</code>
-	<li>At least you need to open this plugin and save it again!</li>
-	</code>
-	</ol>
-	</p>
-	]]>
-	</description>
-	
+	<description>PLG_JOOAG_SHARIFF_XML_DESCRIPTION</description>
+
 	<files>
+		<folder>assets</folder>
 		<folder>backend</folder>
 		<folder>fields</folder>
-		<folder>assets</folder>
+		<folder>language</folder>
 		<filename plugin="jooag_shariff">jooag_shariff.php</filename>
 		<filename plugin="jooag_shariff">README.md</filename>
 	</files>
+	
+	<languages>
+		<language tag="en-GB">en-GB.plg_jooag_shariff.ini</language>
+		<language tag="en-GB">en-GB.plg_jooag_shariff.sys.ini</language>
+	</languages>
 
 	<config>
 		<fields name="params">
 			<fieldset name="basic" addfieldpath="/plugins/system/jooag_shariff/fields">
-				<field type="spacer" name="icons" label="&lt;h2&gt;Service Settings&lt;/h2&gt;" />
+				<field type="spacer" name="icons" label="&lt;h2&gt;PLG_JOOAG_SHARIFF_SPACER_ICONS&lt;/h2&gt;" />
 				<field name="data-services" label="Services" multiple="true" type="list" default="">
 					<option value="Twitter">Twitter</option>
 					<option value="Facebook">Facebook</option>
