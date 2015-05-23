@@ -55,13 +55,13 @@
 					</field>
 				<field name="data-info-url" type="modal_article" default="" label="Info Button Article" description="You can choose a info page for your visitors" />
 				<field name="data-mail-url" type="input" default="" label="Mail" description="You can choose a info page for your visitors" />
-				<field type="spacer" name="style" label="&lt;h2&gt;Style and Position&lt;/h2&gt;" />
+				<field type="spacer" name="style" label="&lt;h2&gt;Style&lt;/h2&gt;" />
 				<field name="position" label="Position" type="radio" class="btn-group" default="1" description="Select the position from the social buttons.">
 					<option value="1">Content Top</option>
 					<option value="2">Content Bottom</option>
 					<option value="3">Only in Module</option>
 					</field>
-				<field type="spacer" name="myspacer" showon="position:3" label="Add a new Custom Module and use {shariff} in the Editor field ans set the Modul Option 'Content Prepare' to yes!" />
+				<field type="spacer" name="myspacer" showon="position:3" label="&lt;b&gt;Attention:&lt;/b&gt; Add a new Custom Module and use {shariff} in the Editor field ans set the Modul Option 'Content Prepare' to yes!&lt;/br&gt;&lt;b&gt;Attention:&lt;/b&gt; If you use the &lt;i&gt;Only in Module&lt;/i&gt; Mode, then the Restriction Settings has no effect." />
 				<field name="data-orientation" label="Orienation" type="radio" class="btn-group" default="default" description="Select the orienatation!">
 					<option value="horizontal">Horizontal</option>
 					<option value="vertical">Vertical</option>
@@ -71,7 +71,16 @@
 					<option value="grey">Grey</option>
 					<option value="white">White</option>
 					</field>
-				<field name="showbycategory" type="category" multiple="true" extension="com_content" label="Show by categories" description="If no category selected, the buttons appear in every category. If one or more categories are selected, the buttons appear only in this categories!" />
+				<field type="spacer" name="Restriction" label="&lt;h2&gt;Restriction&lt;/h2&gt;" />
+				<field name="wheretoshow" label="Show" type="list" class="btn-group" default="1" >
+					<option value="1">Everywhere</option>
+					<option value="2">Show by Category or Menu Item</option>
+					<option value="3">Hide by Category or Menu Item</option>
+					</field>
+				<field type="spacer" name="selectedareas" showon="wheretoshow:2,3" label="Please use the fields below to show the Shariff Plugin on selected areas!" />
+				<field name="showbycategory" type="category" multiple="true" extension="com_content" label="Categories" description="If one or more categories are selected, the buttons appear only in this categories!" />
+				<field name="showbymenu" type="menuitem" multiple="true" label="Menu Items" />	
+				
 				<field type="spacer" name="forexperts" label="&lt;h2&gt;For Experts&lt;/h2&gt;" />
 				<field name="cache" type="text" default="60" label="Caching Time in seconds" description="" filter="integer" />
 				<field name="shariffcss" type="filelist" default="shariff.complete.css" label="Shariff CSS" description="" directory="plugins/system/jooag_shariff/assets/css" filter="css" />

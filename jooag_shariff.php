@@ -77,11 +77,36 @@ class plgSystemJooag_Shariff extends JPlugin
 	 *
 	 * @return string
 	 **/
-	public function getOutputPosition( $article)
+	public function getOutputPosition($article)
 	{
-		$setCatId = $this->params->get('showbycategory');
+		$catCount = '0';
+		$menuCount = '0';
+		$catIds = $this->params->get('showbycategory');
+		$menuIds = $this->params->get('showbymenu');
+		$app = JFactory::getApplication();
+		$actualMenuId = $app->getMenu()->getActive()->id;
+
+		if ((is_array($catIds) AND in_array($article->catid, $catIds)) AND $this->params->get('wheretoshow') == '2')
+		{
+			$catCount = '1';
+		}
 		
-		if ((is_array($setCatId) AND in_array($article->catid, $setCatId)) OR empty($setCatId))
+		if ((is_array($catIds) AND !in_array($article->catid, $catIds)) AND $this->params->get('wheretoshow') == '3')
+		{	
+			$catCount = '1';
+		}
+		
+		if ((is_array($menuIds) AND in_array($actualMenuId, $menuIds)) AND $this->params->get('wheretoshow') == '2')
+		{
+			$menuCount = '1';
+		}
+		
+		if ((is_array($menuIds) AND !in_array($actualMenuId, $menuIds)) AND $this->params->get('wheretoshow') == '3')
+		{	
+			$menuCount = '1';
+		}
+
+		if($catCount == '1' or $menuCount =='1' or $this->params->get('wheretoshow') == '1' or $this->params->get('position') == '3')
 		{
 			$output = $this->getOutput();
 			
