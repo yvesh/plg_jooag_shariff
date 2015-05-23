@@ -8,7 +8,7 @@
 	<authorEmail>info@joomla-agentur.de</authorEmail>
 	<authorUrl>www.joomla-agentur.de</authorUrl>
 	<version>3.x.0 Alpha</version>
-	<description> PLG_JOOAG_SHARIFF_XML_DESCRIPTION </description>
+	<description>PLG_JOOAG_SHARIFF_XML_DESCRIPTION</description>
 
 	<files>
 		<folder>assets</folder>
@@ -27,7 +27,7 @@
 	<config>
 		<fields name="params">
 			<fieldset name="basic" addfieldpath="/plugins/system/jooag_shariff/fields">
-				<field type="spacer" name="icons" label="&lt;h2&gt; PLG_JOOAG_SHARIFF_SPACER_ICONS &lt;/h2&gt;" />
+				<field type="spacer" name="icons" label="PLG_JOOAG_SHARIFF_SPACER_ICONS" />
 				<field name="data-services" label="Services" multiple="true" type="list" default="">
 					<option value="Twitter">Twitter</option>
 					<option value="Facebook">Facebook</option>
