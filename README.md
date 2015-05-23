@@ -33,6 +33,14 @@ A Joomla 3 Plugin for Social Media Icons as shariff integration
 <b>Required:</b>
 PHP 5.4+ and Joomla 3.4+
 
+<b>Features:</b>
+Services: Twitter, Facebook, GooglePlus, LinkedIn, Pinterest, Xing, Whatsapp
+Themes: Color, Grey, White
+Orientation: Horizontal, Vertical
+Responsive: Yes
+Shariff Languages: bg, de, en, es, fi, hr, hu, ja, ko, no, pl, pt, ro, ru, sk, sl, sr, sv, tr, zh
+Counter: Shariff Backend PHP integration
+
 Developed by http://joomla-agentur.de
 
 Thanks to Heise.de for this development https://github.com/heiseonline/shariff
