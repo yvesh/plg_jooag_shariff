@@ -1,4 +1,4 @@
-<h1>Shariff integration for Joomla 3.3+</h1>
+<h1>Shariff integration for Joomla 3.4+</h1>
 
 <h2>Attention:</h2>
 <h4>Settings need to be revisited</h4>
@@ -31,12 +31,7 @@ RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
 A Joomla 3 Plugin for Social Media Icons as shariff integration
 
 <b>Required:</b>
-PHP 5.4+ and Joomla 3.3+
-
-<b>Comming soon & Problems:</b>
-<ul>
-<li>Better JS handling</li>
-</ul>
+PHP 5.4+ and Joomla 3.4+
 
 Developed by http://joomla-agentur.de
 
