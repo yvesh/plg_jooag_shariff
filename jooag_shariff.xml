@@ -7,7 +7,7 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>info@joomla-agentur.de</authorEmail>
 	<authorUrl>www.joomla-agentur.de</authorUrl>
-	<version>3.x.0 Alpha</version>
+	<version>3.0.0-RC10</version>
 	<description>PLG_JOOAG_SHARIFF_XML_DESCRIPTION</description>
 
 	<files>
@@ -24,10 +24,6 @@
 		<language tag="en-GB">en-GB/en-GB.plg_system_jooag_shariff.sys.ini</language>
 	</languages>
 	
-	<updateservers>
-		<server type="extension" priority="2" name="JooAg Shariff">http://extensions.joomla-agency.com/index.php?option=com_ars&view=update&task=stream&format=xml&id=1</server>
-	</updateservers>
-
 	<config>
 		<fields name="params">
 			<fieldset name="PLG_JOOAG_SHARIFF_BASIC" addfieldpath="/plugins/system/jooag_shariff/fields">
