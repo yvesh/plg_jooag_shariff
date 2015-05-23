@@ -48,14 +48,12 @@ class plgSystemJooag_Shariff extends JPlugin
 	 **/
 	public function onContentAfterDisplay($context, &$article, &$params, $page = 0)
 	{		
-
 		if($context == 'com_content.article' and $this->params->get('position') == '2')
 		{
 			$output = $this->getOutputPosition($article);
 			
 			return $output;
 		}
-
 	}
 	
 	/**
@@ -67,7 +65,6 @@ class plgSystemJooag_Shariff extends JPlugin
 		{
 			$article->text = preg_replace( "#{shariff}#s", $this->getOutputPosition($article), $article->text );	
 		}
-
 	} 
 	
 	/**
@@ -112,7 +109,6 @@ class plgSystemJooag_Shariff extends JPlugin
 			
 			return $output;
 		}
-		
 	}
 
 	/**
@@ -121,9 +117,10 @@ class plgSystemJooag_Shariff extends JPlugin
 	public function getOutput()
 	{
 		$doc = JFactory::getDocument();
-		$doc->addStyleSheet(JURI::root() . 'plugins/system/jooag_shariff/assets/css/'.$this->params->get('shariffcss'));
-		
 		JHtml::_('jquery.framework');
+		$doc->addStyleSheet(JURI::root() . 'plugins/system/jooag_shariff/assets/css/'.$this->params->get('shariffcss'));
+		$doc->addScript(JURI::root() . 'plugins/system/jooag_shariff/assets/js/'.$this->params->get('shariffjs'));
+		$doc->addScriptDeclaration( 'jQuery(document).ready(function() {var buttonsContainer = $(".shariff");new Shariff(buttonsContainer);});' );
 				
 		$html  = '<div class="shariff"';
 		$html .= ($this->params->get('data-backend-url')) ? ' data-backend-url="/plugins/system/jooag_shariff/backend/"' : '';
@@ -135,7 +132,6 @@ class plgSystemJooag_Shariff extends JPlugin
 		$html .= ' data-url="'.JURI::getInstance()->toString().'"';
 		$html .= ($this->params->get('data-info-url')) ? ' data-info-url="/index.php?option=com_content&view=article&id='.$this->params->get('data-info-url').'"' : '';
 		$html .= '></div>';
-		$html .= '<script src="plugins/system/jooag_shariff/assets/js/'.$this->params->get('shariffjs').'"></script>';
 		return $html;
 	}
 	
