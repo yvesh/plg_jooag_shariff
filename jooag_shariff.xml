@@ -26,9 +26,8 @@
 
 	<config>
 		<fields name="params">
-			<fieldset name="basic" addfieldpath="/plugins/system/jooag_shariff/fields">
-				<field type="spacer" name="icons" label="PLG_JOOAG_SHARIFF_SPACER_ICONS" />
-				<field name="data-services" label="Services" multiple="true" type="list" default="">
+			<fieldset name="PLG_JOOAG_SHARIFF_BASIC" addfieldpath="/plugins/system/jooag_shariff/fields">
+				<field name="data-services" label="PLG_JOOAG_SHARIFF_SERVICES" multiple="true" type="list" >
 					<option value="Twitter">Twitter</option>
 					<option value="Facebook">Facebook</option>
 					<option value="GooglePlus">Google+</option>
@@ -39,42 +38,44 @@
 					<option value="mail">Mail</option>
 					<option value="info">Info</option>
 					</field>
-				<field name="data-info-url" type="modal_article" default="" label="Info Button Article" description="You can choose a info page for your visitors" />
-				<field name="data-mail-url" type="input" default="" label="Mail" description="You can choose a info page for your visitors" />
-				<field type="spacer" name="style" label="&lt;h2&gt; Style &lt;/h2&gt;" />
-				<field name="position" label="Position" type="radio" class="btn-group" default="1" description="Select the position from the social buttons.">
-					<option value="1">Content Top</option>
-					<option value="2">Content Bottom</option>
-					<option value="3">Only in Module</option>
+				<field name="data-info-url" type="modal_article" label="PLG_JOOAG_SHARIFF_INFO_BUTTON_ARTICLE"/>
+				<field name="data-mail-url" type="input" label="PLG_JOOAG_SHARIFF_MAIL" />
+			</fieldset>
+			<fieldset name="PLG_JOOAG_SHARIFF_STYLE" addfieldpath="/plugins/system/jooag_shariff/fields">
+				<field name="position" label="PLG_JOOAG_SHARIFF_POSITION" type="radio" class="btn-group" default="1" >
+					<option value="1">PLG_JOOAG_SHARIFF_CONTENT_TOP</option>
+					<option value="2">PLG_JOOAG_SHARIFF_CONTENT_BOTTOM</option>
+					<option value="3">PLG_JOOAG_SHARIFF_ONLY_IN_MODULE</option>
 					</field>
 				<field type="spacer" name="myspacer" showon="position:3" label="&lt;b&gt;Attention:&lt;/b&gt; Add a new Custom Module and use {shariff} in the Editor field ans set the Modul Option 'Content Prepare' to yes!&lt;/br&gt;&lt;b&gt;Attention:&lt;/b&gt; If you use the &lt;i&gt;Only in Module&lt;/i&gt; Mode, then the Restriction Settings has no effect." />
-				<field name="data-orientation" label="Orienation" type="radio" class="btn-group" default="default" description="Select the orienatation!">
-					<option value="horizontal">Horizontal</option>
-					<option value="vertical">Vertical</option>
+				<field name="data-orientation" label="PLG_JOOAG_SHARIFF_ORIENATATION" type="radio" class="btn-group" default="horizontal">
+					<option value="horizontal">PLG_JOOAG_SHARIFF_HORIZONTAL</option>
+					<option value="vertical">PLG_JOOAG_SHARIFF_VERTICAL</option>
 					</field>
-				<field name="data-theme" label="Theme" type="radio" class="btn-group" default="standard" description="Select a theme!">
-					<option value="color">Color</option>
-					<option value="grey">Grey</option>
-					<option value="white">White</option>
-					</field>
-				<field type="spacer" name="Restriction" label="&lt;h2&gt;Restriction&lt;/h2&gt;" />
-				<field name="wheretoshow" label="Show" type="list" class="btn-group" default="1" >
-					<option value="1">Everywhere</option>
-					<option value="2">Show by Category or Menu Item</option>
-					<option value="3">Hide by Category or Menu Item</option>
-					</field>
-				<field type="spacer" name="selectedareas" showon="wheretoshow:2,3" label="Please use the fields below to show the Shariff Plugin on selected areas!" />
-				<field name="showbycategory" type="category" multiple="true" extension="com_content" label="Categories" description="If one or more categories are selected, the buttons appear only in this categories!" />
-				<field name="showbymenu" type="menuitem" multiple="true" label="Menu Items" />
-				<field type="spacer" name="forexperts" label="&lt;h2&gt;For Experts&lt;/h2&gt;" />
-				<field name="cache" type="text" default="60" label="Caching Time in seconds" description="" filter="integer" />
-				<field name="shariffcss" type="filelist" default="shariff.complete.css" label="Shariff CSS" description="" directory="plugins/system/jooag_shariff/assets/css" filter="css" />
-				<field name="shariffjs" type="filelist" default="shariff.complete.js" label="Shariff JS" description="" directory="plugins/system/jooag_shariff/assets/js" filter="js" />
-				<field name="data-backend-url" label="Share Counter" type="radio" class="btn-group" default="1" description="">
-					<option value="0">Disabled</option>
-					<option value="1">Enabled</option>
+				<field name="data-theme" label="PLG_JOOAG_SHARIFF_THEME" type="radio" class="btn-group" default="color" >
+					<option value="color">PLG_JOOAG_SHARIFF_COLOR</option>
+					<option value="grey">PLG_JOOAG_SHARIFF_GREY</option>
+					<option value="white">PLG_JOOAG_SHARIFF_WHITE</option>
 					</field>
 			</fieldset>
+			<fieldset name="PLG_JOOAG_SHARIFF_RESTRICTION" addfieldpath="/plugins/system/jooag_shariff/fields">
+				<field name="wheretoshow" label="PLG_JOOAG_SHARIFF_SHOW" type="list" class="btn-group" default="1" >
+					<option value="1">PLG_JOOAG_SHARIFF_SHOW_EVERYWHERE</option>
+					<option value="2">PLG_JOOAG_SHARIFF_SHOW_CAT_MENU</option>
+					<option value="3">PLG_JOOAG_SHARIFF_HIDE_CAT_MENU</option>
+					</field>
+				<field name="showbycategory" type="category" multiple="true" extension="com_content" label="PLG_JOOAG_SHARIFF_CATEGORIES" />
+				<field name="showbymenu" type="menuitem" multiple="true" label="PLG_JOOAG_SHARIFF_MENU_ITEMS" />
+			</fieldset>	
+			<fieldset name="PLG_JOOAG_SHARIFF_EXPERTS" addfieldpath="/plugins/system/jooag_shariff/fields">
+				<field name="cache" type="text" default="60" label="PLG_JOOAG_SHARIFF_CACHE_TIME" filter="integer" />
+				<field name="shariffcss" type="filelist" default="shariff.complete.css" label="PLG_JOOAG_SHARIFF_CSS" directory="plugins/system/jooag_shariff/assets/css" filter="css" />
+				<field name="shariffjs" type="filelist" default="shariff.complete.js" label="PLG_JOOAG_SHARIFF_JS" directory="plugins/system/jooag_shariff/assets/js" filter="js" />
+				<field name="data-backend-url" label="PLG_JOOAG_SHARIFF_SHARE_COUNTER_BACKEND" type="radio" class="btn-group" default="1">
+					<option value="0">PLG_JOOAG_SHARIFF_DISABLED</option>
+					<option value="1">PLG_JOOAG_SHARIFF_ENABLED</option>
+					</field>
+			</fieldset>	
 		</fields>
 	</config>
 </extension>
