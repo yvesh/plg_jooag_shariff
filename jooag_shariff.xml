@@ -23,6 +23,10 @@
 		<language tag="en-GB">en-GB/en-GB.plg_system_jooag_shariff.ini</language>
 		<language tag="en-GB">en-GB/en-GB.plg_system_jooag_shariff.sys.ini</language>
 	</languages>
+	
+	<updateservers>
+		<server type="extension" priority="2" name="JooAg Shariff">http://extensions.joomla-agency.com/index.php?option=com_ars&view=update&task=stream&format=xml&id=1</server>
+	</updateservers>
 
 	<config>
 		<fields name="params">
