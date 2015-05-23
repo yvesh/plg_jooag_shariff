@@ -120,7 +120,7 @@ class plgSystemJooag_Shariff extends JPlugin
 		JHtml::_('jquery.framework');
 		$doc->addStyleSheet(JURI::root() . 'plugins/system/jooag_shariff/assets/css/'.$this->params->get('shariffcss'));
 		$doc->addScript(JURI::root() . 'plugins/system/jooag_shariff/assets/js/'.$this->params->get('shariffjs'));
-		$doc->addScriptDeclaration( 'jQuery(document).ready(function() {var buttonsContainer = $(".shariff");new Shariff(buttonsContainer);});' );
+		$doc->addScriptDeclaration( '$(document).ready(function() {var buttonsContainer = $(".shariff");new Shariff(buttonsContainer);});' );
 				
 		$html  = '<div class="shariff"';
 		$html .= ($this->params->get('data-backend-url')) ? ' data-backend-url="/plugins/system/jooag_shariff/backend/"' : '';
