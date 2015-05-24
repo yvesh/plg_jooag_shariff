@@ -140,7 +140,12 @@ class plgSystemJooag_Shariff extends JPlugin
 	 *
 	 * @return void
 	 **/
-	public function onExtensionAfterSave()
+	/**
+	 * writes a file for shariff backend
+	 *
+	 * @return void
+	 **/
+	public function generateShariffJson()
 	{
 		$jsonString = file_get_contents(JPATH_PLUGINS . '/system/jooag_shariff/backend/shariff.json');
 		$data = json_decode($jsonString);
@@ -150,5 +155,26 @@ class plgSystemJooag_Shariff extends JPlugin
 		$data->cache->ttl = $this->params->get('cache');
 		$data = json_encode($data);
 		JFile::write(JPATH_PLUGINS . '/system/jooag_shariff/backend/shariff.json', $data);
+	}
+	
+	public function onExtensionAfterSave()
+	{
+			$json = $this->generateShariffJson();
+			
+			return $json;
+	}
+	
+	public function onExtensionAfterInstall()
+	{
+			$json = $this->generateShariffJson();
+			
+			return $json;
+	}
+	
+	public function onExtensionAfterUpdate()
+	{
+			$json = $this->generateShariffJson();
+			
+			return $json;
 	}
 }
