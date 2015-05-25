@@ -1,4 +1,29 @@
 <h1>Shariff integration for Joomla 3.4+</h1>
+This Joomla 3.4+ Plugin utilizes Heise Shariff Library to enable website users to share their favorite content without compromising their privacy.
+
+<b>Required:</b>
+PHP 5.4+ and Joomla 3.4+
+
+<b>Features Plugin:</b>
+* Joomla Update integration
+* Language: English
+* Restrict the execution to Menu Items or Content Categories
+* Plugin settings for Themes, Orientation, Services and much more...
+
+<b>Features Shariff Library:</b>
+* Services: Twitter, Facebook, GooglePlus, LinkedIn, Pinterest, Xing, Whatsapp
+* Themes: Color, Grey, White
+* Orientation: Horizontal, Vertical
+* Responsive: Yes
+* Shariff Languages: bg, de, en, es, fi, hr, hu, ja, ko, no, pl, pt, ro, ru, sk, sl, sr, sv, tr, zh
+* Counter: Shariff Backend PHP integration
+ 
+<b>Future plans:</b>
+* German language
+* More languages maybe through contributors
+* Integration for more Componentes
+
+
 <h2>Update Instructions:</h2>
 * Everything before V3.0.0 Stable
   * Delete the old Plugin and install the new one
@@ -30,26 +55,6 @@ RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
 
 <h4>Usage as Shortcode</h4>
 You can put into your content or custom_html module the following shortcode: <code>{shariff}</code> . If you use a custom_html Module, please set the Option "Prepare Content" to yes.
-
-<h2>Description:</h2>
-A Joomla 3 Plugin for Social Media Icons as shariff integration
-
-<b>Required:</b>
-PHP 5.4+ and Joomla 3.4+
-
-<b>Features Plugin:</b>
-* Joomla Update integration
-* Language: English
-* Restrict the execution to Menu Items or Content Categories
-* Plugin settings for Themes, Orientation, Services and much more...
-
-<b>Features Shariff Library:</b>
-* Services: Twitter, Facebook, GooglePlus, LinkedIn, Pinterest, Xing, Whatsapp
-* Themes: Color, Grey, White
-* Orientation: Horizontal, Vertical
-* Responsive: Yes
-* Shariff Languages: bg, de, en, es, fi, hr, hu, ja, ko, no, pl, pt, ro, ru, sk, sl, sr, sv, tr, zh
-* Counter: Shariff Backend PHP integration
 
 <h2>Credits:</h2>
 Developed by http://joomla-agentur.de
