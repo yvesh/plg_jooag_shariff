@@ -1,10 +1,10 @@
 <h1>Shariff integration for Joomla 3.4+</h1>
+<h2>Update Instructions:</h2>
+* Everything before V3.0.0 Stable
+** Delete the old Plugins and install the new one
+** Plugin Settings need to be revisited
 
 <h2>Attention:</h2>
-<h4>Settings need to be revisited</h4>
-After the Update from a previos Version before V3.0.0-RC5, please open the Plugin in "Joomla Administrator -> Extensions -> Plugin -> JooAg Shariff" and set the settings again. This is needed because some of the xml definitions are now more consistent to the shariff definitions and need to be changed.
-<h4>Uninstall the Plugin before an Update:</h4>
-It's important to delete the old Plugin, because of the new Plugin is a System Plugin, the old one was a Content Plugin.
 <h4>Share Counter:</h4>
 It's really important for the counter to use the url only with www or non-www.
 <h6>To redirect www to non-www do the following steps:</h6>
