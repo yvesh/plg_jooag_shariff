@@ -6,7 +6,7 @@ PHP 5.4+ and Joomla 3.4+
 
 <b>Features Plugin:</b>
 * Joomla Update integration
-* Language: English
+* Language: English, German
 * Restrict the execution to Menu Items or Content Categories
 * Plugin settings for Themes, Orientation, Services and much more...
 
@@ -19,7 +19,6 @@ PHP 5.4+ and Joomla 3.4+
 * Counter: Shariff Backend PHP integration
  
 <b>Future plans:</b>
-* German language
 * More languages maybe through contributors
 * Integration for more Componentes
 
