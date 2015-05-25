@@ -1,8 +1,8 @@
 <h1>Shariff integration for Joomla 3.4+</h1>
 <h2>Update Instructions:</h2>
 * Everything before V3.0.0 Stable
-** Delete the old Plugins and install the new one
-** Plugin Settings need to be revisited
+  * Delete the old Plugin and install the new one
+  * Plugin Settings need to be revisited
 
 <h2>Attention:</h2>
 <h4>Share Counter:</h4>
