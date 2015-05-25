@@ -7,7 +7,7 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>info@joomla-agentur.de</authorEmail>
 	<authorUrl>www.joomla-agentur.de</authorUrl>
-	<version>3.0.0-RC4</version>
+	<version>3.0.0-RC5</version>
 	<description>PLG_JOOAG_SHARIFF_XML_DESCRIPTION</description>
 
 	<files>
@@ -26,7 +26,7 @@
 	
 	<config>
 		<fields name="params">
-			<fieldset name="PLG_JOOAG_SHARIFF_BASIC" addfieldpath="/plugins/system/jooag_shariff/fields">
+			<fieldset name="basic" addfieldpath="/plugins/system/jooag_shariff/fields">
 				<field name="data-services" label="PLG_JOOAG_SHARIFF_SERVICES" multiple="true" type="list" >
 					<option value="Twitter">Twitter</option>
 					<option value="Facebook">Facebook</option>
