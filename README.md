@@ -29,7 +29,7 @@ RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
 </p>
 
 <h4>Usage as Shortcode</h4>
-You can put into your content or custom_html module the following shortcode: <code>{shariff}</code> . If you use a custom_html Module, please set the Option "Prepare Content" to Yes.
+You can put into your content or custom_html module the following shortcode: <code>{shariff}</code> . If you use a custom_html Module, please set the Option "Prepare Content" to yes.
 
 <h2>Description:</h2>
 A Joomla 3 Plugin for Social Media Icons as shariff integration
