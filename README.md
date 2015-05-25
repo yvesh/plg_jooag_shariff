@@ -4,7 +4,7 @@
   * Delete the old Plugin and install the new one
   * Plugin Settings need to be revisited
 
-<h2>Attention:</h2>
+<h2>Documentation:</h2>
 <h4>Share Counter:</h4>
 It's really important for the counter to use the url only with www or non-www.
 <h6>To redirect www to non-www do the following steps:</h6>
@@ -27,13 +27,23 @@ RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
 </code>
 </ol>
 </p>
+
+<h4>Usage as Shortcode</h4>
+You can put into your content or custom_html module the following shortcode: <code>{shariff}</code> . If you use a custom_html Module, please set the Option "Prepare Content" to Yes.
+
 <h2>Description:</h2>
 A Joomla 3 Plugin for Social Media Icons as shariff integration
 
 <b>Required:</b>
 PHP 5.4+ and Joomla 3.4+
 
-<b>Features:</b>
+<b>Features Plugin:</b>
+* Joomla Update integration
+* Language: English
+* Restrict the execution to Menu Items or Content Categories
+* Plugin settings for Themes, Orientation, Services and much more...
+
+<b>Features Shariff Library:</b>
 * Services: Twitter, Facebook, GooglePlus, LinkedIn, Pinterest, Xing, Whatsapp
 * Themes: Color, Grey, White
 * Orientation: Horizontal, Vertical
@@ -41,6 +51,7 @@ PHP 5.4+ and Joomla 3.4+
 * Shariff Languages: bg, de, en, es, fi, hr, hu, ja, ko, no, pl, pt, ro, ru, sk, sl, sr, sv, tr, zh
 * Counter: Shariff Backend PHP integration
 
+<h2>Credits:</h2>
 Developed by http://joomla-agentur.de
 
 Thanks to Heise.de for this development https://github.com/heiseonline/shariff
@@ -48,6 +59,3 @@ Thanks to Heise.de for this development https://github.com/heiseonline/shariff
 Dedicated for Joomla! Deutschland Facebook Group https://www.facebook.com/groups/joomla.deutschland/
 
 and for Joomla User Group Hamburg http://jug-hamburg.de/ (the main reason for this plugin :-)
-
-<h2>Usage as Shortcode</h2>
-You can put into your content or custom_html module the following shortcode: <code>{shariff}</code> . If you use a custom_html Module, please set the Option "Prepare Content" to Yes.
