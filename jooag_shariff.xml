@@ -80,6 +80,6 @@
 	</config>
 
 	<updateservers>
-		<server type="extension" priority="1" name="JooAg Shariff Update"><![CDATA[http://joomla-agentur.com/index.php?option=com_ars&view=update&task=stream&format=xml&id=1]]></server>
+		<server type="extension" priority="1" name="JooAg Shariff Update"><![CDATA[http://joomla-agentur.de/index.php?option=com_ars&view=update&task=stream&format=xml&id=1]]></server>
 	</updateservers>
 </extension>
