@@ -7,6 +7,7 @@ PHP 5.4+ and Joomla 3.4+
 
 <b>Features Plugin:</b>
 * Joomla Update integration
+* Use this Plugins in your Modules and Articles via {shariff} shorttag
 * Language: English, German
 * Restrict the execution to Menu Items or Content Categories
 * Plugin settings for Themes, Orientation, Services and much more...
