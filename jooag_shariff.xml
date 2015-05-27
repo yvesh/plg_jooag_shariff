@@ -2,12 +2,12 @@
 <extension version="3.0" type="plugin" method="upgrade" group="system">
 	<name>PLG_JOOAG_SHARIFF</name>
 	<author>Ufuk Avcu</author>
-	<creationDate>27.05.2015</creationDate>
+	<creationDate>28.05.2015</creationDate>
 	<copyright>Copyright (C) 2009 - 2015 Joomla Agency. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>info@joomla-agentur.de</authorEmail>
 	<authorUrl>www.joomla-agentur.de</authorUrl>
-	<version>3.0.2</version>
+	<version>3.0.3</version>
 	<description>PLG_JOOAG_SHARIFF_XML_DESCRIPTION</description>
 
 	<files>
