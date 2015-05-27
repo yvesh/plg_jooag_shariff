@@ -140,11 +140,6 @@ class plgSystemJooag_Shariff extends JPlugin
 	 *
 	 * @return void
 	 **/
-	/**
-	 * writes a file for shariff backend
-	 *
-	 * @return void
-	 **/
 	public function generateShariffJson()
 	{
 		$jsonString = file_get_contents(JPATH_PLUGINS . '/system/jooag_shariff/backend/shariff.json');
