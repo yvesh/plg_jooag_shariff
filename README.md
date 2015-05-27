@@ -27,6 +27,9 @@ PHP 5.4+ and Joomla 3.4+
 
 
 <h2>Update Instructions:</h2>
+* Before V3.0.3
+  * Delete this folder joomla-root/plugins/system/jooag_shariff/backend/cache
+  * Not so important to delete this folder. It's not needed anymore, because we use the Joomla Core Cache folder.
 * Everything before V3.0.0 Stable
   * Delete the old Plugin and install the new one
   * Plugin Settings need to be revisited
