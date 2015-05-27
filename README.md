@@ -23,6 +23,7 @@ PHP 5.4+ and Joomla 3.4+
 <b>Future plans:</b>
 * More languages maybe through contributors
 * Integration for more Componentes
+* Use the Shariff Backend OPP style instead of write a json File
 
 
 <h2>Update Instructions:</h2>
