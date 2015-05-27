@@ -121,6 +121,11 @@ class plgSystemJooag_Shariff extends JPlugin
 		$doc->addStyleSheet(JURI::root() . 'plugins/system/jooag_shariff/assets/css/'.$this->params->get('shariffcss'));
 		$doc->addScript(JURI::root() . 'plugins/system/jooag_shariff/assets/js/'.$this->params->get('shariffjs'));
 		$doc->addScriptDeclaration( 'jQuery(document).ready(function() {var buttonsContainer = jQuery(".shariff");new Shariff(buttonsContainer);});' );
+		
+		//Cache Folder
+		if(!JFolder::exists('cache/plg_jooag_shariff') and $this->params->get('data-backend-url')){
+			JFolder::create('cache/plg_jooag_shariff', 0755);
+		}
 				
 		$html  = '<div class="shariff"';
 		$html .= ($this->params->get('data-backend-url')) ? ' data-backend-url="/plugins/system/jooag_shariff/backend/"' : '';
@@ -147,6 +152,7 @@ class plgSystemJooag_Shariff extends JPlugin
 		$data->domain = JURI::getInstance()->getHost();
 		$services = $this->params->get('data-services');
 		$data->services = array_diff($this->params->get('data-services'), array('mail', 'info'));
+		$data->cache->cacheDir = '../../../../cache/plg_jooag_shariff/';
 		$data->cache->ttl = $this->params->get('cache');
 		$data = json_encode($data);
 		JFile::write(JPATH_PLUGINS . '/system/jooag_shariff/backend/shariff.json', $data);

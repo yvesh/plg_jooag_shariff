@@ -1,1 +1,1 @@
-{"cache":{"ttl":60,"cacheDir":"cache"},"domain":"joomla-agentur.de","services":["Twitter","Facebook","GooglePlus","LinkedIn","Pinterest","Xing"]}
+{"cache":{"ttl":"60","cacheDir":"..\/..\/..\/..\/cache\/plg_jooag_shariff\/"},"domain":"placeholder-for-domain","services":["Twitter","Facebook","GooglePlus","LinkedIn","Pinterest","Xing"]}
