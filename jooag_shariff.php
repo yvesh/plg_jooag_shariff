@@ -129,7 +129,7 @@ class plgSystemJooag_Shariff extends JPlugin
 		}
 				
 		$html  = '<div class="shariff"';
-		$html .= ($this->params->get('data-backend-url')) ? ' data-backend-url="/plugins/system/jooag_shariff/backend"' : '';
+		$html .= ($this->params->get('data-backend-url')) ? ' data-backend-url="/plugins/system/jooag_shariff/backend/"' : '';
 		$html .= ' data-lang="'.explode("-", JFactory::getLanguage()->getTag())[0].'"';
 		$html .= ($this->params->get('data-mail-url')) ? ' data-mail-url="mailto:'.$this->params->get('data-mail-url').'"' : '';
 		$html .= ' data-orientation="'.$this->params->get('data-orientation').'"';
