@@ -123,6 +123,7 @@ class plgSystemJooag_Shariff extends JPlugin
 		$doc->addScriptDeclaration( 'jQuery(document).ready(function() {var buttonsContainer = jQuery(".shariff");new Shariff(buttonsContainer);});' );
 		
 		//Cache Folder
+		jimport('joomla.filesystem.folder');
 		if(!JFolder::exists('cache/plg_jooag_shariff') and $this->params->get('data-backend-url')){
 			JFolder::create('cache/plg_jooag_shariff', 0755);
 		}
