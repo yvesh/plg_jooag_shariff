@@ -37,8 +37,6 @@
 					<option value="Pinterest">Pinterest</option>
 					<option value="Xing">Xing</option>
 					<option value="Whatsapp">Whatsapp</option>
-					<option value="mail">Mail</option>
-					<option value="info">Info</option>
 					</field>
 				<field name="data-info-url" type="modal_article" label="PLG_JOOAG_SHARIFF_INFO_BUTTON_ARTICLE"/>
 				<field name="data-mail-yn" type="radio" default="0" class="btn-group btn-group-yesno" label="PLG_JOOAG_SHARIFF_MAIL_YN" >
