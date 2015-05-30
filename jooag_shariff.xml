@@ -41,7 +41,12 @@
 					<option value="info">Info</option>
 					</field>
 				<field name="data-info-url" type="modal_article" label="PLG_JOOAG_SHARIFF_INFO_BUTTON_ARTICLE"/>
-				<field name="data-mail-url" type="input" label="PLG_JOOAG_SHARIFF_MAIL" />
+				<field name="data-mail-yn" type="radio" default="0" class="btn-group btn-group-yesno" label="PLG_JOOAG_SHARIFF_MAIL_YN" >
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="data-mail-url" showon="data-mail-yn:1" type="input" label="PLG_JOOAG_SHARIFF_MAIL" />
+				<field type="spacer" showon="data-mail-yn:1" name="data-mail-spacer" label="PLG_JOOAG_SHARIFF_MAIL_DESC" />
 			</fieldset>
 			<fieldset name="PLG_JOOAG_SHARIFF_STYLE" >
 				<field name="position" label="PLG_JOOAG_SHARIFF_POSITION" type="radio" class="btn-group" default="1" >
@@ -49,7 +54,7 @@
 					<option value="2">PLG_JOOAG_SHARIFF_CONTENT_BOTTOM</option>
 					<option value="3">PLG_JOOAG_SHARIFF_ONLY_IN_MODULE</option>
 					</field>
-				<field type="spacer" name="myspacer" showon="position:3" label="&lt;b&gt;Attention:&lt;/b&gt; Add a new Custom Module and use {shariff} in the Editor field ans set the Modul Option 'Content Prepare' to yes!&lt;/br&gt;&lt;b&gt;Attention:&lt;/b&gt; If you use the &lt;i&gt;Only in Module&lt;/i&gt; Mode, then the Restriction Settings has no effect." />
+				<field type="spacer" name="myspacer" showon="position:3" label="PLG_JOOAG_SHARIFF_POSITION_DESC" />
 				<field name="data-orientation" label="PLG_JOOAG_SHARIFF_ORIENATATION" type="radio" class="btn-group" default="horizontal">
 					<option value="horizontal">PLG_JOOAG_SHARIFF_HORIZONTAL</option>
 					<option value="vertical">PLG_JOOAG_SHARIFF_VERTICAL</option>
