@@ -39,11 +39,7 @@
 					<option value="Whatsapp">Whatsapp</option>
 					</field>
 				<field name="data-info-url" type="modal_article" label="PLG_JOOAG_SHARIFF_INFO_BUTTON_ARTICLE"/>
-				<field name="data-mail-yn" type="radio" default="0" class="btn-group btn-group-yesno" label="PLG_JOOAG_SHARIFF_MAIL_YN" >
-					<option value="0">JNO</option>
-					<option value="1">JYES</option>
-				</field>
-				<field name="data-mail-url" showon="data-mail-yn:1" type="input" label="PLG_JOOAG_SHARIFF_MAIL" />
+				<field name="data-mail-url" type="input" label="PLG_JOOAG_SHARIFF_MAIL" />
 				<field type="spacer" showon="data-mail-yn:1" name="data-mail-spacer" label="PLG_JOOAG_SHARIFF_MAIL_DESC" />
 			</fieldset>
 			<fieldset name="PLG_JOOAG_SHARIFF_STYLE" >
