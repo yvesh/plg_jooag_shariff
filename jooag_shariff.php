@@ -136,7 +136,7 @@ class plgSystemJooag_Shariff extends JPlugin
 		$html .= ' data-services='.json_encode(array_map('strtolower', (array)$this->params->get('data-services')));
 		$html .= ' data-theme="'.$this->params->get('data-theme').'"';
 		$html .= ' data-url="'.JURI::getInstance()->toString().'"';
-		$html .= ($this->params->get('data-info-url')) ? ' data-info-url="/index.php?option=com_content&view=article&id='.$this->params->get('data-info-url').'"' : '';
+		$html .= ($this->params->get('data-info-url')) ? ' data-info-url="'.JUri::root(true).'/index.php?option=com_content&view=article&id='.$this->params->get('data-info-url').'"' : '';
 		$html .= '></div>';
 		return $html;
 	}
