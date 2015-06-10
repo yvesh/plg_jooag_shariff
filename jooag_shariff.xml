@@ -37,10 +37,12 @@
 					<option value="Pinterest">Pinterest</option>
 					<option value="Xing">Xing</option>
 					<option value="Whatsapp">Whatsapp</option>
+					<option value="Mail">Mail</option>
+					<option value="Info">Info</option>
 					</field>
 				<field name="data-info-url" type="modal_article" label="PLG_JOOAG_SHARIFF_INFO_BUTTON_ARTICLE"/>
 				<field name="data-mail-url" type="input" label="PLG_JOOAG_SHARIFF_MAIL" />
-				<field type="spacer" showon="data-mail-yn:1" name="data-mail-spacer" label="PLG_JOOAG_SHARIFF_MAIL_DESC" />
+				<field type="spacer" name="data-mail-spacer" label="PLG_JOOAG_SHARIFF_MAIL_DESC" />
 			</fieldset>
 			<fieldset name="PLG_JOOAG_SHARIFF_STYLE" >
 				<field name="position" label="PLG_JOOAG_SHARIFF_POSITION" type="radio" class="btn-group" default="1" >
