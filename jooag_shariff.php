@@ -152,7 +152,7 @@ class plgSystemJooag_Shariff extends JPlugin
 		$data = json_decode($jsonString);
 		$data->domain = JURI::getInstance()->getHost();
 		$data->services = $this->params->get('data-services');
-		$data->cache->cacheDir = JPATH_CACHE . '/plg_jooag_shariff/';
+		$data->cache->cacheDir = '../../../../cache/plg_jooag_shariff/';
 		$data->cache->ttl = $this->params->get('cache');
 		$data = json_encode($data);
 		JFile::write(JPATH_PLUGINS . '/system/jooag_shariff/backend/shariff.json', $data);
