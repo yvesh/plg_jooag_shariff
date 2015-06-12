@@ -136,7 +136,15 @@ class plgSystemJooag_Shariff extends JPlugin
 		$html .= ' data-services='.json_encode(array_map('strtolower', (array)$this->params->get('data-services')));
 		$html .= ' data-theme="'.$this->params->get('data-theme').'"';
 		$html .= ' data-url="'.JURI::getInstance()->toString().'"';
-		$html .= ($this->params->get('data-info-url')) ? ' data-info-url="'.JUri::root(true).'/index.php?option=com_content&view=article&id='.$this->params->get('data-info-url').'"' : '';
+		if ( ($id = (int) $this->params->get('data-info-url')) )
+		{
+			jimport( 'joomla.database.table' );
+			$item =	JTable::getInstance("content");
+			$item->load($this->params->get('data-info-url'));
+			require_once JPATH_SITE . '/components/com_content/helpers/route.php';
+			$link = JRoute::_(ContentHelperRoute::getArticleRoute($item->id, $item->catid, $item->language));
+			$html .= ' data-info-url="'.$link.'"';
+		}
 		$html .= '></div>';
 		return $html;
 	}
