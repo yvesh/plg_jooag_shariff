@@ -47,7 +47,7 @@ class plgSystemJooag_Shariff extends JPlugin
 	 * @return  string
 	 **/
 	public function onContentAfterDisplay($context, &$article, &$params, $page = 0)
-	{		
+	{
 		if($context == 'com_content.article' and $this->params->get('position') == '2')
 		{
 			$output = $this->getOutputPosition($article);
@@ -63,6 +63,7 @@ class plgSystemJooag_Shariff extends JPlugin
 	{	
 		if($context == 'mod_custom.content' and JString::strpos( $article->text, '{shariff}' )  !== false and $this->params->get('position') == '3')
 		{
+
 			$article->text = preg_replace( "#{shariff}#s", $this->getOutputPosition($article), $article->text );	
 		}
 	} 
@@ -82,27 +83,29 @@ class plgSystemJooag_Shariff extends JPlugin
 		$menuIds = $this->params->get('showbymenu');
 		$app = JFactory::getApplication();
 		$actualMenuId = $app->getMenu()->getActive()->id;
-
-		if ((is_array($catIds) AND in_array($article->catid, $catIds)) AND $this->params->get('wheretoshow') == '2')
-		{
-			$catCount = '1';
+		
+		if ($this->params->get('position') != '3'){
+			if ((is_array($catIds) AND in_array($article->catid, $catIds)) AND $this->params->get('wheretoshow') == '2')
+			{
+				$catCount = '1';
+			}
+			
+			if ((is_array($catIds) AND !in_array($article->catid, $catIds)) AND $this->params->get('wheretoshow') == '3')
+			{	
+				$catCount = '1';
+			}
+			
+			if ((is_array($menuIds) AND in_array($actualMenuId, $menuIds)) AND $this->params->get('wheretoshow') == '2')
+			{
+				$menuCount = '1';
+			}
+			
+			if ((is_array($menuIds) AND !in_array($actualMenuId, $menuIds)) AND $this->params->get('wheretoshow') == '3')
+			{	
+				$menuCount = '1';
+			}
 		}
 		
-		if ((is_array($catIds) AND !in_array($article->catid, $catIds)) AND $this->params->get('wheretoshow') == '3')
-		{	
-			$catCount = '1';
-		}
-		
-		if ((is_array($menuIds) AND in_array($actualMenuId, $menuIds)) AND $this->params->get('wheretoshow') == '2')
-		{
-			$menuCount = '1';
-		}
-		
-		if ((is_array($menuIds) AND !in_array($actualMenuId, $menuIds)) AND $this->params->get('wheretoshow') == '3')
-		{	
-			$menuCount = '1';
-		}
-
 		if($catCount == '1' or $menuCount =='1' or $this->params->get('wheretoshow') == '1' or $this->params->get('position') == '3')
 		{
 			$output = $this->getOutput();
@@ -116,6 +119,7 @@ class plgSystemJooag_Shariff extends JPlugin
 	 **/
 	public function getOutput()
 	{
+		
 		$doc = JFactory::getDocument();
 		JHtml::_('jquery.framework');
 		$doc->addStyleSheet(JURI::root() . 'plugins/system/jooag_shariff/assets/css/'.$this->params->get('shariffcss'));
@@ -160,9 +164,9 @@ class plgSystemJooag_Shariff extends JPlugin
 		$data = json_decode($jsonString);
 		$data->domain = JURI::getInstance()->getHost();
 		$data->services = array_diff($this->params->get('data-services'), array('Mail', 'Info'));
-		$data->cache->cacheDir = '../../../../cache/plg_jooag_shariff/';
+		$data->cache->cacheDir = JPATH_SITE.'/cache/plg_jooag_shariff';
 		$data->cache->ttl = $this->params->get('cache');
-		$data = json_encode($data);
+		$data = json_encode($data, JSON_UNESCAPED_SLASHES);
 		JFile::write(JPATH_PLUGINS . '/system/jooag_shariff/backend/shariff.json', $data);
 	}
 	
