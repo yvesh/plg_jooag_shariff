@@ -27,6 +27,8 @@ PHP 5.4+ and Joomla 3.4+
 
 
 <h2>Update Instructions:</h2>
+* V3.0.6
+  * Plugin Settings need to be revisited. Especially the "Social Icons" Settings. 
 * V3.0.5
   * Plugin Settings need to be revisited. Especially the Mail and Info Services!
 * Before V3.0.3
