@@ -136,8 +136,8 @@ class plgSystemJooag_Shariff extends JPlugin
 		$html .= ($this->params->get('data-backend-url')) ? ' data-backend-url="/plugins/system/jooag_shariff/backend/"' : '';
 		$html .= ' data-lang="'.explode("-", JFactory::getLanguage()->getTag())[0].'"';
 		$html .= ($this->params->get('data-mail-url')) ? ' data-mail-url="mailto:'.$this->params->get('data-mail-url').'"' : '';
-		$html .= ' data-orientation="'.$this->params->get('data-orientation').'"';
-		$html .= ' data-services='.json_encode(array_map('strtolower', (array)$this->params->get('data-services')));
+		$html .= ' data-orientation="'.$this->params->get('data-orientation').'"';	
+		$html .= ' data-services='.json_encode(array_map('strtolower', json_decode($this->params->get('data-services'))->services));
 		$html .= ' data-theme="'.$this->params->get('data-theme').'"';
 		$html .= ' data-url="'.JURI::getInstance()->toString().'"';
 		if ( ($id = (int) $this->params->get('data-info-url')) )
@@ -151,6 +151,7 @@ class plgSystemJooag_Shariff extends JPlugin
 		}
 		$html .= '></div>';
 		return $html;
+		
 	}
 	
 	/**
@@ -162,8 +163,8 @@ class plgSystemJooag_Shariff extends JPlugin
 	{
 		$jsonString = file_get_contents(JPATH_PLUGINS . '/system/jooag_shariff/backend/shariff.json');
 		$data = json_decode($jsonString);
-		$data->domain = JURI::getInstance()->getHost();
-		$data->services = array_diff($this->params->get('data-services'), array('Mail', 'Info'));
+		$data->domain = JURI::getInstance()->getHost();		
+		$data->services = array_diff(json_decode($this->params->get('data-services'))->services, array('Whatsapp', 'Mail', 'Info'));
 		$data->cache->cacheDir = JPATH_SITE.'/cache/plg_jooag_shariff';
 		$data->cache->ttl = $this->params->get('cache');
 		$data = json_encode($data, JSON_UNESCAPED_SLASHES);

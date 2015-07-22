@@ -28,18 +28,22 @@
 	
 	<config>
 		<fields name="params">
-			<fieldset name="basic" addfieldpath="/plugins/system/jooag_shariff/fields">
-				<field name="data-services" label="PLG_JOOAG_SHARIFF_SERVICES" multiple="true" type="list" >
-					<option value="Twitter">Twitter</option>
-					<option value="Facebook">Facebook</option>
-					<option value="GooglePlus">Google+</option>
-					<option value="LinkedIn">LinkedIn</option>
-					<option value="Pinterest">Pinterest</option>
-					<option value="Xing">Xing</option>
-					<option value="Whatsapp">Whatsapp</option>
-					<option value="Mail">Mail</option>
-					<option value="Info">Info</option>
-					</field>
+			<fieldset name="basic" addfieldpath="/plugins/system/jooag_shariff/fields">					
+				<field name="data-services" type="Repeatable" icon="list" label="PLG_JOOAG_SHARIFF_SERVICES" default="{'services':['Twitter','Facebook','GooglePlus','LinkedIn','Pinterest','Xing','Whatsapp','Mail','Info']}">
+					<fieldset hidden="true" name="list_templates_modal" repeat="true">
+						<field name="services" label="PLG_JOOAG_SHARIFF_SERVICES" type="list" >
+						<option value="Twitter">Twitter</option>
+						<option value="Facebook">Facebook</option>
+						<option value="GooglePlus">Google+</option>
+						<option value="LinkedIn">LinkedIn</option>
+						<option value="Pinterest">Pinterest</option>
+						<option value="Xing">Xing</option>
+						<option value="Whatsapp">Whatsapp</option>
+						<option value="Mail">Mail</option>
+						<option value="Info">Info</option>
+						</field>
+					</fieldset>
+				</field>
 				<field name="data-info-url" type="modal_article" label="PLG_JOOAG_SHARIFF_INFO_BUTTON_ARTICLE"/>
 				<field name="data-mail-url" type="input" label="PLG_JOOAG_SHARIFF_MAIL" />
 				<field type="spacer" name="data-mail-spacer" label="PLG_JOOAG_SHARIFF_MAIL_DESC" />
