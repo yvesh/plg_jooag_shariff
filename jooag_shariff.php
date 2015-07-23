@@ -150,6 +150,7 @@ class plgSystemJooag_Shariff extends JPlugin
 			$html .= ' data-info-url="'.$link.'"';
 		}
 		$html .= '></div>';
+
 		return $html;
 		
 	}
@@ -161,12 +162,14 @@ class plgSystemJooag_Shariff extends JPlugin
 	 **/
 	public function generateShariffJson()
 	{
-		$jsonString = file_get_contents(JPATH_PLUGINS . '/system/jooag_shariff/backend/shariff.json');
-		$data = json_decode($jsonString);
+		
 		$data->domain = JURI::getInstance()->getHost();		
 		$data->services = array_diff(json_decode($this->params->get('data-services'))->services, array('Whatsapp', 'Mail', 'Info'));
 		$data->cache->cacheDir = JPATH_SITE.'/cache/plg_jooag_shariff';
-		$data->cache->ttl = $this->params->get('cache');
+		$data->cache->ttl = $this->params->get('cache-time');
+		if($this->params->get('cache') == '1'){
+			$data->cache->adapter = $this->params->get('cache_handler');
+		}
 		$data = json_encode($data, JSON_UNESCAPED_SLASHES);
 		JFile::write(JPATH_PLUGINS . '/system/jooag_shariff/backend/shariff.json', $data);
 	}

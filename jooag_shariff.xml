@@ -32,6 +32,7 @@
 				<field name="data-services" type="Repeatable" icon="list" label="PLG_JOOAG_SHARIFF_SERVICES" default="{'services':['Twitter','Facebook','GooglePlus','LinkedIn','Pinterest','Xing','Whatsapp','Mail','Info']}">
 					<fieldset hidden="true" name="list_templates_modal" repeat="true">
 						<field name="services" label="PLG_JOOAG_SHARIFF_SERVICES" type="list" >
+						<option>PLG_JOOAG_SHARIFF_CHOOSE_A_SERVICE</option>
 						<option value="Twitter">Twitter</option>
 						<option value="Facebook">Facebook</option>
 						<option value="GooglePlus">Google+</option>
@@ -75,12 +76,19 @@
 				<field name="showbymenu" type="menuitem" multiple="true" label="PLG_JOOAG_SHARIFF_MENU_ITEMS" />
 			</fieldset>	
 			<fieldset name="PLG_JOOAG_SHARIFF_EXPERTS">
-				<field name="cache" type="number" default="60" label="PLG_JOOAG_SHARIFF_CACHE_TIME" step="10" />
+				
 				<field name="shariffcss" type="filelist" default="shariff.complete.css" label="PLG_JOOAG_SHARIFF_CSS" directory="plugins/system/jooag_shariff/assets/css" filter="css" />
 				<field name="shariffjs" type="filelist" default="shariff.complete.js" label="PLG_JOOAG_SHARIFF_JS" directory="plugins/system/jooag_shariff/assets/js" filter="js" />
 				<field name="data-backend-url" label="PLG_JOOAG_SHARIFF_SHARE_COUNTER_BACKEND" type="radio" class="btn-group" default="1">
 					<option value="0">PLG_JOOAG_SHARIFF_DISABLED</option>
 					<option value="1">PLG_JOOAG_SHARIFF_ENABLED</option>
+					</field>
+				<field name="cache-time" type="number" default="60" label="PLG_JOOAG_SHARIFF_CACHE_TIME" step="10" />	
+				<field name="cache" label="PLG_JOOAG_SHARIFF_CACHE" type="radio" class="btn-group" default="0">
+					<option value="0">PLG_JOOAG_SHARIFF_DISABLED</option>
+					<option value="1">PLG_JOOAG_SHARIFF_ENABLED</option>
+					</field>
+				<field name="cache_handler" showon="cache:1" type="cachehandler"	default="" label="PLG_JOOAG_SHARIFF_CACHE_HANDLER">
 					</field>
 			</fieldset>	
 		</fields>
