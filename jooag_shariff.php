@@ -63,7 +63,6 @@ class plgSystemJooag_Shariff extends JPlugin
 	{	
 		if($context == 'mod_custom.content' and JString::strpos( $article->text, '{shariff}' )  !== false and $this->params->get('position') == '3')
 		{
-
 			$article->text = preg_replace( "#{shariff}#s", $this->getOutputPosition($article), $article->text );	
 		}
 	} 
@@ -119,7 +118,6 @@ class plgSystemJooag_Shariff extends JPlugin
 	 **/
 	public function getOutput()
 	{
-		
 		$doc = JFactory::getDocument();
 		JHtml::_('jquery.framework');
 		$doc->addStyleSheet(JURI::root() . 'plugins/system/jooag_shariff/assets/css/'.$this->params->get('shariffcss'));
@@ -131,7 +129,7 @@ class plgSystemJooag_Shariff extends JPlugin
 		if(!JFolder::exists(JPATH_SITE.'/cache/plg_jooag_shariff') and $this->params->get('data-backend-url')){
 			JFolder::create(JPATH_SITE.'/cache/plg_jooag_shariff', 0755);
 		}
-				
+		
 		$html  = '<div class="shariff"';
 		$html .= ($this->params->get('data-backend-url')) ? ' data-backend-url="/plugins/system/jooag_shariff/backend/"' : '';
 		$html .= ' data-lang="'.explode("-", JFactory::getLanguage()->getTag())[0].'"';
@@ -152,7 +150,6 @@ class plgSystemJooag_Shariff extends JPlugin
 		$html .= '></div>';
 
 		return $html;
-		
 	}
 	
 	/**
@@ -162,7 +159,6 @@ class plgSystemJooag_Shariff extends JPlugin
 	 **/
 	public function generateShariffJson()
 	{
-		
 		$data->domain = JURI::getInstance()->getHost();		
 		$data->services = array_diff(json_decode($this->params->get('data-services'))->services, array('Whatsapp', 'Mail', 'Info'));
 		$data->cache->cacheDir = JPATH_SITE.'/cache/plg_jooag_shariff';
@@ -176,22 +172,22 @@ class plgSystemJooag_Shariff extends JPlugin
 	
 	public function onExtensionAfterSave()
 	{
-			$json = $this->generateShariffJson();
+		$json = $this->generateShariffJson();
 			
-			return $json;
+		return $json;
 	}
 	
 	public function onExtensionAfterInstall()
 	{
-			$json = $this->generateShariffJson();
+		$json = $this->generateShariffJson();
 			
-			return $json;
+		return $json;
 	}
 	
 	public function onExtensionAfterUpdate()
 	{
-			$json = $this->generateShariffJson();
+		$json = $this->generateShariffJson();
 			
-			return $json;
+		return $json;
 	}
 }
