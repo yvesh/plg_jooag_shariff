@@ -30,9 +30,7 @@ class plgSystemJooag_Shariff extends JPlugin
 	{
 		if($context == 'com_content.article' and $this->params->get('position') == '1')
 		{
-			$output = $this->getOutputPosition($article);
-			
-			return $output;
+			return $this->getOutputPosition($article);
 		}
 	}
 
@@ -50,9 +48,7 @@ class plgSystemJooag_Shariff extends JPlugin
 	{
 		if($context == 'com_content.article' and $this->params->get('position') == '2')
 		{
-			$output = $this->getOutputPosition($article);
-			
-			return $output;
+			return $this->getOutputPosition($article);
 		}
 	}
 	
@@ -107,9 +103,7 @@ class plgSystemJooag_Shariff extends JPlugin
 		
 		if($catCount == '1' or $menuCount =='1' or $this->params->get('wheretoshow') == '1' or $this->params->get('position') == '3')
 		{
-			$output = $this->getOutput();
-			
-			return $output;
+			return $this->getOutput();
 		}
 	}
 
