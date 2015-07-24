@@ -148,7 +148,7 @@ class plgSystemJooag_Shariff extends JPlugin
 			$html .= ' data-info-url="'.$link.'"';
 		}
 		$html .= '></div>';
-
+		
 		return $html;
 	}
 	
@@ -158,7 +158,7 @@ class plgSystemJooag_Shariff extends JPlugin
 	 * @return void
 	 **/
 	public function generateShariffJson()
-	{
+	{	
 		$data->domain = JURI::getInstance()->getHost();		
 		$data->services = array_diff(json_decode($this->params->get('data-services'))->services, array('Whatsapp', 'Mail', 'Info'));
 		$data->cache->cacheDir = JPATH_SITE.'/cache/plg_jooag_shariff';
@@ -170,24 +170,26 @@ class plgSystemJooag_Shariff extends JPlugin
 		JFile::write(JPATH_PLUGINS . '/system/jooag_shariff/backend/shariff.json', $data);
 	}
 	
-	public function onExtensionAfterSave()
+	public function onExtensionBeforeSave()
+	{
+		$json = $this->generateShariffJson();
+		
+		return $json;
+	}
+	
+	public function onExtensionBeforeInstall()
 	{
 		$json = $this->generateShariffJson();
 			
 		return $json;
 	}
 	
-	public function onExtensionAfterInstall()
+	public function onExtensionBeforeUpdate()
 	{
 		$json = $this->generateShariffJson();
 			
 		return $json;
 	}
 	
-	public function onExtensionAfterUpdate()
-	{
-		$json = $this->generateShariffJson();
-			
-		return $json;
-	}
+	
 }
