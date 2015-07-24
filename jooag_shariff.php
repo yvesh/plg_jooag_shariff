@@ -148,7 +148,7 @@ class plgSystemJooag_Shariff extends JPlugin
 			$html .= ' data-info-url="'.$link.'"';
 		}
 		$html .= '></div>';
-		
+
 		return $html;
 	}
 	
@@ -165,6 +165,10 @@ class plgSystemJooag_Shariff extends JPlugin
 		$data->cache->ttl = $this->params->get('cache-time');
 		if($this->params->get('cache') == '1'){
 			$data->cache->adapter = $this->params->get('cache_handler');
+			
+			if ($data->cache->adapter == 'file'){
+				$data->cache->adapter = 'filesystem';
+			}
 		}
 		$data = json_encode($data, JSON_UNESCAPED_SLASHES);
 		JFile::write(JPATH_PLUGINS . '/system/jooag_shariff/backend/shariff.json', $data);
