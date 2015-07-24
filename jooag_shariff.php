@@ -126,23 +126,23 @@ class plgSystemJooag_Shariff extends JPlugin
 		
 		//Cache Folder
 		jimport('joomla.filesystem.folder');
-		if(!JFolder::exists(JPATH_SITE.'/cache/plg_jooag_shariff') and $this->params->get('data-backend-url')){
+		if(!JFolder::exists(JPATH_SITE.'/cache/plg_jooag_shariff') and $this->params->get('data_backend_url')){
 			JFolder::create(JPATH_SITE.'/cache/plg_jooag_shariff', 0755);
 		}
 		
 		$html  = '<div class="shariff"';
-		$html .= ($this->params->get('data-backend-url')) ? ' data-backend-url="/plugins/system/jooag_shariff/backend/"' : '';
+		$html .= ($this->params->get('data_backend_url')) ? ' data-backend-url="/plugins/system/jooag_shariff/backend/"' : '';
 		$html .= ' data-lang="'.explode("-", JFactory::getLanguage()->getTag())[0].'"';
-		$html .= ($this->params->get('data-mail-url')) ? ' data-mail-url="mailto:'.$this->params->get('data-mail-url').'"' : '';
-		$html .= ' data-orientation="'.$this->params->get('data-orientation').'"';	
-		$html .= ' data-services='.json_encode(array_map('strtolower', json_decode($this->params->get('data-services'))->services));
-		$html .= ' data-theme="'.$this->params->get('data-theme').'"';
+		$html .= ($this->params->get('data_mail_url')) ? ' data-mail-url="mailto:'.$this->params->get('data_mail_url').'"' : '';
+		$html .= ' data-orientation="'.$this->params->get('data_orientation').'"';	
+		$html .= ' data-services='.json_encode(array_map('strtolower', json_decode($this->params->get('data_services'))->services));
+		$html .= ' data-theme="'.$this->params->get('data_theme').'"';
 		$html .= ' data-url="'.JURI::getInstance()->toString().'"';
-		if ( ($id = (int) $this->params->get('data-info-url')) )
+		if ( ($id = (int) $this->params->get('data_info_url')) )
 		{
 			jimport( 'joomla.database.table' );
 			$item =	JTable::getInstance("content");
-			$item->load($this->params->get('data-info-url'));
+			$item->load($this->params->get('data_info_url'));
 			require_once JPATH_SITE . '/components/com_content/helpers/route.php';
 			$link = JRoute::_(ContentHelperRoute::getArticleRoute($item->id, $item->catid, $item->language));
 			$html .= ' data-info-url="'.$link.'"';
@@ -157,14 +157,15 @@ class plgSystemJooag_Shariff extends JPlugin
 	 *
 	 * @return void
 	 **/
-	public function generateShariffJson()
+	public function generateShariffJson($table)
 	{	
+		$params = json_decode($table->params);
 		$data->domain = JURI::getInstance()->getHost();		
-		$data->services = array_diff(json_decode($this->params->get('data-services'))->services, array('Whatsapp', 'Mail', 'Info'));
+		$data->services = array_diff(json_decode($params->data_services)->services, array('Whatsapp', 'Mail', 'Info'));
 		$data->cache->cacheDir = JPATH_SITE.'/cache/plg_jooag_shariff';
-		$data->cache->ttl = $this->params->get('cache-time');
-		if($this->params->get('cache') == '1'){
-			$data->cache->adapter = $this->params->get('cache_handler');
+		$data->cache->ttl = $params->cache_time;
+		if($params->cache == '1'){
+			$data->cache->adapter = $params->cache_handler;
 			
 			if ($data->cache->adapter == 'file'){
 				$data->cache->adapter = 'filesystem';
@@ -174,24 +175,18 @@ class plgSystemJooag_Shariff extends JPlugin
 		JFile::write(JPATH_PLUGINS . '/system/jooag_shariff/backend/shariff.json', $data);
 	}
 	
-	public function onExtensionBeforeSave()
-	{
-		$json = $this->generateShariffJson();
-		
-		return $json;
+	public function onExtensionBeforeSave($context, $table, $isNew)
+	{	
+		return $this->generateShariffJson($table);
 	}
 	
-	public function onExtensionBeforeInstall()
+	public function onExtensionBeforeInstall($context, $table, $isNew)
 	{
-		$json = $this->generateShariffJson();
-			
-		return $json;
+		return $this->generateShariffJson($table);
 	}
 	
-	public function onExtensionBeforeUpdate()
+	public function onExtensionBeforeUpdate($context, $table, $isNew)
 	{
-		$json = $this->generateShariffJson();
-			
-		return $json;
+		return $this->generateShariffJson($table);
 	}
 }
