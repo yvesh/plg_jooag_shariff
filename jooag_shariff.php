@@ -128,8 +128,8 @@ class plgSystemJooag_Shariff extends JPlugin
 		
 		//Cache Folder
 		jimport('joomla.filesystem.folder');
-		if(!JFolder::exists('cache/plg_jooag_shariff') and $this->params->get('data-backend-url')){
-			JFolder::create('cache/plg_jooag_shariff', 0755);
+		if(!JFolder::exists(JPATH_SITE.'/cache/plg_jooag_shariff') and $this->params->get('data-backend-url')){
+			JFolder::create(JPATH_SITE.'/cache/plg_jooag_shariff', 0755);
 		}
 				
 		$html  = '<div class="shariff"';
