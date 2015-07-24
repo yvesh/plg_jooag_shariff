@@ -190,6 +190,4 @@ class plgSystemJooag_Shariff extends JPlugin
 			
 		return $json;
 	}
-	
-	
 }
