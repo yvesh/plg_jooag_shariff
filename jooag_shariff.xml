@@ -79,6 +79,8 @@
 			<fieldset name="PLG_JOOAG_SHARIFF_EXPERTS">
 				<field name="shariffcss" type="filelist" default="shariff.complete.css" label="PLG_JOOAG_SHARIFF_CSS" directory="plugins/system/jooag_shariff/assets/css" filter="css" />
 				<field name="shariffjs" type="filelist" default="shariff.complete.js" label="PLG_JOOAG_SHARIFF_JS" directory="plugins/system/jooag_shariff/assets/js" filter="js" />
+				<field type="spacer" name="labelcssjs" label="PLG_JOOAG_SHARIFF_COMPLETE_OR_MIN" />
+				<field type="spacer" name="hrline2" label="PLG_JOOAG_SHARIFF_HR_LINE" />
 				<field name="data_backend_url" label="PLG_JOOAG_SHARIFF_SHARE_COUNTER_BACKEND" type="radio" class="btn-group" default="1">
 					<option value="0">PLG_JOOAG_SHARIFF_DISABLED</option>
 					<option value="1">PLG_JOOAG_SHARIFF_ENABLED</option>
