@@ -171,16 +171,8 @@ class plgSystemJooag_Shariff extends JPlugin
 	
 	public function onExtensionBeforeSave($context, $table, $isNew)
 	{	
-		return $this->generateShariffJson($table);
-	}
-	
-	public function onExtensionBeforeInstall($context, $table, $isNew)
-	{
-		return $this->generateShariffJson($table);
-	}
-	
-	public function onExtensionBeforeUpdate($context, $table, $isNew)
-	{
-		return $this->generateShariffJson($table);
+		if($table->name == 'PLG_JOOAG_SHARIFF'){
+			return $this->generateShariffJson($table);
+		}
 	}
 }
