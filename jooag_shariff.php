@@ -72,37 +72,28 @@ class plgSystemJooag_Shariff extends JPlugin
 	 **/
 	public function getOutputPosition($article)
 	{
-		$catCount = '0';
-		$menuCount = '0';
-		$catIds = $this->params->get('showbycategory');
-		$menuIds = $this->params->get('showbymenu');
+		$catIds = (array)$this->params->get('showbycategory');
+		$menuIds = (array)$this->params->get('showbymenu');
 		$app = JFactory::getApplication();
 		$actualMenuId = $app->getMenu()->getActive()->id;
-		
-		if ($this->params->get('position') != '3'){
-			if ((is_array($catIds) AND in_array($article->catid, $catIds)) AND $this->params->get('wheretoshow') == '2')
-			{
-				$catCount = '1';
-			}
+		$view = '0';
 			
-			if ((is_array($catIds) AND !in_array($article->catid, $catIds)) AND $this->params->get('wheretoshow') == '3')
-			{	
-				$catCount = '1';
-			}
-			
-			if ((is_array($menuIds) AND in_array($actualMenuId, $menuIds)) AND $this->params->get('wheretoshow') == '2')
-			{
-				$menuCount = '1';
-			}
-			
-			if ((is_array($menuIds) AND !in_array($actualMenuId, $menuIds)) AND $this->params->get('wheretoshow') == '3')
-			{	
-				$menuCount = '1';
-			}
+		if($this->params->get('wheretoshow') == '3'){
+			$view = '1';
 		}
 		
-		if($catCount == '1' or $menuCount =='1' or $this->params->get('wheretoshow') == '1' or $this->params->get('position') == '3')
+		if ((isset($article->catid) and in_array($article->catid, $catIds)) or in_array($actualMenuId, $menuIds))
 		{
+			if($this->params->get('wheretoshow') == '2'){
+				$view = '1';
+			}
+			
+			if($this->params->get('wheretoshow') == '3'){
+				$view = '0';
+			}
+		}
+
+		if($view == '1' or $this->params->get('wheretoshow') == '1'){		
 			return $this->getOutput();
 		}
 	}
@@ -129,7 +120,7 @@ class plgSystemJooag_Shariff extends JPlugin
 		$html .= ' data-lang="'.explode("-", JFactory::getLanguage()->getTag())[0].'"';
 		$html .= ($this->params->get('data_mail_url')) ? ' data-mail-url="mailto:'.$this->params->get('data_mail_url').'"' : '';
 		$html .= ' data-orientation="'.$this->params->get('data_orientation').'"';	
-		$html .= ' data-services='.json_encode(array_map('strtolower', json_decode($this->params->get('data_services'))->services));
+		$html .= ' data-services='.json_encode(array_map('strtolower', (array)json_decode($this->params->get('data_services'))->services));
 		$html .= ' data-theme="'.$this->params->get('data_theme').'"';
 		$html .= ' data-url="'.JURI::getInstance()->toString().'"';
 		if ( ($id = (int) $this->params->get('data_info_url')) )

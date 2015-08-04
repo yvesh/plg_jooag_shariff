@@ -55,7 +55,16 @@
 					<option value="2">PLG_JOOAG_SHARIFF_CONTENT_BOTTOM</option>
 					<option value="3">PLG_JOOAG_SHARIFF_ONLY_IN_MODULE</option>
 					</field>
+				<field type="spacer" name="labelrestrict" showon="position:1,2" label="PLG_JOOAG_SHARIFF_WHERE_TO_SHOW" />
+				<field name="wheretoshow" showon="position:1,2" label="PLG_JOOAG_SHARIFF_SHOW" type="list" class="btn-group" default="1" >
+					<option value="1">PLG_JOOAG_SHARIFF_SHOW_EVERYWHERE</option>
+					<option value="2">PLG_JOOAG_SHARIFF_SHOW_CAT_MENU</option>
+					<option value="3">PLG_JOOAG_SHARIFF_HIDE_CAT_MENU</option>
+					</field>
+				<field name="showbycategory" showon="position:1,2" type="category" multiple="true" extension="com_content" label="PLG_JOOAG_SHARIFF_CATEGORIES" />
+				<field name="showbymenu" showon="position:1,2" type="menuitem" multiple="true" label="PLG_JOOAG_SHARIFF_MENU_ITEMS" />
 				<field type="spacer" name="myspacer" showon="position:3" label="PLG_JOOAG_SHARIFF_POSITION_DESC" />
+				<field type="spacer" name="hrline" label="PLG_JOOAG_SHARIFF_HR_LINE" />
 				<field name="data_orientation" label="PLG_JOOAG_SHARIFF_ORIENATATION" type="radio" class="btn-group" default="horizontal">
 					<option value="horizontal">PLG_JOOAG_SHARIFF_HORIZONTAL</option>
 					<option value="vertical">PLG_JOOAG_SHARIFF_VERTICAL</option>
@@ -66,17 +75,8 @@
 					<option value="white">PLG_JOOAG_SHARIFF_WHITE</option>
 					</field>
 			</fieldset>
-			<fieldset name="PLG_JOOAG_SHARIFF_RESTRICTION">
-				<field name="wheretoshow" label="PLG_JOOAG_SHARIFF_SHOW" type="list" class="btn-group" default="1" >
-					<option value="1">PLG_JOOAG_SHARIFF_SHOW_EVERYWHERE</option>
-					<option value="2">PLG_JOOAG_SHARIFF_SHOW_CAT_MENU</option>
-					<option value="3">PLG_JOOAG_SHARIFF_HIDE_CAT_MENU</option>
-					</field>
-				<field name="showbycategory" type="category" multiple="true" extension="com_content" label="PLG_JOOAG_SHARIFF_CATEGORIES" />
-				<field name="showbymenu" type="menuitem" multiple="true" label="PLG_JOOAG_SHARIFF_MENU_ITEMS" />
-			</fieldset>	
+	
 			<fieldset name="PLG_JOOAG_SHARIFF_EXPERTS">
-				
 				<field name="shariffcss" type="filelist" default="shariff.complete.css" label="PLG_JOOAG_SHARIFF_CSS" directory="plugins/system/jooag_shariff/assets/css" filter="css" />
 				<field name="shariffjs" type="filelist" default="shariff.complete.js" label="PLG_JOOAG_SHARIFF_JS" directory="plugins/system/jooag_shariff/assets/js" filter="js" />
 				<field name="data_backend_url" label="PLG_JOOAG_SHARIFF_SHARE_COUNTER_BACKEND" type="radio" class="btn-group" default="1">
