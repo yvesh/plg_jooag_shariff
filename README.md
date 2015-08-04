@@ -5,14 +5,16 @@ This Joomla 3.4+ Plugin utilizes Heise Shariff Library to enable website users t
 <b>Required:</b>
 PHP 5.4+ and Joomla 3.4+
 
-<b>Features Plugin:</b>
+<b>Plugin features:</b>
 * Joomla Update integration
 * Use this Plugins in your Modules and Articles via {shariff} shorttag
-* Language: English, German
-* Restrict the execution to Menu Items or Content Categories
+* Languages: English, German
+* Restrict the plugin execution to Menu Items or Content Categories
+* Ordering for your Buttons
+* Extended Shariff Backend Cache Handler
 * Plugin settings for Themes, Orientation, Services and much more...
 
-<b>Features Shariff Library:</b>
+<b>Shariff Library features:</b>
 * Services: Twitter, Facebook, GooglePlus, LinkedIn, Pinterest, Xing, Whatsapp
 * Themes: Color, Grey, White
 * Orientation: Horizontal, Vertical
@@ -24,7 +26,6 @@ PHP 5.4+ and Joomla 3.4+
 * More languages maybe through contributors
 * Integration for more Componentes
 * Use the Shariff Backend OPP style instead of write a json File
-
 
 <h2>Update Instructions:</h2>
 * V3.0.6 -> V3.0.7
