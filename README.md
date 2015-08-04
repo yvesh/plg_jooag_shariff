@@ -27,16 +27,15 @@ PHP 5.4+ and Joomla 3.4+
 
 
 <h2>Update Instructions:</h2>
-* V3.0.6
+* V3.0.6 -> V3.0.7
+  * Everything fine. Nothing to do!
+* Before V3.0.6
   * Plugin Settings need to be revisited. 
-* V3.0.5
-  * Plugin Settings need to be revisited. Especially the Mail and Info Services!
 * Before V3.0.3
   * Delete this folder joomla-root/plugins/system/jooag_shariff/backend/cache
   * Not so important to delete this folder. It's not needed anymore, because we use the Joomla Core Cache folder.
-* Everything before V3.0.0 Stable
+* Before V3.0.0 Stable
   * Delete the old Plugin and install the new one
-  * Plugin Settings need to be revisited
 
 <h2>Documentation:</h2>
 <h4>Share Counter:</h4>
