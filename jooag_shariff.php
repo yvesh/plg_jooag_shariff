@@ -138,32 +138,27 @@ class plgSystemJooag_Shariff extends JPlugin
 	}
 	
 	/**
-	 * writes a file for shariff backend
+	 * Generator for shariff.json
 	 *
 	 * @return void
 	 **/
-	public function generateShariffJson($table)
-	{	
-		$params = json_decode($table->params);
-		$data->domain = JURI::getInstance()->getHost();		
-		$data->services = array_diff(json_decode($params->data_services)->services, array('Whatsapp', 'Mail', 'Info'));
-		$data->cache->cacheDir = JPATH_SITE.'/cache/plg_jooag_shariff';
-		$data->cache->ttl = $params->cache_time;
-		if($params->cache == '1'){
-			$data->cache->adapter = $params->cache_handler;
-			
-			if ($data->cache->adapter == 'file'){
-				$data->cache->adapter = 'filesystem';
-			}
-		}
-		$data = json_encode($data, JSON_UNESCAPED_SLASHES);
-		JFile::write(JPATH_PLUGINS . '/system/jooag_shariff/backend/shariff.json', $data);
-	}
-	
 	public function onExtensionBeforeSave($context, $table, $isNew)
 	{	
 		if($table->name == 'PLG_JOOAG_SHARIFF'){
-			return $this->generateShariffJson($table);
+			$params = json_decode($table->params);
+			$data->domain = JURI::getInstance()->getHost();		
+			$data->services = array_diff(json_decode($params->data_services)->services, array('Whatsapp', 'Mail', 'Info'));
+			$data->cache->cacheDir = JPATH_SITE.'/cache/plg_jooag_shariff';
+			$data->cache->ttl = $params->cache_time;
+			if($params->cache == '1'){
+				$data->cache->adapter = $params->cache_handler;
+				
+				if ($data->cache->adapter == 'file'){
+					$data->cache->adapter = 'filesystem';
+				}
+			}
+			$data = json_encode($data, JSON_UNESCAPED_SLASHES);
+			JFile::write(JPATH_PLUGINS . '/system/jooag_shariff/backend/shariff.json', $data);
 		}
 	}
 }
