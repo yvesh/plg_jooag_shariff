@@ -63,8 +63,8 @@ RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
 </ol>
 </p>
 
-<h4>Usage as Shortcode</h4>
-You can put into your content or "Custom Html" module the following shortcode: <code>{shariff}</code> . If you use a "Custom Html" Module, please set the Option "Prepare Content" to yes.
+<h4>Use this Plugin as a Shariff Joomla Modul</h4>
+You can put into your content or "Custom Html" module the following shortcode: <code>{shariff}</code> and set the Option "Prepare Content" to yes.
 
 <h2>Credits:</h2>
 Developed by http://joomla-agentur.de
