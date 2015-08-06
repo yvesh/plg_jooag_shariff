@@ -70,6 +70,4 @@ Developed by http://joomla-agentur.de
 
 Thanks to Heise.de for this development https://github.com/heiseonline/shariff
 
-Dedicated for Joomla! Deutschland Facebook Group https://www.facebook.com/groups/joomla.deutschland/
-
 and for Joomla User Group Hamburg http://jug-hamburg.de/ (the main reason for this plugin :-)
