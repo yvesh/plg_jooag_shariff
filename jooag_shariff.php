@@ -17,7 +17,7 @@ defined('_JEXEC') or die;
 class plgSystemJooag_Shariff extends JPlugin
 {	
 	/**
-	 * renders the buttons before the article
+	 * Display the buttons before the article
 	 *
 	 * @param   string   $context   The context of the content being passed to the plugin.
 	 * @param   mixed    &$article  An object with a "text" property
@@ -35,7 +35,7 @@ class plgSystemJooag_Shariff extends JPlugin
 	}
 
 	/**
-	 * renders the buttons after the article
+	 * Display the buttons after the article
 	 *
 	 * @param   string   $context   The context of the content being passed to the plugin.
 	 * @param   mixed    &$article  An object with a "text" property
@@ -53,7 +53,7 @@ class plgSystemJooag_Shariff extends JPlugin
 	}
 	
 	/**
-	 * place shariff in your aticles and modules via {shariff} experimental
+	 * Place shariff in your aticles and modules via {shariff} shorttag
 	 **/
 	public function onContentPrepare($context, &$article, &$params, $page = 0)
 	{	
@@ -138,7 +138,7 @@ class plgSystemJooag_Shariff extends JPlugin
 	}
 	
 	/**
-	 * Generator for shariff.json
+	 * Generator for shariff.json if the is saved
 	 *
 	 * @return void
 	 **/
