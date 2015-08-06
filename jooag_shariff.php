@@ -149,6 +149,13 @@ class plgSystemJooag_Shariff extends JPlugin
 			$params = json_decode($table->params);
 			$data->domain = JURI::getInstance()->getHost();		
 			$data->services = array_diff(json_decode($params->data_services)->services, array('Whatsapp', 'Mail', 'Info'));
+			
+			if($params->fb_app_id and $params->fb_secret)
+			{
+				$data->Facebook->app_id = $params->fb_app_id;
+				$data->Facebook->secret = $params->fb_secret;
+			}
+			
 			$data->cache->cacheDir = JPATH_SITE.'/cache/plg_jooag_shariff';
 			$data->cache->ttl = $params->cache_time;
 			
