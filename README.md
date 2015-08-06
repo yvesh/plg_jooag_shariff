@@ -26,6 +26,7 @@ PHP 5.4+ and Joomla 3.4+
 * More languages maybe through contributors
 * Integration for more Componentes
 * Use the Shariff Backend OPP style instead of write a json File
+* Move assets to Joomla Media Folder
 
 <h2>Update Instructions:</h2>
 * V3.0.6 -> V3.0.7
