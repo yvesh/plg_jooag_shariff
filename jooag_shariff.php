@@ -123,7 +123,7 @@ class plgSystemJooag_Shariff extends JPlugin
 		$html .= ' data-services='.json_encode(array_map('strtolower', (array)json_decode($this->params->get('data_services'))->services));
 		$html .= ' data-theme="'.$this->params->get('data_theme').'"';
 		$html .= ' data-url="'.JURI::getInstance()->toString().'"';
-		if ( ($id = (int) $this->params->get('data_info_url')) )
+		if (($id = (int) $this->params->get('data_info_url')))
 		{
 			jimport( 'joomla.database.table' );
 			$item =	JTable::getInstance("content");
@@ -144,19 +144,19 @@ class plgSystemJooag_Shariff extends JPlugin
 	 **/
 	public function onExtensionBeforeSave($context, $table, $isNew)
 	{	
-		if($table->name == 'PLG_JOOAG_SHARIFF'){
+		if($table->name == 'PLG_JOOAG_SHARIFF')
+		{
 			$params = json_decode($table->params);
 			$data->domain = JURI::getInstance()->getHost();		
 			$data->services = array_diff(json_decode($params->data_services)->services, array('Whatsapp', 'Mail', 'Info'));
 			$data->cache->cacheDir = JPATH_SITE.'/cache/plg_jooag_shariff';
 			$data->cache->ttl = $params->cache_time;
-			if($params->cache == '1'){
-				$data->cache->adapter = $params->cache_handler;
-				
-				if ($data->cache->adapter == 'file'){
-					$data->cache->adapter = 'filesystem';
-				}
+			
+			if($params->cache == '1' and $params->cache_handler == 'file')
+			{				
+				$data->cache->adapter = 'filesystem';
 			}
+			
 			$data = json_encode($data, JSON_UNESCAPED_SLASHES);
 			JFile::write(JPATH_PLUGINS . '/system/jooag_shariff/backend/shariff.json', $data);
 		}
