@@ -30,7 +30,7 @@ PHP 5.4+ and Joomla 3.4+
 
 <h2>Update Instructions:</h2>
 * V3.0.6 -> V3.1.0
-  * Everything fine. Nothing to do!
+  * Delete the assets Folder inside the Plugin.
 * Before V3.0.6
   * Plugin Settings need to be revisited. 
 * Before V3.0.3
