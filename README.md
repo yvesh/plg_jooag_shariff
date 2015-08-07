@@ -29,7 +29,7 @@ PHP 5.4+ and Joomla 3.4+
 * Move assets to Joomla Media Folder
 
 <h2>Update Instructions:</h2>
-* V3.0.6 -> V3.0.8
+* V3.0.6 -> V3.1.0
   * Everything fine. Nothing to do!
 * Before V3.0.6
   * Plugin Settings need to be revisited. 
