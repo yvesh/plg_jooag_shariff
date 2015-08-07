@@ -11,18 +11,18 @@
 	<description>PLG_JOOAG_SHARIFF_XML_DESCRIPTION</description>
 
 	<files>
-		<folder>assets</folder>
 		<folder>backend</folder>
+		<folder>css</folder>
 		<folder>fields</folder>
+		<folder>js</folder>
 		<folder>language</folder>
 		<filename plugin="jooag_shariff">jooag_shariff.php</filename>
 		<filename plugin="jooag_shariff">README.md</filename>
 	</files>
 	
 	<media folder="media" destination="plg_jooag_shariff">
-		<folder>assets/css</folder>
-		<folder>assets/fonts</folder>
-		<folder>assets/js</folder>
+		<folder>css</folder>
+		<folder>js</folder>
 	</media>
 	
 	<languages folder="language">
