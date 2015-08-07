@@ -159,9 +159,13 @@ class plgSystemJooag_Shariff extends JPlugin
 			$data->cache->cacheDir = JPATH_SITE.'/cache/plg_jooag_shariff';
 			$data->cache->ttl = $params->cache_time;
 			
-			if($params->cache == '1' and $params->cache_handler == 'file')
+			if($params->cache == '1')
 			{				
-				$data->cache->adapter = 'filesystem';
+				$data->cache->adapter = $params->cache_handler;
+				
+				if($params->cache_handler == 'file'){
+					$data->cache->adapter = 'filesystem';
+				}
 			}
 			
 			$data = json_encode($data, JSON_UNESCAPED_SLASHES);
