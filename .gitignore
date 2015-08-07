@@ -1,0 +1,7 @@
+$ cat .gitignore
+
+# Ignore specific files
+.DS_Store
+
+# Ignore Directories
+backend\vendor\guzzlehttp\guzzle\docs
