@@ -19,6 +19,12 @@
 		<filename plugin="jooag_shariff">README.md</filename>
 	</files>
 	
+	<media folder="media" destination="plg_jooag_shariff">
+		<folder>assets/css</folder>
+		<folder>assets/fonts</folder>
+		<folder>assets/js</folder>
+	</media>
+	
 	<languages folder="language">
 		<language tag="en-GB">en-GB/en-GB.plg_system_jooag_shariff.ini</language>
 		<language tag="en-GB">en-GB/en-GB.plg_system_jooag_shariff.sys.ini</language>
@@ -29,7 +35,6 @@
 	<config>
 		<fields name="params">
 			<fieldset name="basic" addfieldpath="/plugins/system/jooag_shariff/fields">
-				
 				<field type="spacer" name="spacer_LABEL_CHOOSE_ICONS" label="PLG_JOOAG_SHARIFF_LABEL_CHOOSE_ICONS" />
 				<field name="data_services" type="Repeatable" icon="list" label="PLG_JOOAG_SHARIFF_SERVICES" default="{'services':['Twitter','Facebook','GooglePlus','LinkedIn','Pinterest','Xing','Whatsapp','Mail','Info']}">
 					<fieldset hidden="true" name="list_templates_modal" repeat="true">
@@ -47,18 +52,14 @@
 						</field>
 					</fieldset>
 				</field>
-				
 				<field type="spacer" name="spacer_LABEL_FB_API" label="PLG_JOOAG_SHARIFF_LABEL_FB_API" />
 				<field name="fb_secret" type="input" label="PLG_JOOAG_SHARIFF_FB_SECRET"/>
 				<field name="fb_app_id" type="input" label="PLG_JOOAG_SHARIFF_FB_APP_ID"/>
-				
 				<field type="spacer" name="spacer_LABEL_INFO_BUTTON" label="PLG_JOOAG_SHARIFF_LABEL_INFO_BUTTON" />
 				<field name="data_info_url" type="modal_article" label="PLG_JOOAG_SHARIFF_INFO_BUTTON_ARTICLE"/>
-
 				<field type="spacer" name="PLG_JOOAG_SHARIFF_LABEL_MAIL_BUTTON" label="PLG_JOOAG_SHARIFF_LABEL_MAIL_BUTTON" />
 				<field name="data_mail_url" type="input" label="PLG_JOOAG_SHARIFF_MAIL" />
 				<field type="spacer" name="data-mail-spacer" label="PLG_JOOAG_SHARIFF_MAIL_DESC" class="alert alert-error" />
-				
 				<field type="spacer" name="PLG_JOOAG_SHARIFF_LABEL_CHOOSE_POSITION" label="PLG_JOOAG_SHARIFF_LABEL_CHOOSE_POSITION" />
 				<field name="position" label="PLG_JOOAG_SHARIFF_POSITION" type="list" class="btn-group" default="1" >
 					<option value="1">PLG_JOOAG_SHARIFF_CONTENT_TOP</option>
@@ -84,10 +85,9 @@
 					<option value="white">PLG_JOOAG_SHARIFF_WHITE</option>
 					</field>
 			</fieldset>
-	
 			<fieldset name="PLG_JOOAG_SHARIFF_EXPERTS">
-				<field name="shariffcss" type="filelist" default="shariff.complete.css" label="PLG_JOOAG_SHARIFF_CSS" directory="plugins/system/jooag_shariff/assets/css" filter="css" hide_none="true" hide_default="true" />
-				<field name="shariffjs" type="filelist" default="shariff.min.js" label="PLG_JOOAG_SHARIFF_JS" directory="plugins/system/jooag_shariff/assets/js" filter="js" hide_none="true" hide_default="true" />
+				<field name="shariffcss" type="filelist" default="shariff.complete.css" label="PLG_JOOAG_SHARIFF_CSS" directory="media/plg_jooag_shariff/css" filter="css" hide_none="true" hide_default="true" />
+				<field name="shariffjs" type="filelist" default="shariff.min.js" label="PLG_JOOAG_SHARIFF_JS" directory="media/plg_jooag_shariff/js" filter="js" hide_none="true" hide_default="true" />
 				<field type="spacer" name="labelcssjs" label="PLG_JOOAG_SHARIFF_COMPLETE_OR_MIN" class="alert alert-info" />
 				<field name="data_backend_url" label="PLG_JOOAG_SHARIFF_SHARE_COUNTER_BACKEND" type="list" class="btn-group" default="1">
 					<option value="0">PLG_JOOAG_SHARIFF_DISABLED</option>
