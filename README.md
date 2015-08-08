@@ -22,10 +22,11 @@ PHP 5.4+ and Joomla 3.4+
 * Shariff Languages: bg, de, en, es, fi, hr, hu, ja, ko, no, pl, pt, ro, ru, sk, sl, sr, sv, tr, zh
 * Counter: Shariff Backend PHP integration
  
-<b>Future plans:</b>
-* More languages maybe through contributors
-* Integration for more Componentes
-* Use the Shariff Backend OPP style instead of write a json File
+<b>Future plans & Roadmap:</b>
+* Custom settings for theme and orienation in every shorttag e.g. {shariff|orientation:vertical|theme:grey} (v3.2)
+* Integration for more Componentes e.g. Zoo, K2, SobiPro, Seblod (v3.3)
+* If you have a good idea, maybe this is the next v3.4
+* Ongoing integration of updates from Shariff Libraray & Backend
 
 <h2>Update Instructions:</h2>
 * V3.0.6 -> V3.1.0
