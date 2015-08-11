@@ -64,7 +64,32 @@ RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
 </p>
 
 <h4>Use this Plugin as a Shariff Joomla Modul</h4>
-You can put into your content or "Custom Html" module the following shortcode: <code>{shariff}</code> and set the Option "Prepare Content" to yes.
+* You can put into your content or "Custom Html" module the following shortcode and set the Option "Prepare Content" to yes! 
+ ```
+{shariff}
+```
+* You can also override the Global Plugin Settings for theme and orientation like this:
+```
+ {shariff theme=color}
+ {shariff theme=grey}
+ {shariff theme=white}
+ {shariff orientation=horizontal}
+ {shariff orientation=vertical}
+```
+* You can combine this tags too for e.g.
+```
+ {shariff theme=color orientation=horizontal}
+ {shariff theme=white orientation=vertical}
+```
+* Theme variables
+ * color
+ * grey
+ * white
+* Orientation variables
+ * horizontal
+ * vertical
+ 
+
 
 <h2>Credits:</h2>
 Developed by http://joomla-agentur.de
