@@ -23,10 +23,13 @@ PHP 5.4+ and Joomla 3.4+
 * Counter: Shariff Backend PHP integration
  
 <b>Future plans & Roadmap:</b>
-* Custom settings for theme and orienation in every shorttag e.g. {shariff|orientation:vertical|theme:grey} (v3.2)
-* Integration for more Componentes e.g. Zoo, K2, SobiPro, Seblod (v3.3)
-* If you have a good idea, maybe this is the next v3.4
-* Ongoing integration of updates from Shariff Libraray & Backend
+- [x] v3.0 - Initial release with Heise Shariff Library and Shariff Backend integration
+- [x] v3.1 - Icon ordering, more bugifixing, facebook api integration, move assets folder to the joomla media folder
+- [x] v3.2 - Custom settings for theme and orienation in every shorttag e.g. {shariff orientation:vertical theme:grey}
+- [ ] v3.3 - Integration for more Componentes e.g. Zoo, K2, SobiPro, Seblod
+- [ ] v3.4 - Overhaul the output and allow multiple instances
+- [ ] If you have a good idea, maybe this is the next v3.5
+- [ ] Ongoing integration of updates from Shariff Libraray & Backend
 
 <h2>Update Instructions:</h2>
 * V3.0.6 -> V3.1.0
