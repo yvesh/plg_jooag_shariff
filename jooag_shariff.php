@@ -57,9 +57,25 @@ class plgSystemJooag_Shariff extends JPlugin
 	 **/
 	public function onContentPrepare($context, &$article, &$params, $page = 0)
 	{	
-		if($context == 'mod_custom.content' and JString::strpos( $article->text, '{shariff}' )  !== false and $this->params->get('position') == '3')
+		if	($context == 'mod_custom.content' and $this->params->get('position') == '3'
+			and (preg_match_all('/\{shariff\ ([^}]+)\}/', $article->text, $matches) or preg_match_all('/{shariff}/', $article->text, $matches)))
 		{
-			$article->text = preg_replace( "#{shariff}#s", $this->getOutputPosition($article), $article->text );	
+			foreach($matches[0] as $matchIndex => $match){
+				$params = explode(' ', trim($match,'}'));
+				$config = array ();
+				
+				foreach ($params as $key => $item)
+				{
+					if($key != '0')
+					{
+						list($k, $v) = explode("=", $item);
+						$config[ $k ] = $v;
+					}
+
+				}
+
+				$article->text = str_replace($matches[0][$matchIndex], $this->getOutputPosition($article, $config), $article->text);
+			}
 		}
 	} 
 	
@@ -70,7 +86,7 @@ class plgSystemJooag_Shariff extends JPlugin
 	 *
 	 * @return string
 	 **/
-	public function getOutputPosition($article)
+	public function getOutputPosition($article, $config)
 	{
 		$catIds = (array)$this->params->get('showbycategory');
 		$menuIds = (array)$this->params->get('showbymenu');
@@ -94,14 +110,14 @@ class plgSystemJooag_Shariff extends JPlugin
 		}
 
 		if($view == '1' or $this->params->get('wheretoshow') == '1'){		
-			return $this->getOutput();
+			return $this->getOutput($config);
 		}
 	}
 
 	/**
 	 * Shariff output generation
 	 **/
-	public function getOutput()
+	public function getOutput($config)
 	{
 		$doc = JFactory::getDocument();
 		JHtml::_('jquery.framework');
@@ -119,9 +135,9 @@ class plgSystemJooag_Shariff extends JPlugin
 		$html .= ($this->params->get('data_backend_url')) ? ' data-backend-url="/plugins/system/jooag_shariff/backend/"' : '';
 		$html .= ' data-lang="'.explode("-", JFactory::getLanguage()->getTag())[0].'"';
 		$html .= ($this->params->get('data_mail_url')) ? ' data-mail-url="mailto:'.$this->params->get('data_mail_url').'"' : '';
-		$html .= ' data-orientation="'.$this->params->get('data_orientation').'"';	
+		$html .= (array_key_exists('orientation', $config)) ? ' data-orientation="'.$config['orientation'].'':' data-orientation="'.$this->params->get('data_orientation').'"';	
 		$html .= ' data-services='.json_encode(array_map('strtolower', (array)json_decode($this->params->get('data_services'))->services));
-		$html .= ' data-theme="'.$this->params->get('data_theme').'"';
+		$html .= (array_key_exists('theme', $config)) ? ' data-theme="'.$config['theme'].'"' : ' data-theme="'.$this->params->get('data_theme').'"';
 		$html .= ' data-url="'.JURI::getInstance()->toString().'"';
 		if (($id = (int) $this->params->get('data_info_url')))
 		{
@@ -133,7 +149,6 @@ class plgSystemJooag_Shariff extends JPlugin
 			$html .= ' data-info-url="'.$link.'"';
 		}
 		$html .= '></div>';
-
 		return $html;
 	}
 	
