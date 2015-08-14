@@ -30,10 +30,15 @@ class plgSystemJooag_Shariff extends JPlugin
 	{
 		if($context == 'com_content.article' and $this->params->get('position') == '1')
 		{
-			return $this->getOutputPosition($article);
+			$config = array();
+			$article->introtext = str_replace('{noshariff}', '', $article->introtext, $stringCount);
+			if($stringCount == '0')
+			{
+				return $this->getOutputPosition($article, $config);
+			}
 		}
 	}
-
+	
 	/**
 	 * Display the buttons after the article
 	 *
@@ -45,10 +50,15 @@ class plgSystemJooag_Shariff extends JPlugin
 	 * @return  string
 	 **/
 	public function onContentAfterDisplay($context, &$article, &$params, $page = 0)
-	{
-		if($context == 'com_content.article' and $this->params->get('position') == '2')
+	{	
+		if($context == 'com_content.article' and $this->params->get('position') == '2' )
 		{
-			return $this->getOutputPosition($article);
+			$config = array();
+			$article->introtext = str_replace('{noshariff}', '', $article->introtext, $stringCount);
+			if($stringCount == '0')
+			{
+				return $this->getOutputPosition($article, $config);
+			}
 		}
 	}
 	
@@ -56,7 +66,7 @@ class plgSystemJooag_Shariff extends JPlugin
 	 * Place shariff in your aticles and modules via {shariff} shorttag
 	 **/
 	public function onContentPrepare($context, &$article, &$params, $page = 0)
-	{	
+	{		
 		if	($context == 'mod_custom.content' and $this->params->get('position') == '3'
 			and (preg_match_all('/\{shariff\ ([^}]+)\}/', $article->text, $matches) or preg_match_all('/{shariff}/', $article->text, $matches)))
 		{
@@ -77,7 +87,11 @@ class plgSystemJooag_Shariff extends JPlugin
 				$article->text = str_replace($matches[0][$matchIndex], $this->getOutputPosition($article, $config), $article->text);
 			}
 		}
-	} 
+		
+		if	($context == 'mod_articles_news.content'){
+			$article->text .= '{noshariff}';
+		}		
+	}
 	
 	/**
 	 * appends the required scripts to the documents and returns the markup
