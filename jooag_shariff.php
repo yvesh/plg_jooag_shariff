@@ -135,8 +135,8 @@ class plgSystemJooag_Shariff extends JPlugin
 		$html .= ($this->params->get('data_backend_url')) ? ' data-backend-url="/plugins/system/jooag_shariff/backend/"' : '';
 		$html .= ' data-lang="'.explode("-", JFactory::getLanguage()->getTag())[0].'"';
 		$html .= ($this->params->get('data_mail_url')) ? ' data-mail-url="mailto:'.$this->params->get('data_mail_url').'"' : '';
-		$html .= (array_key_exists('orientation', $config)) ? ' data-orientation="'.$config['orientation'].'"' : ' data-orientation="'.$this->params->get('data_orientation').'"';	
-		$html .= ' data-services='.json_encode(array_map('strtolower', (array)json_decode($this->params->get('data_services'))->services));
+		$html .= (array_key_exists('orientation', $config)) ? ' data-orientation="'.$config['orientation'].'"' : ' data-orientation="'.$this->params->get('data_orientation').'"';
+		$html .= ' data-services="'.htmlspecialchars(json_encode(array_map('strtolower', (array)json_decode($this->params->get('data_services'))->services))).'"';
 		$html .= (array_key_exists('theme', $config)) ? ' data-theme="'.$config['theme'].'"' : ' data-theme="'.$this->params->get('data_theme').'"';
 		$html .= ' data-url="'.JURI::getInstance()->toString().'"';
 		if (($id = (int) $this->params->get('data_info_url')))
