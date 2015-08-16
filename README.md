@@ -33,7 +33,9 @@ PHP 5.4+ and Joomla 3.4+
 - [ ] Ongoing integration of updates from Shariff Libraray & Backend
 
 <h2>Update Instructions:</h2>
-* V3.0.6 -> V3.1.0
+* V3.1.x -> V3.2.x
+  * Everything fine! Nothing todo.
+* V3.0.6 -> V3.1.x
   * Delete the assets Folder inside the Plugin.
 * Before V3.0.6
   * Plugin Settings need to be revisited. 
