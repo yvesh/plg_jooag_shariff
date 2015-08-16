@@ -29,7 +29,7 @@ PHP 5.4+ and Joomla 3.4+
 - [x] v3.2 - Custom settings for theme and orienation in every shorttag e.g. {shariff orientation:vertical theme:grey}
 - [x] v3.2.2 - Reduce the size of the plugin (get rid of the Shariff Backend docs and fluff)
 - [ ] v3.3 - Integration for more Componentes e.g. Zoo, K2, SobiPro, Seblod
-- [ ] v3.4 - Overhaul the output and allow multiple instances
+- [ ] v3.4 - Overhaul the output and allow multiple instances (maybe in v3.3)
 - [ ] v3.5 - Maybe shorttag parameter support for custom icons, backend integration and other shariff settings
 - [ ] v3.x - Ongoing integration of updates from Shariff Libraray & Backend
 - [ ] v3.x - If you have a good idea, maybe this is the next v3.x
