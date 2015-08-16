@@ -1,4 +1,4 @@
-# Ignore guzzle Docs
+# Remove not needed docs and fluff
 docs/
 tests/
 *.md
@@ -6,7 +6,6 @@ Makefile
 *.dist
 LICENSE
 *.txt
-
 phpunit.xml
 composer.phar
 composer.lock
