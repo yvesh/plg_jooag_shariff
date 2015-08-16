@@ -15,7 +15,7 @@ defined('_JEXEC') or die;
  * @since  1.0.0
  **/
 class plgSystemJooag_Shariff extends JPlugin
-{	
+{
 	/**
 	 * Display the buttons before the article
 	 *
@@ -25,20 +25,20 @@ class plgSystemJooag_Shariff extends JPlugin
 	 * @param   integer  $page      Optional page number. Unused. Defaults to zero.
 	 *
 	 * @return  string
-	 **/	
+	 **/
 	public function onContentBeforeDisplay($context, &$article, &$params, $page = 0)
 	{
 		if($context == 'com_content.article' and $this->params->get('position') == '1')
 		{
-			$config = array();
 			$article->introtext = str_replace('{noshariff}', '', $article->introtext, $stringCount);
+	
 			if($stringCount == '0')
 			{
-				return $this->getOutputPosition($article, $config);
+				return $this->getOutputPosition($article, $config = array());
 			}
 		}
 	}
-	
+
 	/**
 	 * Display the buttons after the article
 	 *
@@ -50,49 +50,45 @@ class plgSystemJooag_Shariff extends JPlugin
 	 * @return  string
 	 **/
 	public function onContentAfterDisplay($context, &$article, &$params, $page = 0)
-	{	
+	{
 		if($context == 'com_content.article' and $this->params->get('position') == '2' )
 		{
-			$config = array();
 			$article->introtext = str_replace('{noshariff}', '', $article->introtext, $stringCount);
+			
 			if($stringCount == '0')
 			{
-				return $this->getOutputPosition($article, $config);
+				return $this->getOutputPosition($article, $config = array());
 			}
 		}
 	}
-	
+
 	/**
 	 * Place shariff in your aticles and modules via {shariff} shorttag
 	 **/
 	public function onContentPrepare($context, &$article, &$params, $page = 0)
-	{		
-		if	($context == 'mod_custom.content' and $this->params->get('position') == '3'
-			and (preg_match_all('/\{shariff\ ([^}]+)\}/', $article->text, $matches) or preg_match_all('/{shariff}/', $article->text, $matches)))
+	{
+		if	($context == 'mod_custom.content' and preg_match_all('/{shariff\ ([^}]+)\}|\{shariff\}/', $article->text, $matches))
 		{
-			foreach($matches[0] as $matchIndex => $match){
-				$params = explode(' ', trim($match,'}'));
-				$config = array ();
-				
-				foreach ($params as $key => $item)
+			$params = explode(' ', trim($matches[0][0],'}'));
+			$config = array ();
+
+			foreach ($params as $key => $item)
+			{
+				if($key != '0')
 				{
-					if($key != '0')
-					{
-						list($k, $v) = explode("=", $item);
-						$config[ $k ] = $v;
-					}
-
+					list($k, $v) = explode("=", $item);
+					$config[ $k ] = $v;
 				}
-
-				$article->text = str_replace($matches[0][$matchIndex], $this->getOutputPosition($article, $config), $article->text);
 			}
+
+			$article->text = str_replace($matches[0][0], $this->getOutputPosition($article, $config), $article->text);
 		}
 		
-		if	($context == 'mod_articles_news.content'){
+		if	($context == 'mod_articles_news.content' and $this->params->get('position') != '3' ){
 			$article->text .= '{noshariff}';
-		}		
+		}
 	}
-	
+
 	/**
 	 * appends the required scripts to the documents and returns the markup
 	 *
@@ -107,23 +103,23 @@ class plgSystemJooag_Shariff extends JPlugin
 		$app = JFactory::getApplication();
 		$actualMenuId = $app->getMenu()->getActive()->id;
 		$view = '0';
-			
+
 		if($this->params->get('wheretoshow') == '3'){
 			$view = '1';
 		}
-		
+
 		if ((isset($article->catid) and in_array($article->catid, $catIds)) or in_array($actualMenuId, $menuIds))
 		{
 			if($this->params->get('wheretoshow') == '2'){
 				$view = '1';
 			}
-			
+
 			if($this->params->get('wheretoshow') == '3'){
 				$view = '0';
 			}
 		}
 
-		if($view == '1' or $this->params->get('wheretoshow') == '1'){		
+		if($view == '1' or $this->params->get('wheretoshow') == '1'){
 			return $this->getOutput($config);
 		}
 	}
@@ -138,13 +134,13 @@ class plgSystemJooag_Shariff extends JPlugin
 		$doc->addStyleSheet(JURI::root().'media/plg_jooag_shariff/css/'.$this->params->get('shariffcss'));
 		$doc->addScript(JURI::root().'media/plg_jooag_shariff/js/'.$this->params->get('shariffjs'));
 		$doc->addScriptDeclaration( 'jQuery(document).ready(function() {var buttonsContainer = jQuery(".shariff");new Shariff(buttonsContainer);});' );
-		
+
 		//Cache Folder
 		jimport('joomla.filesystem.folder');
 		if(!JFolder::exists(JPATH_SITE.'/cache/plg_jooag_shariff') and $this->params->get('data_backend_url')){
 			JFolder::create(JPATH_SITE.'/cache/plg_jooag_shariff', 0755);
 		}
-		
+
 		$html  = '<div class="shariff"';
 		$html .= ($this->params->get('data_backend_url')) ? ' data-backend-url="/plugins/system/jooag_shariff/backend/"' : '';
 		$html .= ' data-lang="'.explode("-", JFactory::getLanguage()->getTag())[0].'"';
@@ -165,38 +161,38 @@ class plgSystemJooag_Shariff extends JPlugin
 		$html .= '></div>';
 		return $html;
 	}
-	
+
 	/**
 	 * Generator for shariff.json if the is saved
 	 *
 	 * @return void
 	 **/
 	public function onExtensionBeforeSave($context, $table, $isNew)
-	{	
+	{
 		if($table->name == 'PLG_JOOAG_SHARIFF')
 		{
 			$params = json_decode($table->params);
-			$data->domain = JURI::getInstance()->getHost();		
+			$data->domain = JURI::getInstance()->getHost();
 			$data->services = array_diff(json_decode($params->data_services)->services, array('Whatsapp', 'Mail', 'Info'));
-			
+
 			if($params->fb_app_id and $params->fb_secret)
 			{
 				$data->Facebook->app_id = $params->fb_app_id;
 				$data->Facebook->secret = $params->fb_secret;
 			}
-			
+
 			$data->cache->cacheDir = JPATH_SITE.'/cache/plg_jooag_shariff';
 			$data->cache->ttl = $params->cache_time;
-			
+
 			if($params->cache == '1')
-			{				
+			{
 				$data->cache->adapter = $params->cache_handler;
-				
+
 				if($params->cache_handler == 'file'){
 					$data->cache->adapter = 'filesystem';
 				}
 			}
-			
+
 			$data = json_encode($data, JSON_UNESCAPED_SLASHES);
 			JFile::write(JPATH_PLUGINS . '/system/jooag_shariff/backend/shariff.json', $data);
 		}
