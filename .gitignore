@@ -1,11 +1,21 @@
-# Created by https://www.gitignore.io
+# Ignore guzzle Docs
+docs/
+tests/
+*.md
+Makefile
+*.dist
+LICENSE
+*.txt
 
-### Composer ###
+phpunit.xml
 composer.phar
-vendor/
-
-# Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
-# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
-# composer.lock
-
-!build/vendor/
+composer.lock
+composer-test.lock
+build/artifacts/
+artifacts/
+docs/_build
+docs/*.pyc
+.idea
+.DS_STORE
+*.rst
+.gitignore
