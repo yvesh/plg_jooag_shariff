@@ -158,7 +158,7 @@ class plgSystemJooag_Shariff extends JPlugin
 			$item->load($this->params->get('data_info_url'));
 			require_once JPATH_SITE . '/components/com_content/helpers/route.php';
 			$link = JRoute::_(ContentHelperRoute::getArticleRoute($item->id, $item->catid, $item->language));
-			$html.= ' data-info-url="'.$link.'"';
+			$html[] = ' data-info-url="'.$link.'"';
 		}
 		
 		$html[] = '></div>';
