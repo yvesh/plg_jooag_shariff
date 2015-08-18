@@ -101,7 +101,17 @@ class plgSystemJooag_Shariff extends JPlugin
 		$catIds = (array)$this->params->get('showbycategory');
 		$menuIds = (array)$this->params->get('showbymenu');
 		$app = JFactory::getApplication();
-		$actualMenuId = $app->getMenu()->getActive()->id;
+		$menu = $app->getMenu()->getActive();
+		
+		if (is_object($menu))
+		{
+		  $actualMenuId = $menu->id;
+		}
+		else
+		{
+		  $actualMenuId = $app->input->getInt('Itemid', 0);
+		}
+
 		$view = 0;
 
 		if($this->params->get('wheretoshow') == 3){
