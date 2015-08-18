@@ -84,7 +84,7 @@ RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
  {shariff orientation=horizontal}
  {shariff orientation=vertical}
 ```
-* You can combine this tags too for e.g.
+* You can combine this tags, too:
 ```
  {shariff theme=color orientation=horizontal}
  {shariff theme=white orientation=vertical}
