@@ -28,6 +28,7 @@ PHP 5.4+ and Joomla 3.4+
 - [x] v3.1 - Icon ordering, more bugifixing, facebook api integration, move assets folder to the joomla media folder
 - [x] v3.2 - Custom settings for theme and orienation in every shorttag e.g. {shariff orientation:vertical theme:grey}
 - [x] v3.2.2 - Reduce the size of the plugin (get rid of the Shariff Backend docs and fluff)
+- [ ] v3.2.x - Check the Joomla and PHP Version and prevent the installation if not the requirements met
 - [ ] v3.3 - Integration for more Componentes e.g. Zoo, K2, SobiPro, Seblod, JoomGallery
 - [ ] v3.4 - Overhaul the output and allow multiple instances (maybe in v3.3)
 - [ ] v3.5 - Maybe shorttag parameter support for custom icons, backend integration and other shariff settings
