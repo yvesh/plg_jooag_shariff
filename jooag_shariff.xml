@@ -2,14 +2,24 @@
 <extension version="3.4" type="plugin" method="upgrade" group="system">
 	<name>PLG_JOOAG_SHARIFF</name>
 	<author>Ufuk Avcu</author>
+<<<<<<< HEAD
+	<creationDate>21.08.2015</creationDate>
+=======
 	<creationDate>20.08.2015</creationDate>
+>>>>>>> origin/master
 	<copyright>Copyright (C) 2009 - 2015 Joomla Agency. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>info@joomla-agentur.de</authorEmail>
 	<authorUrl>www.joomla-agentur.de</authorUrl>
+<<<<<<< HEAD
+	<version>3.2.5</version>
+=======
 	<version>3.2.4</version>
+>>>>>>> origin/master
 	<description>PLG_JOOAG_SHARIFF_XML_DESCRIPTION</description>
 
+	<scriptfile>script.jooag_shariff.php</scriptfile>
+	
 	<files>
 		<folder>backend</folder>
 		<folder>css</folder>
