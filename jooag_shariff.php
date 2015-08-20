@@ -26,7 +26,7 @@ class plgSystemJooag_Shariff extends JPlugin
 	 *
 	 * @return  string
 	 **/
-	public function onContentBeforeDisplay($context, &$article, &$params, $page)
+	public function onContentBeforeDisplay($context, &$article, &$params, $page = 0)
 	{		
 		if($context == 'com_content.article' and $this->params->get('position') == 1)
 		{
@@ -49,7 +49,7 @@ class plgSystemJooag_Shariff extends JPlugin
 	 *
 	 * @return  string
 	 **/
-	public function onContentAfterDisplay($context, &$article, &$params, $page)
+	public function onContentAfterDisplay($context, &$article, &$params, $page = 0)
 	{
 		if($context == 'com_content.article' and $this->params->get('position') == 2)
 		{
