@@ -28,7 +28,9 @@ class plgSystemJooag_Shariff extends JPlugin
 	 **/
 	public function onContentBeforeDisplay($context, &$article, &$params, $page = 0)
 	{		
-		if($context == 'com_content.article' and $this->params->get('position') == 1)
+		$app = JFactory::getApplication();
+
+		if($context == 'com_content.article' and $this->params->get('position') == 1 and $app->isSite())
 		{
 			$article->introtext = str_replace('{noshariff}', '', $article->introtext, $stringCount);
 	
@@ -51,7 +53,9 @@ class plgSystemJooag_Shariff extends JPlugin
 	 **/
 	public function onContentAfterDisplay($context, &$article, &$params, $page = 0)
 	{
-		if($context == 'com_content.article' and $this->params->get('position') == 2)
+		$app = JFactory::getApplication();
+			
+		if($context == 'com_content.article' and $this->params->get('position') == 2 and $app->isSite())
 		{
 			$article->introtext = str_replace('{noshariff}', '', $article->introtext, $stringCount);
 			
@@ -67,7 +71,9 @@ class plgSystemJooag_Shariff extends JPlugin
 	 **/
 	public function onContentPrepare($context, &$article, &$params, $page)
 	{
-		if	($context == 'mod_custom.content' and preg_match_all('/{shariff\ ([^}]+)\}|\{shariff\}/', $article->text, $matches))
+		$app = JFactory::getApplication();
+		
+		if($context == 'mod_custom.content' and preg_match_all('/{shariff\ ([^}]+)\}|\{shariff\}/', $article->text, $matches) and $app->isSite())
 		{
 			$params = explode(' ', trim($matches[0][0],'}'));
 			$config = array ();
