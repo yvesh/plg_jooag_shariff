@@ -69,7 +69,7 @@ class plgSystemJooag_Shariff extends JPlugin
 	/**
 	 * Place shariff in your aticles and modules via {shariff} shorttag
 	 **/
-	public function onContentPrepare($context, &$article, &$params, $page)
+	public function onContentPrepare($context, &$article, &$params, $page = 0)
 	{
 		$app = JFactory::getApplication();
 		
