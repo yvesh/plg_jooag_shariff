@@ -2,12 +2,12 @@
 <extension version="3.4" type="plugin" method="upgrade" group="system">
 	<name>PLG_JOOAG_SHARIFF</name>
 	<author>Ufuk Avcu</author>
-	<creationDate>09.09.2015</creationDate>
+	<creationDate>13.09.2015</creationDate>
 	<copyright>Copyright (C) 2009 - 2015 Joomla Agency. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>info@joomla-agentur.de</authorEmail>
 	<authorUrl>www.joomla-agentur.de</authorUrl>
-	<version>3.2.7</version>
+	<version>3.2.8</version>
 	<description>PLG_JOOAG_SHARIFF_XML_DESCRIPTION</description>
 
 	<scriptfile>script.jooag_shariff.php</scriptfile>
@@ -49,6 +49,7 @@
 						<option value="Pinterest">Pinterest</option>
 						<option value="Xing">Xing</option>
 						<option value="Whatsapp">Whatsapp</option>
+						<option value="AddThis">AddThis</option>
 						<option value="Mail">Mail</option>
 						<option value="Info">Info</option>
 						</field>

@@ -192,7 +192,7 @@ class plgSystemJooag_Shariff extends JPlugin
 		{
 			$params = json_decode($table->params);
 			$data->domain = JURI::getInstance()->getHost();
-			$data->services = array_diff(json_decode($params->data_services)->services, array('Whatsapp', 'Mail', 'Info'));
+			$data->services = array_diff(json_decode($params->data_services)->services, array('AddThis','Whatsapp','Mail','Info'));
 
 			if($params->fb_app_id and $params->fb_secret)
 			{
