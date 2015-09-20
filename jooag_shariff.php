@@ -157,28 +157,27 @@ class plgSystemJooag_Shariff extends JPlugin
 			JFolder::create(JPATH_SITE.'/cache/plg_jooag_shariff', 0755);
 		}
 		
-		$html = array();
-		$html[] = '<div class="shariff"';
-		$html[] = ($this->params->get('data_backend_url')) ? ' data-backend-url="/plugins/system/jooag_shariff/backend/"' : '';
-		$html[] = ' data-lang="'.explode("-", JFactory::getLanguage()->getTag())[0].'"';
-		$html[] = ($this->params->get('data_mail_url')) ? ' data-mail-url="mailto:'.$this->params->get('data_mail_url').'"' : '';
-		$html[] = (array_key_exists('orientation', $config)) ? ' data-orientation="'.$config['orientation'].'"' : ' data-orientation="'.$this->params->get('data_orientation').'"';
-		$html[] = ' data-services="'.htmlspecialchars(json_encode(array_map('strtolower', (array)json_decode($this->params->get('data_services'))->services))).'"';
-		$html[] = (array_key_exists('theme', $config)) ? ' data-theme="'.$config['theme'].'"' : ' data-theme="'.$this->params->get('data_theme').'"';
-		$html[] = ' data-url="'.JURI::getInstance()->toString().'"';
+		$html  = '<div class="shariff"';
+		$html .= ($this->params->get('data_backend_url')) ? ' data-backend-url="/plugins/system/jooag_shariff/backend/"' : '';
+		$html .= ' data-lang="'.explode("-", JFactory::getLanguage()->getTag())[0].'"';
+		$html .= ($this->params->get('data_mail_url')) ? ' data-mail-url="mailto:'.$this->params->get('data_mail_url').'"' : '';
+		$html .= (array_key_exists('orientation', $config)) ? ' data-orientation="'.$config['orientation'].'"' : ' data-orientation="'.$this->params->get('data_orientation').'"';
+		$html .= ' data-services="'.htmlspecialchars(json_encode(array_map('strtolower', (array)json_decode($this->params->get('data_services'))->services))).'"';
+		$html .= (array_key_exists('theme', $config)) ? ' data-theme="'.$config['theme'].'"' : ' data-theme="'.$this->params->get('data_theme').'"';
+		$html .= ' data-url="'.JURI::getInstance()->toString().'"';
 		
-		if (($id = (int) $this->params->get('data_info_url')))
+		if (($id = (int)$this->params->get('data_info_url')))
 		{
 			jimport('joomla.database.table');
 			$item =	JTable::getInstance("content");
 			$item->load($this->params->get('data_info_url'));
 			require_once JPATH_SITE . '/components/com_content/helpers/route.php';
 			$link = JRoute::_(ContentHelperRoute::getArticleRoute($item->id, $item->catid, $item->language));
-			$html[] = ' data-info-url="'.$link.'"';
+			$html .= ' data-info-url="'.$link.'"';
 		}
 		
-		$html[] = '></div>';
-		return implode("\n", $html);
+		$html .= '></div>';
+		return $html;
 	}
 
 	/**
