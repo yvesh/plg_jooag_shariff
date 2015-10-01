@@ -9,7 +9,7 @@ PHP 5.4+ and Joomla 3.4+
 * Joomla Update integration
 * Use this Plugins in your Modules and Articles via {shariff} shorttag
  * Now with shorttag parameter support e.g.  {shariff orientation=vertical theme=white}
-* Languages: English, German
+* Languages: English, German, France (Contributed from: Simon | cinnk.com)
 * Restrict the plugin execution to Menu Items or Content Categories
 * Ordering for your Buttons
 * Extended Shariff Backend Cache Handler
