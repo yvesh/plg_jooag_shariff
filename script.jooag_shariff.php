@@ -16,7 +16,7 @@ class PlgSystemJooag_shariffInstallerScript
 	{
 		
 		$minPHP = '5.4.0';
-		$minJoomla = '3.4.0';
+		$minJoomla = '3.4.5';
 		$errorCount = '0';
 	
 		if (!version_compare(PHP_VERSION, $minPHP, 'ge'))
