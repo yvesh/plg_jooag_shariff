@@ -15,7 +15,7 @@ defined('JPATH_PLATFORM') or die;
  *
  * @since  11.1
  */
-class JFormFieldSpacer extends JFormField
+class JFormFieldJooagsystem extends JFormField
 {
 	/**
 	 * The form field type.
@@ -23,7 +23,7 @@ class JFormFieldSpacer extends JFormField
 	 * @var    string
 	 * @since  11.1
 	 */
-	protected $type = 'Spacer';
+	protected $type = 'JooagSystem';
 
 	/**
 	 * Method to get the field input markup for a spacer.
@@ -49,45 +49,11 @@ class JFormFieldSpacer extends JFormField
 	 */
 	protected function getLabel()
 	{
-		$html = array();
-		$class = !empty($this->class) ? ' class="' . $this->class . '"' : '';
-
-		$html[] = '<div' . $class . '>';
-
-		if ((string) $this->element['hr'] == 'true')
-		{
-			$html[] = '<hr' . $class . ' />';
-		}
-		else
-		{
-			$label = '';
-
-			// Get the label text from the XML element, defaulting to the element name.
-			$text = $this->element['label'] ? (string) $this->element['label'] : (string) $this->element['name'];
-			$text = $this->translateLabel ? JText::_($text) : $text;
-
-			// Build the class for the label.
-			$class = !empty($this->description) ? 'hasTooltip' : '';
-			$class = $this->required == true ? $class . ' required' : $class;
-
-
-
-			// If a description is specified, use it to build a tooltip.
-			if (!empty($this->description))
-			{
-				JHtml::_('bootstrap.tooltip');
-				$label .= ' title="' . JHtml::tooltipText(trim($text, ':'), JText::_($this->description), 0) . '"';
-			}
-
-			// Add the label text and closing tag.
-			$label .= $text;
-			$html[] = $label;
-		}
-
-		$html[] = '</div>';
-
-
-		return implode('', $html);
+		$doc = JFactory::getDocument();
+		$style = '.form-horizontal .control-group{margin-bottom:3px;}';
+		$style .= '.form-horizontal .control-group .alert{max-width:368px;padding: 8px 15px 8px 15px;margin-bottom:0;}'; 
+		$style .= '.jooag-line{width:400px;height:2px;background:#ccc;}'; 
+		$doc->addStyleDeclaration( $style );
 	}
 
 	/**

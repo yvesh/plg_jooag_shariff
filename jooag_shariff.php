@@ -16,6 +16,10 @@ defined('_JEXEC') or die;
  **/
 class plgSystemJooag_Shariff extends JPlugin
 {
+	public function __construct(& $subject, $config) {
+		parent::__construct($subject, $config);
+		$this->loadLanguage();
+	}
 	/**
 	 * Display the buttons before the article
 	 *
@@ -73,7 +77,7 @@ class plgSystemJooag_Shariff extends JPlugin
 	{
 		$app = JFactory::getApplication();
 		
-		if($context == 'mod_custom.content' and preg_match_all('/{shariff\ ([^}]+)\}|\{shariff\}/', $article->text, $matches) and $app->isSite())
+		if(preg_match_all('/{shariff\ ([^}]+)\}|\{shariff\}/', $article->text, $matches) and $app->isSite())
 		{
 			$params = explode(' ', trim($matches[0][0],'}'));
 			$config = array ();
@@ -90,7 +94,7 @@ class plgSystemJooag_Shariff extends JPlugin
 			$article->text = str_replace($matches[0][0], $this->getOutputPosition($article, $config), $article->text);
 		}
 		
-		if	($context == 'mod_articles_news.content' and ($this->params->get('position') == 1 or $this->params->get('position') == 2)){
+		if($context == 'mod_articles_news.content'){
 			$article->text .= '{noshariff}';
 		}
 	}
@@ -156,30 +160,89 @@ class plgSystemJooag_Shariff extends JPlugin
 		if(!JFolder::exists(JPATH_SITE.'/cache/plg_jooag_shariff') and $this->params->get('data_backend_url')){
 			JFolder::create(JPATH_SITE.'/cache/plg_jooag_shariff', 0755);
 		}
-		
+				
 		$html  = '<div class="shariff"';
 		$html .= ($this->params->get('data_backend_url')) ? ' data-backend-url="/plugins/system/jooag_shariff/backend/"' : '';
 		$html .= ' data-lang="'.explode("-", JFactory::getLanguage()->getTag())[0].'"';
-		$html .= ($this->params->get('data_mail_url')) ? ' data-mail-url="mailto:'.$this->params->get('data_mail_url').'"' : '';
 		$html .= (array_key_exists('orientation', $config)) ? ' data-orientation="'.$config['orientation'].'"' : ' data-orientation="'.$this->params->get('data_orientation').'"';
-		$html .= ' data-services="'.htmlspecialchars(json_encode(array_map('strtolower', (array)json_decode($this->params->get('data_services'))->services))).'"';
 		$html .= (array_key_exists('theme', $config)) ? ' data-theme="'.$config['theme'].'"' : ' data-theme="'.$this->params->get('data_theme').'"';
 		$html .= ' data-url="'.JURI::getInstance()->toString().'"';
 		
-		if (($id = (int)$this->params->get('data_info_url')))
+		//getServices::start
+		$services = array();
+		$ordering = array();
+		//Twitter
+		if($this->params->get('shariff_twitter'))
 		{
-			jimport('joomla.database.table');
-			$item =	JTable::getInstance("content");
-			$item->load($this->params->get('data_info_url'));
-			require_once JPATH_SITE . '/components/com_content/helpers/route.php';
-			$link = JRoute::_(ContentHelperRoute::getArticleRoute($item->id, $item->catid, $item->language));
-			$html .= ' data-info-url="'.$link.'"';
+			$ordering['twitter'] = array($this->params->get('shariff_twitter_ordering'));
+			$html .= ($this->params->get('shariff_twitter_via')) ? ' data-twitter-via="'.$this->params->get('shariff_twitter_via').'"' : '';
 		}
+		//Facebook
+		if($this->params->get('shariff_facebook'))
+		{
+			$ordering['facebook'] = array($this->params->get('shariff_facebook_ordering'));
+		}
+		//GooglePlus
+		$this->params->get('shariff_googleplus') ? $ordering['googleplus'] = array($this->params->get('shariff_googleplus_ordering')) : '';
+		//LinkedIn
+		$this->params->get('shariff_linkedin') ? $ordering['linkedin'] = $this->params->get('shariff_linkedin_ordering') : '';
+		//Pinterest
+		$this->params->get('shariff_pinterest') ? $ordering['pinterest'] = $this->params->get('shariff_pinterest_ordering') : '';
+		//Xing
+		$this->params->get('shariff_xing') ? $ordering['xing'] = $this->params->get('shariff_xing_ordering') : '';
+		//Whatsapp
+		$this->params->get('shariff_whatsapp') ? $ordering['whatsapp'] = $this->params->get('shariff_whatsapp_ordering') : '';
+		//AddThis
+		$this->params->get('shariff_addthis') ? $ordering['addthis'] = $this->params->get('shariff_addthis_ordering') : '';
+		//Tumblr
+		$this->params->get('shariff_tumblr') ? $ordering['tumblr'] = $this->params->get('shariff_tumblr_ordering') : '';
+		//Flattr
+		if($this->params->get('shariff_flattr'))
+		{	
+			$ordering['flattr'] = $this->params->get('shariff_flattr_ordering');
+			$html .= ($this->params->get('shariff_flattr_category')) ? ' data-flattr-category="'.$this->params->get('shariff_flattr_category').'"' : '';
+			$html .= ($this->params->get('shariff_flattr_user')) ? ' data-flattr-user="'.$this->params->get('shariff_flattr_user').'"' : '';
+		} 
+		//Diaspora
+		$this->params->get('shariff_diaspora') ? $ordering['diaspora'] = $this->params->get('shariff_diaspora_ordering') : '';
+		//Mail
+		if($this->params->get('shariff_mail'))
+		{
+			$ordering['mail'] = array($this->params->get('shariff_mail_ordering'));
+			$html .= ($this->params->get('data_mail_url')) ? ' data-mail-url="mailto:'.$this->params->get('data_mail_url').'"' : '';
+			$html .= ($this->params->get('data-mail-subject')) ? ' data-mail-subject="'.$this->params->get('data-mail-subject').'"' : '';
+			$html .= ($this->params->get('data-mail-body')) ? ' data-mail-body="'.$this->params->get('data-mail-body').'"' : '';
+		}
+		//Info
+		if($this->params->get('shariff_info'))
+		{
+			$ordering['info'] = array($this->params->get('shariff_info_ordering'));
+			if ((int)$this->params->get('data_info_url'))
+			{
+				jimport('joomla.database.table');
+				$item =	JTable::getInstance("content");
+				$item->load($this->params->get('data_info_url'));
+				require_once JPATH_SITE . '/components/com_content/helpers/route.php';
+				$link = JRoute::_(ContentHelperRoute::getArticleRoute($item->id, $item->catid, $item->language));
+				$html .= ' data-info-url="'.$link.'"';
+			}
+		}
+		//Services Ordering
+		array_multisort($ordering);
+		foreach($ordering as $key => $orders)
+		{
+			$services[] = $key;
+		}
+
+		//Services
+		$html .= ' data-services="'.htmlspecialchars(json_encode((array)$services)).'"';
+		//getServices::end		
 		
 		$html .= '></div>';
+				
 		return $html;
 	}
-
+	
 	/**
 	 * Generator for shariff.json if the is saved
 	 *
@@ -191,8 +254,17 @@ class plgSystemJooag_Shariff extends JPlugin
 		{
 			$params = json_decode($table->params);
 			$data->domain = JURI::getInstance()->getHost();
-			$data->services = array_diff(json_decode($params->data_services)->services, array('AddThis','Whatsapp','Mail','Info','Tumblr','Flattr','Diaspora'));
-
+			
+			$data->services[] = $this->params->get('shariff_googleplus');
+			$data->services[] = $this->params->get('shariff_twitter');
+			$data->services[] = $this->params->get('shariff_facebook');
+			$data->services[] = $this->params->get('shariff_linkedin');
+			$data->services[] = $this->params->get('shariff_flattr');
+			$data->services[] = $this->params->get('shariff_pinterest');
+			$data->services[] = $this->params->get('shariff_xing');
+			$data->services[] = $this->params->get('shariff_addthis');
+			$data->services = array_diff($data->services, array('0'));
+			
 			if($params->fb_app_id and $params->fb_secret)
 			{
 				$data->Facebook->app_id = $params->fb_app_id;
@@ -201,8 +273,9 @@ class plgSystemJooag_Shariff extends JPlugin
 
 			$data->cache->cacheDir = JPATH_SITE.'/cache/plg_jooag_shariff';
 			$data->cache->ttl = $params->cache_time;
-
-			if($params->cache == 1)
+			$data->client->timeout = $params->client_timeout;
+			
+			if($params->cache)
 			{
 				$data->cache->adapter = $params->cache_handler;
 
