@@ -35,10 +35,12 @@ class plgSystemJooag_Shariff extends JPlugin
 	{		
 		$app = JFactory::getApplication();
 
-		if($context == 'com_content.article' and $this->params->get('content_position') == 1 and $app->isSite())
+		if($context == 'com_content.article' AND $app->isSite() AND ($this->params->get('com_content_output') == 1 OR $this->params->get('com_content_output') == 3))
 		{
 			$article->introtext = str_replace('{noshariff}', '', $article->introtext, $stringCount);
 	
+			$config['shorttag'] = 0;
+			
 			if($stringCount == 0)
 			{
 				return $this->getOutputPosition($article, $config = array());
@@ -60,9 +62,11 @@ class plgSystemJooag_Shariff extends JPlugin
 	{
 		$app = JFactory::getApplication();
 			
-		if($context == 'com_content.article' and $this->params->get('content_position') == 2 and $app->isSite())
+		if($context == 'com_content.article' AND $app->isSite() AND ($this->params->get('com_content_output') == 2 OR $this->params->get('com_content_output') == 3))
 		{
 			$article->introtext = str_replace('{noshariff}', '', $article->introtext, $stringCount);
+			
+			$config['shorttag'] = 0;
 			
 			if($stringCount == 0)
 			{
@@ -91,7 +95,8 @@ class plgSystemJooag_Shariff extends JPlugin
 					$config[ $k ] = $v;
 				}
 			}
-			$config['shorttag'] = 1;
+			
+			$this->params->get('shorttag_use') ? $config['shorttag'] = 1 : $config['shorttag'] = 0;
 
 			$article->text = str_replace($matches[0][0], $this->getOutputPosition($article, $config), $article->text);
 		}
@@ -110,38 +115,55 @@ class plgSystemJooag_Shariff extends JPlugin
 	 **/
 	public function getOutputPosition($article, $config)
 	{
-		$catIds = (array)$this->params->get('content_showbycategory');
-		$menuIds = (array)$this->params->get('content_showbymenu');
-		$app = JFactory::getApplication();
-		$menu = $app->getMenu()->getActive();
 		
-		if (is_object($menu))
+		
+		$app = JFactory::getApplication();
+		
+		
+		//Check for Menu Item has the highest priority
+		$menu = $app->getMenu()->getActive();
+		$menuIds = (array)$this->params->get('content_showbymenu');
+		is_object($menu) ? $actualMenuId = $menu->id : $actualMenuId = $app->input->getInt('Itemid', 0);
+		
+		$this->params->get('menu_access') == 0 ? $menuAccess = 0 : '';
+		$this->params->get('menu_access') == 1 ? $menuAccess = 1 : '';
+		
+		if($this->params->get('menu_access') == 2)
 		{
-		  $actualMenuId = $menu->id;
+			$menuAccess = 0;
+			in_array($actualMenuId, $menuIds) ? $menuAccess = 1 : '';
 		}
-		else
+		
+		if($this->params->get('menu_access') == 3)
 		{
-		  $actualMenuId = $app->input->getInt('Itemid', 0);
+			$menuAccess = 1;
+			in_array($actualMenuId, $menuIds) ? $menuAccess = 0 : '';
 		}
+		
+		//Check for Com_Content Categorie
+		$catIds = (array)$this->params->get('content_showbycategory');
+		
+		$this->params->get('com_content_category_access') == 0 ? $contentCategoryAccess = 0 : '';
+		$this->params->get('com_content_category_access') == 1 ? $contentCategoryAccess = 1 : '';
 
-		$view = 0;
-
-		if($this->params->get('content_wheretoshow') == 3){
-			$view = 1;
-		}
-
-		if ((isset($article->catid) and in_array($article->catid, $catIds)) or in_array($actualMenuId, $menuIds))
+		if($this->params->get('com_content_category_access') == 2)
 		{
-			if($this->params->get('content_wheretoshow') == 2){
-				$view = 1;
-			}
-
-			if($this->params->get('content_wheretoshow') == 3){
-				$view = 0;
-			}
+			$contentCategoryAccess = 0;
+			isset($article->catid) and in_array($article->catid, $catIds) ? $contentCategoryAccess = 1 : '';
 		}
-
-		if($view == 1 or $this->params->get('content_wheretoshow') == 1 or $config['shorttag'] == '1'){
+		
+		if($this->params->get('com_content_category_access') == 3)
+		{
+			$contentCategoryAccess = 1;
+			isset($article->catid) and in_array($article->catid, $catIds) ? $contentCategoryAccess = 0 : '';
+		}
+		//END
+			
+		!isset($config['shorttag']) ? $config['shorttag'] = 0 : '';
+		
+		//Show everywhere | Show nowhere | Show on selected | Show on anything else selected
+		if($menuAccess == 1 or $contentCategoryAccess == 1 or $config['shorttag'] == '1')
+		{
 			return $this->getOutput($config);
 		}
 	}
@@ -234,12 +256,16 @@ class plgSystemJooag_Shariff extends JPlugin
 	 **/
 	public function onExtensionBeforeSave($context, $table, $isNew)
 	{
+		echo '<pre>';
+		print_r($table);
+		echo '</pre>';
+		break;
 		if($table->name == 'PLG_JOOAG_SHARIFF')
 		{
 			$params = json_decode($table->params);
 			$data->domain = JURI::getInstance()->getHost();
 			
-			$services = array('facebook','googleplus','twitter','linkedin','reddit','stumbleupon','flattr','pinterest','addthis');
+			$services = array('facebook','googleplus','twitter','linkedin','reddit','stumbleupon','flattr','pinterest'/*,'addthis'*/);
 			
 			foreach($services as $service)
 			{

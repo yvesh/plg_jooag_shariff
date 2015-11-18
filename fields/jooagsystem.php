@@ -53,6 +53,9 @@ class JFormFieldJooagsystem extends JFormField
 		$style = '.form-horizontal .control-group{margin-bottom:3px;}';
 		$style .= '.form-horizontal .control-group .alert{max-width:368px;padding: 8px 15px 8px 15px;margin-bottom:0;}'; 
 		$style .= '.jooag-line{width:400px;height:2px;background:#ccc;}'; 
+		$style .= '.form-horizontal .control-group {margin: 6px 0;}'; 
+		$style .= '.form-horizontal .control-label {padding-top:0px;padding-bottom:0px;}'; 
+		$style .= '.controls > .radio:first-child, .controls > .checkbox:first-child {padding-top: 0px;}'; 
 		$doc->addStyleDeclaration( $style );
 	}
 

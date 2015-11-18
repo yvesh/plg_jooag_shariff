@@ -167,22 +167,45 @@
 			</fieldset>
 
 			<fieldset name="PLG_JOOAG_SHARIFF_EXPERTS">
-				<field type="spacer" name="PLG_JOOAG_SHARIFF_LABEL_CHOOSE_POSITION" label="PLG_JOOAG_SHARIFF_LABEL_CHOOSE_POSITION" />
-				<field name="content_wheretoshow" showon="position:1,2" label="PLG_JOOAG_SHARIFF_SHOW" type="list" class="btn-group" default="1" >
-					<option value="0">PLG_JOOAG_SHARIFF_DISABLED</option>
-					<option value="1">PLG_JOOAG_SHARIFF_SHOW_EVERYWHERE</option>
-					<option value="2">PLG_JOOAG_SHARIFF_SHOW_CAT_MENU</option>
-					<option value="3">PLG_JOOAG_SHARIFF_HIDE_CAT_MENU</option>
+				<field type="line" name="line101" />
+				<field name="menu_access" label="PLG_JOOAG_SHARIFF_MENU_ACCESS" type="list" class="btn-group" default="0" >
+					<option value="0">PLG_JOOAG_SHARIFF_NO_MENU</option>
+					<option value="1">PLG_JOOAG_SHARIFF_ON_ALL_MENUS</option>
+					<option value="2">PLG_JOOAG_SHARIFF_ON_SELECTED_MENUS</option>
+					<option value="3">PLG_JOOAG_SHARIFF_ON_ALL_EXPECTED_SELECTED</option>
 					</field>
-				<field name="content_position" label="PLG_JOOAG_SHARIFF_COM_CONTENT" type="list" class="btn-group" default="1" >
+				<field name="content_showbymenu" showon="menu_access:2,3" type="menuitem" multiple="true" label="PLG_JOOAG_SHARIFF_MENU_ITEMS" />
+				
+				<field type="line" name="line102" />
+				
+				<field name="com_content_use" label="PLG_JOOAG_SHARIFF_COM_CONTENT_USE" type="radio" class="btn-group" default="1" >
+					<option value="0">PLG_JOOAG_SHARIFF_DISABLED</option>
+					<option value="1">PLG_JOOAG_SHARIFF_ENABLED</option>
+					</field>
+				
+				<field name="com_content_output" showon="com_content_use:1" label="PLG_JOOAG_SHARIFF_GENERAL_OUTPUT" type="list" class="btn-group" default="1" >
 					<option value="1">PLG_JOOAG_SHARIFF_CONTENT_TOP</option>
 					<option value="2">PLG_JOOAG_SHARIFF_CONTENT_BOTTOM</option>
 					<option value="3">PLG_JOOAG_SHARIFF_CONTENT_TOP_AND_BOTTOM</option>
 					</field>
-				<field name="content_showbycategory" showon="position:1,2" type="category" multiple="true" extension="com_content" label="PLG_JOOAG_SHARIFF_CATEGORIES" />
-				<field name="content_showbymenu" showon="position:1,2" type="menuitem" multiple="true" label="PLG_JOOAG_SHARIFF_MENU_ITEMS" />
-				<field type="spacer" name="myspacer" showon="position:3" label="PLG_JOOAG_SHARIFF_POSITION_DESC" class="alert alert-info" />
-				<field type="spacer" name="PLG_JOOAG_SHARIFF_LABEL_STYLING" label="PLG_JOOAG_SHARIFF_LABEL_STYLING" />
+					
+				<field name="com_content_category_access" showon="com_content_use:1" label="PLG_JOOAG_SHARIFF_CONTENT_CATEGORY_ACCESS" type="list" class="btn-group" default="0" >
+					<option value="0">PLG_JOOAG_SHARIFF_NO_CATEGORY</option>
+					<option value="1">PLG_JOOAG_SHARIFF_ON_ALL_CATEGORIES</option>
+					<option value="2">PLG_JOOAG_SHARIFF_ON_SELECTED_CATEGORIES</option>
+					<option value="3">PLG_JOOAG_SHARIFF_ON_ALL_EXPECTED_SELECTED_CATEGORIES</option>
+					</field>					
+				<field name="content_showbycategory" showon="com_content_category_access:2,3" type="category" multiple="true" extension="com_content" label="PLG_JOOAG_SHARIFF_CATEGORIES" />
+				
+				<field type="line" name="line103" />
+				<field name="shorttag_use" label="PLG_JOOAG_SHARIFF_SHORTTAG_USE" type="radio" class="btn-group" default="1" >
+					<option value="0">PLG_JOOAG_SHARIFF_DISABLED</option>
+					<option value="1">PLG_JOOAG_SHARIFF_ENABLED</option>
+					</field>	
+				<field type="spacer" name="myspacer" showon="shorttag_use:1" label="PLG_JOOAG_SHARIFF_POSITION_DESC" class="alert alert-info" />
+				<field type="line" name="line104" />
+				
+
 				<field name="data_orientation" label="PLG_JOOAG_SHARIFF_ORIENATATION" type="list" class="btn-group" default="horizontal">
 					<option value="horizontal">PLG_JOOAG_SHARIFF_HORIZONTAL</option>
 					<option value="vertical">PLG_JOOAG_SHARIFF_VERTICAL</option>
@@ -192,22 +215,22 @@
 					<option value="grey">PLG_JOOAG_SHARIFF_GREY</option>
 					<option value="white">PLG_JOOAG_SHARIFF_WHITE</option>
 					</field>
-				<field type="spacer" name="PLG_JOOAG_SHARIFF_LABEL_FOR_EXPERTS" label="PLG_JOOAG_SHARIFF_LABEL_FOR_EXPERTS" />
+					<field type="line" name="line105" />
 				<field name="shariffcss" type="filelist" default="shariff.complete.css" label="PLG_JOOAG_SHARIFF_CSS" directory="media/plg_jooag_shariff/css" filter="css" hide_none="true" hide_default="true" />
 				<field name="shariffjs" type="filelist" default="shariff.min.js" label="PLG_JOOAG_SHARIFF_JS" directory="media/plg_jooag_shariff/js" filter="js" hide_none="true" hide_default="true" />
 				<field type="spacer" name="labelcssjs" label="PLG_JOOAG_SHARIFF_COMPLETE_OR_MIN" class="alert alert-info" />
+				<field type="line" name="line106" />
 				<field name="data_backend_url" label="PLG_JOOAG_SHARIFF_SHARE_COUNTER_BACKEND" type="list" class="btn-group" default="1">
 					<option value="0">PLG_JOOAG_SHARIFF_DISABLED</option>
 					<option value="1">PLG_JOOAG_SHARIFF_ENABLED</option>
 					</field>
-				<field name="cache_time" type="number" default="60" label="PLG_JOOAG_SHARIFF_CACHE_TIME" step="10" />	
-				<field name="cache" label="PLG_JOOAG_SHARIFF_CACHE" type="list" class="btn-group" default="0">
+				<field name="cache_time" showon="data_backend_url:1" type="number" default="60" label="PLG_JOOAG_SHARIFF_CACHE_TIME" step="10" />	
+				<field name="cache" showon="data_backend_url:1" label="PLG_JOOAG_SHARIFF_CACHE" type="list" class="btn-group" default="0">
 					<option value="0">PLG_JOOAG_SHARIFF_DISABLED</option>
 					<option value="1">PLG_JOOAG_SHARIFF_ENABLED</option>
 					</field>
 				<field name="cache_handler" showon="cache:1" type="cachehandler" default="" label="PLG_JOOAG_SHARIFF_CACHE_HANDLER" />
-				<field name="client_timeout" type="number" default="5" label="PLG_JOOAG_SHARIFF_CLIENT_TIMEOUT" step="1" />	
-
+				<field name="client_timeout" showon="data_backend_url:1" type="number" default="5" label="PLG_JOOAG_SHARIFF_CLIENT_TIMEOUT" step="1" />	
 			</fieldset>	
 		</fields>
 	</config>
