@@ -178,26 +178,28 @@
 				
 				<field type="line" name="line102" />
 				
-				<field name="com_content_use" label="PLG_JOOAG_SHARIFF_COM_CONTENT_USE" type="radio" class="btn-group" default="1" >
+				<field name="shariff_where_output" label="PLG_JOOAG_SHARIFF_WHERE_TOO_USE" type="radio" class="btn-group" default="1" >
 					<option value="0">PLG_JOOAG_SHARIFF_DISABLED</option>
-					<option value="1">PLG_JOOAG_SHARIFF_ENABLED</option>
+					<option value="1">PLG_JOOAG_SHARIFF_ONLY_ARTICLES</option>
+					<option value="2">PLG_JOOAG_SHARIFF_SHOW_EVERYWHERE</option>
 					</field>
 				
-				<field name="com_content_output" showon="com_content_use:1" label="PLG_JOOAG_SHARIFF_GENERAL_OUTPUT" type="list" class="btn-group" default="1" >
+				<field name="shariff_position_output" showon="shariff_where_output:1,2" label="PLG_JOOAG_SHARIFF_GENERAL_OUTPUT" type="list" class="btn-group" default="1" >
 					<option value="1">PLG_JOOAG_SHARIFF_CONTENT_TOP</option>
 					<option value="2">PLG_JOOAG_SHARIFF_CONTENT_BOTTOM</option>
 					<option value="3">PLG_JOOAG_SHARIFF_CONTENT_TOP_AND_BOTTOM</option>
 					</field>
 					
-				<field name="com_content_category_access" showon="com_content_use:1" label="PLG_JOOAG_SHARIFF_CONTENT_CATEGORY_ACCESS" type="list" class="btn-group" default="0" >
+				<field name="com_content_category_access" showon="shariff_where_output:1" label="PLG_JOOAG_SHARIFF_CONTENT_CATEGORY_ACCESS" type="list" class="btn-group" default="0" >
 					<option value="0">PLG_JOOAG_SHARIFF_NO_CATEGORY</option>
 					<option value="1">PLG_JOOAG_SHARIFF_ON_ALL_CATEGORIES</option>
 					<option value="2">PLG_JOOAG_SHARIFF_ON_SELECTED_CATEGORIES</option>
 					<option value="3">PLG_JOOAG_SHARIFF_ON_ALL_EXPECTED_SELECTED_CATEGORIES</option>
 					</field>					
-				<field name="content_showbycategory" showon="com_content_category_access:2,3" type="category" multiple="true" extension="com_content" label="PLG_JOOAG_SHARIFF_CATEGORIES" />
+				<field name="content_showbycategory" showon="shariff_where_output:1" type="category" multiple="true" extension="com_content" label="PLG_JOOAG_SHARIFF_CATEGORIES" />
 				
 				<field type="line" name="line103" />
+
 				<field name="shorttag_use" label="PLG_JOOAG_SHARIFF_SHORTTAG_USE" type="radio" class="btn-group" default="1" >
 					<option value="0">PLG_JOOAG_SHARIFF_DISABLED</option>
 					<option value="1">PLG_JOOAG_SHARIFF_ENABLED</option>

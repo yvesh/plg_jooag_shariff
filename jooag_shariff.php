@@ -106,6 +106,34 @@ class plgSystemJooag_Shariff extends JPlugin
 		}
 	}
 
+	
+	public function onBeforeRender()
+	{
+		$app = JFactory::getApplication();
+		
+		if($this->params->get('shariff_where_output') == 2 and $app->isSite())
+		{
+			$doc = JFactory::getDocument();
+			$config['shorttag'] = 0;
+			$buffer = $doc->getBuffer('component');
+			$buffering = '';
+			
+			if($this->getMenuAccess() == 1 and ($this->params->get('shariff_position_output') == 1 or $this->params->get('shariff_position_output') == 3))
+			{
+				$buffering .= $this->getOutput($config);
+			}
+			
+			$buffering .= $buffer;
+			
+			if($this->getMenuAccess() == 1 and ($this->params->get('shariff_position_output') == 2 or $this->params->get('shariff_position_output') == 3))
+			{
+				$buffering .= $this->getOutput($config);
+			}
+
+			$doc->setBuffer($buffering, 'component');
+		}
+	}
+	
 	/**
 	 * appends the required scripts to the documents and returns the markup
 	 *
@@ -115,32 +143,8 @@ class plgSystemJooag_Shariff extends JPlugin
 	 **/
 	public function getOutputPosition($article, $config)
 	{
-		
-		
-		$app = JFactory::getApplication();
-		
-		
-		//Check for Menu Item has the highest priority
-		$menu = $app->getMenu()->getActive();
-		$menuIds = (array)$this->params->get('content_showbymenu');
-		is_object($menu) ? $actualMenuId = $menu->id : $actualMenuId = $app->input->getInt('Itemid', 0);
-		
-		$this->params->get('menu_access') == 0 ? $menuAccess = 0 : '';
-		$this->params->get('menu_access') == 1 ? $menuAccess = 1 : '';
-		
-		if($this->params->get('menu_access') == 2)
-		{
-			$menuAccess = 0;
-			in_array($actualMenuId, $menuIds) ? $menuAccess = 1 : '';
-		}
-		
-		if($this->params->get('menu_access') == 3)
-		{
-			$menuAccess = 1;
-			in_array($actualMenuId, $menuIds) ? $menuAccess = 0 : '';
-		}
-		
-		//Check for Com_Content Categorie
+
+		//Check for Com_Content Category
 		$catIds = (array)$this->params->get('content_showbycategory');
 		
 		$this->params->get('com_content_category_access') == 0 ? $contentCategoryAccess = 0 : '';
@@ -161,11 +165,37 @@ class plgSystemJooag_Shariff extends JPlugin
 			
 		!isset($config['shorttag']) ? $config['shorttag'] = 0 : '';
 		
-		//Show everywhere | Show nowhere | Show on selected | Show on anything else selected
-		if($menuAccess == 1 or $contentCategoryAccess == 1 or $config['shorttag'] == '1')
+		//Show
+		if($this->getMenuAccess() == 1 and ($contentCategoryAccess == 1 or $config['shorttag'] == '1'))
 		{
 			return $this->getOutput($config);
 		}
+	}
+	
+	private function getMenuAccess()
+	{
+		//Check for Menu Item has the highest priority
+		$app = JFactory::getApplication();
+		$menu = $app->getMenu()->getActive();
+		$menuIds = (array)$this->params->get('content_showbymenu');
+		is_object($menu) ? $actualMenuId = $menu->id : $actualMenuId = $app->input->getInt('Itemid', 0);
+		
+		$this->params->get('menu_access') == 0 ? $menuAccess = 0 : '';
+		$this->params->get('menu_access') == 1 ? $menuAccess = 1 : '';
+		
+		if($this->params->get('menu_access') == 2)
+		{
+			$menuAccess = 0;
+			in_array($actualMenuId, $menuIds) ? $menuAccess = 1 : '';
+		}
+		
+		if($this->params->get('menu_access') == 3)
+		{
+			$menuAccess = 1;
+			in_array($actualMenuId, $menuIds) ? $menuAccess = 0 : '';
+		}
+		
+		return $menuAccess;
 	}
 
 	/**
@@ -189,26 +219,25 @@ class plgSystemJooag_Shariff extends JPlugin
 		$html .= ($this->params->get('data_backend_url')) ? ' data-backend-url="/plugins/system/jooag_shariff/backend/"' : '';
 		$html .= ' data-lang="'.explode("-", JFactory::getLanguage()->getTag())[0].'"';
 		$html .= (array_key_exists('orientation', $config)) ? ' data-orientation="'.$config['orientation'].'"' : ' data-orientation="'.$this->params->get('data_orientation').'"';
-		$html .= (array_key_exists('theme', $config)) ? ' data-theme="'.$config['theme'].'"' : ' data-theme="'.$this->params->get('data_theme').'"';
-		$html .= ' data-url="'.JURI::getInstance()->toString().'"';
-		
+		$html .= (array_key_exists('theme', $config)) ? ' data-theme="'.$config['theme'].'"' : ' data-theme="'.$this->params->get('data_theme').'"';		
+
 		//getServices::start
 		$services = array('twitter','facebook','googleplus','linkedin','pinterest','xing','whatsapp','mail','info','addthis','tumblr','flattr','diaspora','reddit','stumbleupon','threema');		
-	
-		foreach ($services as $service)
+				
+		foreach ($services as $key => $service)
 		{
-			$this->params->get('shariff_'.$service) ? $activeServices[$service] = array($this->params->get('shariff_'.$service.'_ordering')) : '';
+			$this->params->get('shariff_'.$service) ? $activeServices[$service][] = $this->params->get('shariff_'.$service.'_ordering') : '';
 		}
 		
-		//Services Ordering
-		array_multisort($services);
-		foreach($activeServices as $key => $service)
+		array_multisort($activeServices);
+				
+		foreach($activeServices as $key => $activeService)
 		{
-			$activeServices[] = $key;
+			$orderedServices[] = $key;
 		}
-		
+
 		//Services output
-		$html .= ' data-services="'.htmlspecialchars(json_encode((array)$activeServices)).'"';
+		$html .= ' data-services="'.htmlspecialchars(json_encode((array)$orderedServices)).'"';
 		//getServices::end
 		
 		//Twitter
@@ -256,10 +285,6 @@ class plgSystemJooag_Shariff extends JPlugin
 	 **/
 	public function onExtensionBeforeSave($context, $table, $isNew)
 	{
-		echo '<pre>';
-		print_r($table);
-		echo '</pre>';
-		break;
 		if($table->name == 'PLG_JOOAG_SHARIFF')
 		{
 			$params = json_decode($table->params);
