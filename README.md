@@ -3,7 +3,7 @@
 This Joomla 3.4+ Plugin utilizes Heise Shariff Library to enable website users to share their favorite content without compromising their privacy.
 
 <b>System Requirements:</b>
-Joomla 3.4+ and PHP5.5+ for the Share Counter
+Joomla 3.4+ and PHP 5.5+ for the Share Counter
 
 <b>Plugin features:</b>
 * Joomla Update integration
