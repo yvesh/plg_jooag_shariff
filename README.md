@@ -2,8 +2,8 @@
 <h3>The 1-Click-Social-Button with privacy in mind</h3>
 This Joomla 3.4+ Plugin utilizes Heise Shariff Library to enable website users to share their favorite content without compromising their privacy.
 
-<b>Required:</b>
-PHP 5.4+ and Joomla 3.4+
+<b>System Requirements:</b>
+Joomla 3.4+ and PHP5.5+ for the Share Counter
 
 <b>Plugin features:</b>
 * Joomla Update integration
