@@ -78,7 +78,13 @@ class PlgSystemJooag_Shariff extends JPlugin
 
 		if ($context == 'sharrif.general' && $app->isSite())
 		{
-			$article->description = str_replace('{noshariff}', '', $article->description, $stringCount);
+			$stringCount = 0;
+
+			// Way to supply option to disable shariff
+			if (isset($article->description))
+			{
+				$article->description = str_replace('{noshariff}', '', $article->description, $stringCount);
+			}
 
 			if ($stringCount == 0)
 			{
