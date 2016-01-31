@@ -7,10 +7,10 @@
  * @description A small Plugin to share Social Links without compromising their privacy!
  **/
 
-defined('_JEXEC') || die;
+defined('_JEXEC') or die;
 
 /**
- * Class {
+ * Class PlgSystemJooag_Shariff
  *
  * @since  1.0.0
  */
@@ -76,7 +76,7 @@ class PlgSystemJooag_Shariff extends JPlugin
 			}
 		}
 
-		if ($context == 'com_matukio.event' && $app->isSite())
+		if ($context == 'sharrif.general' && $app->isSite())
 		{
 			$article->description = str_replace('{noshariff}', '', $article->description, $stringCount);
 
@@ -239,6 +239,7 @@ class PlgSystemJooag_Shariff extends JPlugin
 		if ($table->name == 'PLG_JOOAG_SHARIFF')
 		{
 			$params         = json_decode($table->params);
+			$data = new stdClass;
 			$data->domain   = JURI::getInstance()->getHost();
 			$data->services = array_diff(json_decode($params->data_services)->services, array('AddThis', 'Whatsapp', 'Mail', 'Info', 'Tumblr', 'Flattr', 'Diaspora'));
 
