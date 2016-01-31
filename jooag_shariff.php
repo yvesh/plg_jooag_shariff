@@ -76,7 +76,7 @@ class PlgSystemJooag_Shariff extends JPlugin
 			}
 		}
 
-		if ($context == 'sharrif.general' && $app->isSite())
+		if ($context == 'shariff.general' && $app->isSite())
 		{
 			$stringCount = 0;
 
